@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>007-2d缩放.html</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		ul{
+			width: 600px;
+			border: 1px solid #000;
+			margin:50px auto;
+		}
+		li{
+			list-style: none;
+			width: 200px;
+			height: 100px;
+			background-color: red;
+			margin:100px auto;
+		}
+		li:nth-child(2){
+			background-color: blue;
+			transform: scale(2,1.5)
+		}
+		li:nth-child(3){
+			background-color: green;
+			transform: scale(0.5,0.8);
+		}
+		li:nth-child(4){
+			background-color: yellow;
+			transform: scale(2);
+		}
+	</style>
+</head>
+<body>
+	<ul>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+	</ul>
+</body>
+</html>

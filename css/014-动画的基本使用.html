@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>014-动画的基本使用.html</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		.box1{
+			width: 200px;
+			height: 200px;
+			background-color: red;
+			margin-bottom: 20px;
+			transition: width 2s;
+		}
+		.box1:hover{
+			width:600px;
+		}
+		.box2{
+			width: 200px;
+			height: 200px;
+			background-color: blue;
+			animation-name: sport;
+			animation-duration: 2s;
+		}
+		@keyframes sport{
+			from{
+				width:200px;
+			}
+			to{
+				width:600px;
+			}
+		}
+	</style>
+</head>
+<body>
+	<div class="box1"></div>
+	<div class="box2"></div>
+</body>
+</html>

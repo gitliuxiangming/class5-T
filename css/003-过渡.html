@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>003-过渡.html</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		.box{
+			width: 100px;
+			height: 100px;
+			background-color: red;
+			/*
+			transition-property: width,height;
+			transition-duration: 1s;
+			transition-delay: 1s;
+			transition-timing-function: cubic-bezier(10,20,30,40);*/
+			/*transition: width 1s,height 2s,opacity 1s;*/
+			transition: all 1s 0.5s linear;
+			/*
+			-webkit-transition: ;
+			-o-transition: ;
+			transition: ;
+			*/
+		}
+		.box:hover{
+			width: 200px;
+			height: 200px;
+			opacity: 0.5;
+		}
+	</style>
+</head>
+<body>
+	<div class="box"></div>
+	<div class="box1"></div>
+</body>
+</html>

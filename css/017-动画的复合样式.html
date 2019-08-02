@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>017-动画的复合样式.html</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		.box{
+			width: 200px;
+			height: 200px;
+			background-color: red;
+			/*animation:sport 1s linear 1s 4 alternate;*/
+			animation:sport 1s;
+		}
+		@keyframes sport{
+			from{
+				width: 200px;
+			}
+			to{
+				width: 600px;
+			}
+		}
+	</style>
+</head>
+<body>
+	<div class="box">
+		
+	</div>
+</body>
+</html>

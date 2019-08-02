@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>010-修改旋转轴向.html</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		ul{
+			width: 400px;
+			border: 1px solid #000;
+			margin:30px auto;
+			list-style: none;
+		}
+		li{
+			width: 200px;
+			height: 200px;
+			border: 1px solid #000;
+			margin:40px auto;
+			perspective: 800px;
+		}
+		li img{
+			width: 100%;
+			height: 100%;
+		}
+		li:nth-child(1) img{
+			transform: rotateX(45deg);
+		}
+		li:nth-child(2){
+			background-color: red;
+		}
+		li:nth-child(2) img{
+			transform: rotateY(-45deg);
+		}
+		li:nth-child(3) img{
+			/*transform: rotateZ(45deg);*/
+			transform: rotate(45deg);
+		}
+	</style>
+</head>
+<body>
+	<ul>
+		<li><img src="images/x.jpg" alt=""></li>
+		<li><img src="images/y.jpg" alt=""></li>
+		<li><img src="images/z.jpg" alt=""></li>
+	</ul>
+</body>
+</html>

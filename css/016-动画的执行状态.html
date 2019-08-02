@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>016-动画的执行状态.html</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		.box{
+			width: 200px;
+			height: 200px;
+			background-color: red;
+			animation-name: sport;
+			animation-duration: 1s;
+			animation-iteration-count: infinite;
+			/*animation-play-state: paused;*/
+			animation-play-state: running;
+		}
+		.box:hover{
+			/*animation-play-state: running;*/
+			animation-play-state: paused;
+		}
+		@keyframes sport{
+			from{
+				width: 200px;
+			}
+			to{
+				width: 600px;
+			}
+		}
+	</style>
+</head>
+<body>
+	<div class="box"></div>
+</body>
+</html>

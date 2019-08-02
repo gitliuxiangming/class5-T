@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>027-自定义字体.html</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		@font-face{
+			font-family: testFont;
+			src:url(fonts/Sansation_Light.ttf),
+				url(fonts/Sansation_Light.eot);
+		}
+	/*	@font-face{
+			font-family: testFont;
+			src:url(fonts/Sansation_Bold.ttf),
+				url(fonts/Sansation_Bold.eot);
+			font-weight: bold;
+		}*/
+		@font-face{
+			font-family: testFont;
+			src:url(fonts/Sansation_Bold.ttf),
+				url(fonts/Sansation_Bold.eot);
+			font-style: italic;
+		}
+		p{
+			width: 200px;
+			height: 200px;
+			border: 1px solid #000;
+			margin:100px auto;
+			line-height: 200px;
+			/*font-family: Cambria;*/
+			font-family: testFont;
+			/*font-weight: bold;*/
+			font-style: italic;
+		}
+	</style>
+</head>
+<body>
+	<p>hello你好</p>
+</body>
+</html>

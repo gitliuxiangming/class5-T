@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>031-单页平滑过渡页面.html</title>
+	<link rel="stylesheet" href="css/all.css">
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		.page>input,
+		.page>a{
+			width: 20%;
+			height: 34px;
+			text-align: center;
+			line-height: 34px;
+			position: fixed;
+			top: 0px;
+		}
+		.page>input{
+			z-index: 9;
+			opacity: 0;
+		}
+		.page>a{
+			text-decoration: none;
+			font-size: 24px;
+			color:#fff;
+			background-color: rgba(0,0,0,0.7);
+			z-index: 1;
+		}
+		.page>input:checked+a{
+			color:red;
+		}
+		#ctr1,#ctr1+a{
+			left: 0%;
+		}
+		#ctr2,#ctr2+a{
+			left: 20%;
+		}
+		#ctr3,#ctr3+a{
+			left:40%;
+		}
+		#ctr4,#ctr4+a{
+			left: 60%;
+		}
+		#ctr5,#ctr5+a{
+			left: 80%;
+		}
+		.page>input:hover+a{
+			background-color: rgba(0,0,0,0.9);
+		}
+		.content{
+			height: 100%;
+			transition: all 1s;
+			animation: sport 1s;
+		}
+		.pages{
+			height: 100%;
+			padding-top:34px;
+			box-sizing: border-box;
+			background-repeat: no-repeat;
+			background-size: 100% 100%;
+		}
+		.page{
+			height: 100%;
+			overflow: hidden;
+		}
+		html,body{
+			height: 100%;
+		}
+		#ctr1:checked~.content{
+			transform: translateY(0%);
+		}
+		#ctr2:checked~.content{
+			transform: translateY(-100%);
+		}
+		#ctr3:checked~.content{
+			transform: translateY(-200%);
+		}
+		#ctr4:checked~.content{
+			transform: translateY(-300%);
+		}
+		#ctr5:checked~.content{
+			transform: translateY(-400%);
+		}
+		.page1{
+			background-image: url(images/home.png);
+		}
+		.page2{
+			background-image: url(images/service.png);
+		}
+		.page3{
+			background-image: url(images/about.png);
+		}
+		.page4{
+			background-image: url(images/team.png);
+		}
+		.page5{
+			background-image: url(images/contact.png);
+		}
+		@keyframes sport{
+			from{
+				opacity: 0;
+			}
+			to{
+				opacity: 1;
+			}
+		}
+		#ctr1:checked~.content .page1{
+			animation: sport 2s;
+		}
+		#ctr2:checked~.content .page2{
+			animation: sport 2s;
+		}
+		#ctr3:checked~.content .page3{
+			animation: sport 2s;
+		}
+		#ctr4:checked~.content .page4{
+			animation: sport 2s;
+		}
+		#ctr5:checked~.content .page5{
+			animation: sport 2s;
+		}
+	</style>
+</head>
+<body>
+	<div class="page">
+		<input type="radio" name="nav" id="ctr1" checked>
+		<a href="javascript:;"><i class="fas fa-home"></i>Home</a>
+		<input type="radio" name="nav"id="ctr2"> 
+		<a href="javascript:;"><i class="fas fa-coffee"></i>Service</a>
+		<input type="radio" name="nav"id="ctr3">
+		<a href="javascript:;"><i class="fas fa-building"></i>About</a>
+		<input type="radio" name="nav" id="ctr4">
+		<a href="javascript:;"><i class="fas fa-users"></i>Team</a>
+		<input type="radio" name="nav" id="ctr5">
+		<a href="javascript:;"><i class="fas fa-phone"></i>Contact</a>
+		<div class="content">
+			<div class="page1 pages"></div>
+			<div class="page2 pages"></div>
+			<div class="page3 pages"></div>
+			<div class="page4 pages"></div>
+			<div class="page5 pages"></div>
+		</div>
+	</div>
+</body>
+</html>

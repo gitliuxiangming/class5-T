@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>001-qq邮箱案例.html</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+			list-style: none;
+		}
+		header{
+			height: 64px;
+			line-height: 64px;
+			background: #eff4fa;
+			border-top: 1px solid #b6b4b6;
+			border-bottom: 1px solid #d6dfea;
+			box-sizing: border-box;
+		}
+		header img{
+			float: left;
+			margin-top: 14px;
+			margin-left: 40px;
+		}
+		header ul{
+			float: right;
+			margin-right: 40px;
+		}
+		header ul li{
+			float: left;
+			color:#b6c4d9;
+			font-size: 12px;
+		}
+		.link{
+			text-decoration: none;
+			font-size: 12px;
+			color: #1d5494;
+		}
+		.link:hover{
+			text-decoration:underline;
+		}
+		section{
+			height: 521px;
+			background-color: #fff;
+		}
+		section>img{
+			float: left;
+			margin-left: 228px;
+			margin-top: 114px;
+		}
+		section .box{
+			float: right;
+			width: 336px;
+			height: 389px;
+			border: 1px solid #a0b1c4;
+			border-radius: 5px;
+			margin-right: 223px;
+			margin-top: 72px;
+			overflow: hidden;
+		}
+		section .login-top{
+			height: 50px;
+			border-bottom: 1px solid #a0b1c4;
+			background-color: #f9fbfe;
+		}
+		section .login-top p{
+			float: left;
+			width: 50%;
+			text-align: center;
+			line-height: 50px;
+		}
+		section .login-top p:nth-child(1){
+			color:#99a5c3;
+		}
+		section .login-top p:nth-child(2){
+			color:#333;
+		}
+		.text1{
+			width: 284px;
+			height: 40px;
+			padding: 10px;
+			box-sizing: border-box;
+		}
+		section .login-bottom div{
+			margin-left: 26px;
+		}
+		section .login-bottom div:nth-child(1){
+			margin-top: 36px;
+			margin-bottom: 10px;
+		}
+		section .login-bottom div:nth-child(3){
+			margin-top: 24px;
+		}
+		section .login-bottom div:nth-child(3) input{
+			width: 18px;
+			height: 18px;
+		}
+		section .login-bottom div:nth-child(3) span{
+			font-size: 12px;
+			vertical-align: 6px;
+			margin-left: 5px;
+		}
+		section .login-bottom div:nth-child(4) input{
+			background-color: #5a98de;
+			border-radius: 3px;
+			margin-top: 16px;
+			font-size: 20px;
+			color:#fff;
+		}
+		section .login-bottom div:nth-child(5){
+			text-align: center;
+			margin-top: 20px;
+		}
+		section .login-bottom div:nth-child(5) span{
+			font-size: 14px;
+			color: #225592;
+			margin-left: 5px;
+		}
+		section .login-bottom div:nth-child(6){
+			text-align: right;
+			font-size: 12px;
+			color: #225592;
+			margin-top: 40px;
+			margin-right: 10px;
+		}
+		footer{
+			height: 40px;
+			background-color: #eff4fa;
+			border-top: 1px solid #d6dfea;
+			box-sizing: border-box;
+			font-size: 12px;
+			color:#b6c4d9;
+			text-align: center;
+			line-height: 40px;
+		}
+	</style>
+</head>
+<body>
+	<header>
+		<img src="images/logo.png" alt="">
+		<ul>
+			<li><a href="#" class="link">基本版</a>&nbsp; | &nbsp;</li>
+			<li><a href="#" class="link">English</a>&nbsp; | &nbsp;</li>
+			<li><a href="#" class="link">手机版</a>&nbsp; | &nbsp;</li>
+			<li><a href="#" class="link">企业邮箱</a></li>
+		</ul>
+	</header>
+	<section>
+		<img src="images/leftImg.png" alt="">
+		<div class="box">
+			<div class="login-top">
+				<p>微信登录</p>
+				<p>QQ登录</p>
+			</div>
+			<div class="login-bottom">
+				<div>
+					<input type="text" class="text1" placeholder="支持QQ号/邮箱/手机号登录">
+				</div>
+				<div>
+					<input type="password" class="text1" placeholder="QQ密码">
+				</div>
+				<div>
+					<input type="checkbox"><span>下次自动登录</span>
+				</div>
+				<div>
+					<input type="submit" value="登录" class="text1">
+				</div>
+				<div>
+					<img src="images/erweima.png" alt=""><span>扫码快捷登录</span>
+				</div>
+				<div><a href="#" class="link">忘了密码？</a></div>
+			</div>
+		</div>
+	</section>
+	<footer>
+		<a href="#" class="link">关于腾讯</a>&nbsp; | &nbsp;
+		<a href="#" class="link">服务条款</a>&nbsp; | &nbsp;
+		<a href="#" class="link">隐私政策</a>&nbsp; | &nbsp;
+		<a href="#" class="link">客服中心</a>&nbsp; | &nbsp;
+		<a href="#" class="link">联系我们</a>&nbsp; | &nbsp;
+		<a href="#" class="link">帮助中心</a>&nbsp; | &nbsp;
+		<span>©1998 - 2019 Tencent Inc. All Rights Reserved.</span>
+	</footer>
+</body>
+</html>

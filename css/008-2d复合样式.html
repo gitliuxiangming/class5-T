@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>008-2d复合样式.html</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+			list-style:none;
+		}
+		ul{
+			width: 600px;
+			border: 1px solid #000;
+			margin:50px auto;
+		}
+		li{
+			width: 100px;
+			height: 100px;
+			background-color: red;
+			margin:30px auto;
+			text-align: center;
+			line-height: 100px;
+		}
+		li:nth-child(2){
+			transform: rotate(45deg);
+		}
+		li:nth-child(3){
+			transform: translate(100px,50px);
+		}
+		li:nth-child(4){
+			transform: scale(1.5);
+		}
+		li:nth-child(5){
+			/*
+			transform: rotate(30deg);
+			transform: translate(100px,100px);
+			transform: scale(2);
+			*/
+			/*transform:translate(100px,100px) scale(1.6) rotate(45deg) ;*/
+			/*transform:translate(100px,100px) rotate(45deg);*/
+			transform:rotate(45deg) translate(100px,100px) ;
+	</style>
+</head>
+<body>
+	<ul>
+		<li>默认</li>
+		<li>旋转</li>
+		<li>平移</li>
+		<li>缩放</li>
+		<li>复合</li>
+	</ul>
+</body>
+</html>

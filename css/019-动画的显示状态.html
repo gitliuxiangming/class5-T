@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>019-动画的显示状态.html</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		.box{
+			width: 200px;
+			height: 200px;
+			background-color: red;
+			margin:100px auto;
+			animation: sport 2s linear 2s;
+			/*animation-fill-mode:backwards;*/
+			/*animation-fill-mode:forwards;*/
+			animation-fill-mode:both;
+		}
+		@keyframes sport{
+			0%{
+				transform: rotate(10deg);
+			}
+			15%{
+				transform: rotate(15deg);
+			}
+			30%{
+				transform: rotate(20deg);
+			}
+			60%{
+				transform: rotate(40deg);
+			}
+			70%{
+				transform: rotate(90deg);
+			}
+			100%{
+				transform: rotate(160deg);
+			}
+		}
+	</style>
+</head>
+<body>
+	<div class="box">
+		123
+	</div>
+</body>
+</html>
