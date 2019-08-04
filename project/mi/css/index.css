@@ -1,0 +1,196 @@
+/*top样式开始*/
+	.top{
+		height: 34px;
+		background-color: #333;
+	}
+	.top .top-nav{
+		float: left;
+		width: 680px;
+		height: 34px;
+		/*background-color: green;*/
+	}
+	.top .top-nav .nav-list li{
+		float: left;
+		line-height: 34px;
+	} 
+	.top .user-info{
+		float: right;
+		width: 155px;
+		height: 34px;
+		line-height: 34px;
+	}
+	.top .user-info ul li{
+		float: left;
+	}
+	.top .cart{
+		float: right;
+		width: 120px;
+		height: 34px;
+		background-color: #424242;
+		color:#b0b0b0;
+		line-height: 34px;
+		text-align: center;
+	}
+	.top .cart:hover{
+		background-color: #fff;
+
+	}
+	.top .cart:hover a{
+		color:#ff6700;
+	}
+	.top .cart i{
+		font-size: 20px;
+	}
+	.top .cart span{
+		display: inline-block;
+		vertical-align: 3px;
+	}
+/*top样式结束*/
+/*header样式开始*/
+	.header{
+		height: 100px;
+		/*overflow: hidden;*/
+	}
+	.header .logo{
+		float: left;
+		width: 55px;
+		height: 55px;
+		background-color: #ff6700;
+		margin-top: 22px;
+	}
+	.header .header-nav{
+		float: left;
+		width: 661px;
+		height: 100px;
+		line-height: 100px;
+		margin-left: 179px;
+	}
+	.header .header-nav .header-nav-item{
+		float: left;
+		margin-right: 20px;
+	}
+	.header .header-nav .header-nav-item a{
+		font-size: 16px;
+		color:#333;	
+	}
+	.header .header-nav .header-nav-item a:hover{
+		color:#ff6700;	
+	}
+	.header .search{
+		float: right;
+		width: 295px;
+		height: 50px;
+		margin-top: 25px;
+		position: relative;
+	}
+	.header .search:hover input,
+	.header .search:hover span{
+		border-color: #999;
+	}
+	.header .search input{
+		float: left;
+		width: 243px;
+		height: 50px;
+		outline: none;
+		border: 1px solid #e0e0e0;
+		box-sizing: border-box;
+		border-right: none;
+		padding-left: 10px;
+	}
+	.header .search input:focus ~ .search-list{
+		display: block;
+	}
+	.header .search input:focus,
+	.header .search input:focus ~ .search-btn{
+		border-color: #ff6700;
+	}
+	.header .search input:focus ~ .search-hot{
+		display: none;
+	}
+	.header .search>span:hover{
+		background-color: #ff6700;
+		color:#fff;
+		border:none;
+	}
+	.header .search>span{
+		float: left;
+		width: 52px;
+		height: 50px;
+		line-height: 50px;
+		text-align: center;
+		border: 1px solid #e0e0e0;
+		box-sizing: border-box;
+		font-size: 24px;
+		color:#616161;
+	}
+	.header .search .search-hot{
+		position: absolute;
+		font-size: 12px;
+		color:#757575;
+		line-height: 16px;
+		text-align:center;
+	}
+	.header .search .search-hot div:hover{
+		position: relative;
+		background-color: #ff6700;
+		color: #fff;
+	}
+	.header .search .search-hot .hot-1{
+		position: absolute;
+		top:16px;
+		left: 127px;
+		float: left;
+		width: 41px;
+		height: 18px;
+		background-color: #eee;
+
+	}
+	.header .search .search-hot .hot-2{
+		position: absolute;
+		top:16px;
+		left: 173px;
+		width: 60px;
+		height: 18px;
+		background-color: #eee;
+	}
+	.header .search .search-list{
+		display: none;
+		position: absolute;
+		top: 50px;
+		left: 0px;
+		width:243px;
+		z-index: 1;
+		background-color: #fff;
+		border: 1px solid #ff6700;
+		box-sizing: border-box;
+		border-top: none;
+	}
+	.header .search .search-list li{
+		padding-left: 15px;
+	}
+	.header .search .search-list li:hover{
+		background-color: #eee;
+	}
+	.header .search .search-list a{
+		line-height: 24px;
+		color:#333;
+	}
+/*header样式结束*/
+/*home样式开始*/
+	.home{
+		height: 832px;
+		background-color: green;
+	}
+/*home样式结束*/
+/*main样式开始*/
+	.main{
+		height: 2136px;
+		background-color: pink;
+	}
+/*main样式结束*/
+/*footer样式开始*/
+	.footer{
+		height: 284px;
+		background-color: gray;
+	}
+/*footer样式结束*/
