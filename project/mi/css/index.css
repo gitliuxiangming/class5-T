@@ -1,3 +1,5 @@
+/*抽取共同样式*/
+
 /*top样式开始*/
 	.top{
 		height: 34px;
@@ -48,7 +50,7 @@
 /*top样式结束*/
 /*header样式开始*/
 	.header{
-		height: 100px;
+		/*height: 100px;*/
 		/*overflow: hidden;*/
 	}
 	.header .logo{
@@ -96,6 +98,9 @@
 		box-sizing: border-box;
 		border-right: none;
 		padding-left: 10px;
+	}
+	.header .search span:hover{
+		cursor: pointer;
 	}
 	.header .search input:focus ~ .search-list{
 		display: block;
@@ -178,8 +183,168 @@
 /*header样式结束*/
 /*home样式开始*/
 	.home{
-		height: 832px;
+		/*height: 832px;*/
 		background-color: green;
+		padding-bottom: 42px;
+	}
+	.home .banner{
+		height: 460px;
+		position: relative;
+	}
+	.home .banner .cate{
+		position: absolute;
+		top: 0px;
+		left: 0px;
+		width: 234px;
+		height: 100%;
+		background-color: rgba(0,0,0,0.6);
+		z-index: 10;
+	}
+	.home .banner .cate ul{
+		padding: 20px 0px;
+	}
+	.home .banner .cate ul li{
+		height: 42px;
+		padding-left: 30px;
+		padding-right: 20px;
+		line-height: 42px;
+	}
+	.home .banner .cate ul li:hover{
+		background-color: #ff6700;
+	}
+	
+	.home .banner .cate ul li a{
+		font-size: 14px;
+		color:#fff;
+	}
+	.home .banner .cate ul li a i{
+		float: right;
+	}
+	.home .banner .carousel{
+		position: relative;
+		width: 1226px;
+		height: 460px;
+	}
+	.home .banner .carousel .carousel-imgs li{
+		position: absolute;
+		top: 0px;
+		left: 0px;
+	}
+	.home .banner .carousel .carousel-imgs img{
+		width: 1226px;
+		height: 460px;
+	}
+	.home .banner .carousel .btn{
+		position: absolute;
+		top: 230px;
+		margin-top: -35px;
+		width: 41px;
+		height: 69px;
+		line-height: 69px;
+		text-align: center;
+		font-size: 30px;
+		color:#757575;
+		cursor: pointer;
+	}
+	.home .banner .carousel .btn:hover{
+		background-color: rgba(0,0,0,0.6);
+		color:#fff;
+	}
+	.home .banner .carousel .left-btn{
+		left: 234px;
+		border-top-right-radius: 3px;
+		border-bottom-right-radius: 3px;
+	}
+	.home .banner .carousel .right-btn{
+		right: 0px;
+		border-top-left-radius: 3px;
+		border-bottom-left-radius: 3px;
+	}
+	.home .banner .carousel .carousel-btns{
+		position: absolute;
+		bottom: 25px;
+		right: 35px;
+	}
+	.home .banner .carousel .carousel-btns li{
+		float: left;
+		width: 10px;
+		height: 10px;
+		box-sizing: border-box;
+		border-radius: 50%;
+		background-color: #7b8a97;
+		margin-left: 10px;
+		border: 2px solid #a3adb6;
+	}
+	.home .banner .carousel .carousel-btns li:first-child{
+		background-color: #e3f4fe;
+		border-color: #889298;
+	}
+	.home .banner .carousel .carousel-btns li:hover{
+		background-color: #e3f4fe;
+		border-color: #889298;
+	}
+	.home .hot{
+		height: 170px;
+		background-color: tomato;
+		margin-top: 14px;
+		margin-bottom: 14px;
+	}
+	.home .hot .hot-left{
+		height: 100%;
+		background-color: #5f5750;
+	}
+	.home .hot .hot-left li{
+		width: 78px;
+		height: 85px;
+		box-sizing: border-box;
+		float: left;
+		text-align: center;
+		position: relative;
+	}
+	.home .hot .hot-left li.shu-line:after{
+		content: '';
+		display: block;
+		width: 1px;
+		height: 70px;
+		background-color: #665e57;
+		position: absolute;
+		top: 5px;
+		right: 0px;
+	}
+	.home .hot .hot-left li.heng-line:before{
+		content: '';
+		display: block;
+		width: 63px;
+		height: 1px;
+		background-color: #665e57;
+		position: absolute;
+		top: 0px;
+		left: 10px;
+	}
+	.home .hot .hot-left li:hover a{
+		color: #fff;
+	}
+
+	.home .hot .hot-left li i{
+		display: block;
+		font-size: 30px;
+		margin-top: 20px;
+	}
+	.home .hot .hot-left li a{
+		font-size: 10px;
+	}
+	.home .hot .hot-right{
+		height: 100%;
+		background-color: yellow;
+	}
+	.home .shopping{
+		height: 340px;
+		background-color: red;
+	}
+	.home .ad{
+		height: 120px;
+		background-color: blue;
+		margin-top: 42px;
 	}
 /*home样式结束*/
 /*main样式开始*/

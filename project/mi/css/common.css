@@ -3,6 +3,16 @@
 	margin-left: auto;
 	margin-right: auto;
 }
+.clearfix:after{
+	display: block;
+	content: '';
+	clear: both;
+	height: 0;
+	visibility: hidden;
+}
+.clearfix{
+	*zoom: 1;
+}
 a{
 	font-size: 12px;
 	text-decoration: none;
@@ -15,4 +25,12 @@ a:hover{
 	color:#393d42;
 	margin-left: 5px;
 	margin-right: 5px;
+}
+.col1{
+	width: 234px;
+	float: left;
+}
+.col2{
+	width: 978px;
+	float: right;
 }
