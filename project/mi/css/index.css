@@ -125,7 +125,7 @@
 }
 .product-list .product-item-s-more{
 	margin-left: 30px;
-	margin-top: 40px;
+	margin-top: 50px;
 	font-size: 18px;
 	color:#333;
 	text-align: left;
@@ -138,7 +138,7 @@
 	font-weight: normal;
 }
 .product-list .product-item-s-img{
-	margin-top: 40px;
+	margin-top: 45px;
 	margin-left: 40px;
 }
 .product-list .product-item-m:hover{
@@ -679,10 +679,157 @@
 	.main .elec{
 		margin-top: 20px;
 	}
+	.main .video{
+		margin-top: 20px;
+	}
+	.main .video .bd{
+		height: 285px;
+	}
+	.main .video .video-item{
+		float: left;
+		width: 296px;
+		height: 285px;
+		background-color: #fff;
+		margin-left: 14px;
+		text-align: center;
+	}
+	.main .video .video-item:first-child{
+		margin-left: 0px;
+	}
+	.main .video .video-item .video-img{
+		height: 180px;
+		position: relative;
+	}
+	.main .video .video-item .video-img:hover span{
+		background-color: #ff6700;
+		border-color: #ff6700;
+	}
+	.main .video .video-item .video-img img{
+		width: 100%;
+		height: 100%;
+	}
+	.main .video .video-item .video-img span{
+		display: inline-block;
+		position: absolute;
+		left: 21px;
+		bottom: 10px;
+		width: 36px;
+		height: 24px;
+		line-height: 20px;
+		text-align: center;
+		border: 2px solid #fff;
+		box-sizing: border-box;
+		color:#fff;
+		border-radius: 20px;
+		background-color: rgba(0,0,0,0.6);
+	}
+	.main .video-item .video-img span i{
+		display: inline-block;
+		font-size: 32px;
+		vertical-align: 0px;
+	}
+	.main .video .video-item .video-title{
+		margin-top: 34px;
+		font-size: 14px;
+		color:#333;
+	}
+	.main .video .video-item .video-title:hover{
+		color: #ff6700;
+	}
+	.main .video .video-item .video-desc{
+		font-size: 11px;
+		color:#b0b0b0;
+		margin-top: 10px;
+	}
 /*main样式结束*/
 /*footer样式开始*/
 	.footer{
 		height: 284px;
-		background-color: gray;
+		background-color: #fff;
+	}
+	.footer .service{
+		height: 80px;
+		border-bottom: 1px solid #e0e0e0;
+		padding: 27px 0px;
+		box-sizing: border-box;
+	}
+	.footer .service .service-item{
+		width: 20%;
+		height: 25px;
+		line-height: 25px;
+		text-align: center;
+		float: left;
+		border-right: 1px solid #e0e0e0;
+		box-sizing: border-box;
+	}	
+	.footer .service .service-item:last-child{
+		border-right:none;
+	}
+	.footer .service .service-item a{
+		font-size: 16px;
+		color:#616161;
+		transition: color 0.3s;
+	}
+	.footer .service .service-item a:hover{
+		color: #ff6700;
+	}
+	.footer .service .service-item a i{
+		font-size: 24px;
+		vertical-align: -4px;
+	}
+	.footer .links{
+		height: 204px;
+		padding-top: 40px;
+	}
+	.footer .link-item{
+		float: left;
+		margin-right: 100px;
+	}
+	.footer .link-item dt{
+		font-size: 14px;
+		color:#424242;
+		margin-bottom: 30px;
+	}
+	.footer .link-item dd{
+		font-size: 11px;
+		color:#757575;
+		margin-bottom: 15px;
+	}
+	.footer .link-item dd:hover{
+		color:#ff6700;
+	}
+	.footer .link-contact{
+		float: right;
+		border-left: 1px solid #e0e0e0;
+		text-align: center;
+		padding-left: 60px;
+		margin-right: 60px;
+	}
+	.footer .link-contact P:nth-child(1){
+		font-size: 20px;
+		color:#ff6700;
+		margin-bottom: 10px;
+	}
+	
+	.footer .link-contact P:nth-child(2),
+	.footer .link-contact P:nth-child(3){
+		font-size: 12px;
+		color:#616161;
+		margin-bottom: 5px;
+	}
+	.footer .link-contact>a{
+		display: inline-block;
+		width: 120px;
+		height: 30px;
+		line-height: 29px;
+		border: 1px solid #ff6700;
+		box-sizing: border-box;
+		color:#ff6700;
+		margin-top: 15px;
+		transition: all 0.3s;
+	}
+	.footer .link-contact>a:hover{
+		background-color: #ff6700;
+		color:#fff;
 	}
 /*footer样式结束*/
