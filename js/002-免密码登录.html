@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>002-免密码登录.html</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		.box{
+			display: none;
+			width: 300px;
+			height: 50px;
+			background-color: gray;
+		}
+		/*
+		input:hover~.box{
+			display: block;
+		}
+		*/
+	</style>
+</head>
+<body>
+	<!--  
+	<input type="checkbox" 
+		onmouseover="box.style.display='block'" 
+		onmouseout="box.style.display='none'" 
+	 >选中记住密码
+	-->
+	<input type="checkbox" 
+		onmouseover="document.getElementById('box').style.display='block'" 
+		onmouseout="document.getElementById('box').style.display='none'" 
+	 >选中记住密码
+	<div class="box" id="box">勾选此项将记住密码</div>
+</body>
+</html>
