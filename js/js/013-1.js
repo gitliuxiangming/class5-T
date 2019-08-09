@@ -4,6 +4,6 @@ oDiv.onclick = function(){
 }
 // console.log('aaa')
 
-// document.addEventListener('DOMContentLoaded',function(){
-// 	console.log('DOMContentLoaded')
-// })
+document.addEventListener('DOMContentLoaded',function(){
+	console.log('DOMContentLoaded')
+})
