@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>014-async的使用.html</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		#box{
+			width: 100px;
+			height: 100px;
+			background-color: red;
+			margin:100px auto;
+		}
+	</style>
+	<!-- <script async src="js/013-1.js"></script> -->
+	<script async>
+		var oDiv = document.getElementById('box');
+		oDiv.onclick = function(){
+			oDiv.style.background = 'blue';
+		}
+	</script>
+</head>
+<body>
+	<div id="box"></div>
+	<img src="images/mn.jpg" alt="">
+</body>
+</html>
