@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>033-秒变时间.html</title>
+	<script>
+		//12:40:00
+		var iSecond = 7897;
+		var iH = parseInt(iSecond/3600)
+		var iM = parseInt((iSecond%3600)/60);
+		var iS = (iSecond%3600)%60;
+		if(iH<10){
+			iH='0'+iH
+		}
+		if(iM<10){
+			iM='0'+iM
+		}
+		if(iS<10){
+			iS='0'+iS
+		}
+		var time = iH+":"+iM+":"+iS;
+		console.log(time)
+
+	</script>
+</head>
+<body>
+	
+</body>
+</html>
