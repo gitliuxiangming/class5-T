@@ -19,9 +19,7 @@ oDiv.onmouseout=toSmall;
 */
 /*匿名函数就是没有名字的函数*/
 
-oDiv.onmouseover = function(){
-	toBig();
-}
+oDiv.onmouseover = toBig;
 
 oDiv.onmouseout = function(){
 	toSmall()

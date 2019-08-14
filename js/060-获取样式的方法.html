@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>060-获取样式的方法.html</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		#box{
+			width: 200px;
+			height: 200px;
+			border: 1px solid #000;
+		}
+		.toBlue{
+			background-color: blue;
+		}
+		.toBlue:after{
+			content: '';
+			display: block;
+			color:green;
+		}
+	</style>
+</head>
+<body>
+	<button id="btn1">变红</button>
+	<button id="btn2">变蓝</button>
+	<button id="btn3">获取样式的值</button>
+	<div id="box"></div>
+</body>
+<script>
+	var oBtn1 = document.getElementById('btn1');
+	var oBtn2 = document.getElementById('btn2');
+	var oBtn3 = document.getElementById('btn3');
+	var oBox = document.getElementById('box');
+	oBtn1.onclick = function(){
+		oBox.style.backgroundColor = 'red';
+	}
+	oBtn2.onclick = function(){
+		oBox.className = 'toBlue';
+	}
+	oBtn3.onclick = function(){
+		// alert(oBox.style.backgroundColor)
+		// alert(getComputedStyle(oBox,false)['backgroundColor'])
+		console.log(getComputedStyle(oBox,false)['backgroundColor'])
+		// console.log(getComputedStyle(oBox,":after")['color'])
+	}
+</script>
+</html>

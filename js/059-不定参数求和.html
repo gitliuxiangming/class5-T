@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>059-不定参数求和.html</title>
+	<script>
+		function sum(){
+			// console.log(arguments);
+			var result = 0;
+			for(var i=0;i<arguments.length;i++){
+				result = result + arguments[i]
+			}
+			return result;
+			// alert(n1+n2+n3+n4+n5+n6)
+		}
+		var a=sum(1,2,3,4,5,6,99);
+		console.log(a)
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

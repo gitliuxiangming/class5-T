@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>063-函数的返回值.html</title>
+	<script>
+		function sum(){
+			/*
+			if(arguments.length ==2){
+				return 111;
+			}
+			*/
+			var result = 0;
+			for(var i=0;i<arguments.length;i++){
+				result = result + arguments[i]
+			}
+			
+			return result;
+			console.log('函数内',result);
+			// return [result,'aaa'];
+			// return;
+		}
+		console.log('返回值',sum(1,2))
+		// console.log(sum(1,2,3))
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

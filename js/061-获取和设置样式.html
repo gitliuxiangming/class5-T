@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>061-获取和设置样式.html</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		#box{
+			width: 200px;
+			height: 200px;
+			border: 1px solid #000;
+			margin-bottom: 10px;
+		}
+	</style>
+</head>
+<body>
+	<button id="btn1">变高</button>
+	<button id="btn2">变宽</button>
+	<button id="btn3">获取或设置</button>
+	<div id="box">123</div>
+</body>
+<script>
+	/*
+	function css(){
+		console.log(arguments)
+		if(arguments.length == 2){
+			alert(getComputedStyle(arguments[0],false)[arguments[1]])
+		}else if(arguments.length == 3){
+			arguments[0].style[arguments[1]] = arguments[2];
+		}
+	}
+	*/
+	function css(obj,attr,val){
+		console.log(arguments)
+		if(arguments.length == 2){
+			alert(getComputedStyle(obj,false)[attr])
+		}else if(arguments.length == 3){
+			obj.style[attr] = val;
+		}
+	}
+
+	var oBtn1 = document.getElementById('btn1')
+	var oBtn2 = document.getElementById('btn2')
+	var oBtn3 = document.getElementById('btn3')
+	var oBox = document.getElementById('box')
+	var oBox1 = document.getElementById('box1')
+	oBtn1.onclick = function(){
+		css(oBox,'height','400px')
+	}
+	oBtn2.onclick = function(){
+		css(oBox,'width','600px');
+	}
+	oBtn3.onclick = function(){
+		// alert(getComputedStyle(oBox,false)['height'])
+		css(oBox,'backgroundColor')
+	}
+</script>
+</html>
