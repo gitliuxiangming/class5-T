@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>053-月历.html</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+			list-style: none;
+		}
+		.box{
+			width: 380px;
+			margin:100px auto;
+			background-color: #ccc;
+		}
+		ul{
+			overflow: hidden;
+		}
+		ul li{
+			float: left;
+			width: 100px;
+			height: 100px;
+			background-color: #000;
+			color:#fff;
+			margin-left: 20px;
+			margin-top: 20px;
+			line-height: 100px;
+			text-align: center;
+			font-size: 40px;
+			cursor: pointer;
+		}
+		.content{
+			padding: 20px 0px 20px 20px;
+		}
+		.active{
+			background-color: #fff;
+			color:#000;
+		}
+	</style>
+</head>
+<body>
+	<div class="box">
+		<ul>
+			<li class="active">1</li>
+			<li>2</li>
+			<li>3</li>
+			<li>4</li>
+			<li>5</li>
+			<li>6</li>
+			<li>7</li>
+			<li>8</li>
+			<li>9</li>
+			<li>10</li>
+			<li>11</li>
+			<li>12</li>
+		</ul>
+		<div class="content" id="plan">
+			<!-- <h2>一月</h2>
+			<p>睡觉</p> -->
+		</div>
+	</div>
+</body>
+<script>
+	var aLi = document.getElementsByTagName('li');
+	var oContent = document.getElementById('plan');
+	aPlan = ['春游','游泳','吃饭','睡觉','打豆豆','散步','春游','游泳','吃饭','睡觉','打豆豆','散步'];
+	oContent.innerHTML = '<h2>1月</h2><p>春游</p>';
+	for(var i=0;i<aLi.length;i++){
+		aLi[i].index = i;
+		aLi[i].onmouseover = function(){
+			for(var j=0;j<aLi.length;j++){
+				aLi[j].className = '';
+			}
+			this.className = 'active';
+			oContent.innerHTML = '<h2>'+(this.index+1)+'月</h2><p>'+aPlan[this.index]+'</p>';
+		}
+	}
+</script>
+</html>
