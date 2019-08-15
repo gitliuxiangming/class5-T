@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>081-数组排序-比较函数.html</title>
+	<script>
+		var arr = [3,8,1,10,15,2,6,7,20]
+		console.log(arr)
+		var arr1 = arr.sort(function(n1,n2){
+			// console.log(n1,n2)
+			/*
+			if(n1>n2){
+				return 1000;
+			}else if(n1<n2){
+				return -999;
+			}else{
+				return 0;
+			}
+			*/
+			return n1-n2;
+		})
+		console.log(arr)
+		console.log(arr1)
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

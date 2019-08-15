@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>067-局部变量.html</title>
+	<script>
+		/*
+		function fn4(){
+			console.log('我是全局的fn4')
+		}
+		*/
+		function fn1(){
+			var a = 1;
+			console.log('fn1',a);
+			function fn2(){
+				console.log('fn2',a);
+			}
+			function fn3(){
+				function fn4(){
+					fn2();
+				}
+				fn4()
+			}
+			fn3();
+			// fn4();
+
+		}
+		fn1();
+		console.log(a)
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

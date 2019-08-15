@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>071-函数的作用域.html</title>
+	<script>
+		function fn(){
+			// var i;
+			console.log(i)
+			if(true){
+				var j = 1;
+			}
+			console.log(j)
+			for(var i =0;i<5;i++){
+
+			}
+			console.log(i)
+			function fn1(){
+				console.log(i)
+			}
+			fn1();
+		}
+		fn();
+		
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>069-作用域的决定2.html</title>
+	<script>
+		var a = 1;
+		function fn(){
+			console.log(a);
+		}
+		function show(){
+			var a = 2;
+			fn();
+			function show1(){
+				console.log(a)//2
+			}
+		}
+		show();
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

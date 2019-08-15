@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>072-函数声明的提升.html</title>
+	<script>
+		function fn1(){
+			// fn2();
+			function fn2(){
+				console.log('i am fn2')
+			}
+			function fn3(){
+				fn2();
+			}
+			fn3();
+
+		}
+		fn1();
+	</script>
+</head>
+<body>
+	
+</body>
+</html>
