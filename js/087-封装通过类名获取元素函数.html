@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>087-封装通过类名获取元素函数.html</title>
+</head>
+<body>
+	<ul id="ul1">
+		<li class="box">1</li>
+		<li class="box1">2</li>
+		<li class="box">3</li>
+		<li class="box1">4</li>
+		<li class="box">5</li>
+		<li>6</li>
+		<li class="box">7</li>
+		<li>8</li>
+		<li class="box1">9</li>
+		<li class="box1">10</li>
+	</ul>
+	<div id="div1">
+		<div class="box">1</div>
+		<div>2</div>
+		<div>3</div>
+		<div class="box">4</div>
+		<div>5</div>
+		<div class="box">6</div>
+		<div class="box">7</div>
+		<div>8</div>
+		<div>9</div>
+		<div>10</div>
+	</div>
+</body>
+<script>
+	function getElementsByClass(oParent,oClass){
+		var aEle = oParent.children;
+		var result = [];
+		for(var i=0;i<aEle.length;i++){
+			if(aEle[i].className == oClass){
+				result.push(aEle[i])
+			}
+		}
+		return result;
+	}
+	
+	
+	var oUl = document.getElementById('ul1');
+	var aBoxs = getElementsByClass(oUl,'box');
+	var aBox1s = getElementsByClass(oUl,'box1');
+	console.log(aBox1s)
+	var oDiv = document.getElementById('div1');
+	var aDivs = getElementsByClass(oDiv,'box')
+	console.log(aDivs)
+	// console.log(aLi)
+	// var aBox = oUl.getElementsByClassName('box');
+	// console.log(aBox)
+</script>
+</html>

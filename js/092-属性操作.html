@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>092-属性操作.html</title>
+</head>
+<body>
+	<input type="text" id="txt" value='888' test='test1111'>
+	<input type="button" id="btn" value="点击">
+	<textarea id="content" cols="30" rows="10"></textarea>
+</body>
+<script>
+	var oTxt = document.getElementById('txt');
+	var oBtn = document.getElementById('btn');
+	var oContent = document.getElementById('content');
+	oBtn.onclick = function(){
+		/*
+		var val = oTxt.value;
+		oContent.value = val;
+		*/
+		/*
+		var val = oTxt['value'];
+		oContent['value'] = val;
+		*/
+		var val = oTxt.getAttribute('test');
+		// var val = oTxt.test;
+		// var val = oTxt['test'];
+		console.log(val)
+		// oTxt.test = '123'
+		// oTxt['value'] = '123'
+		// oTxt.setAttribute('test','123')
+		oTxt.removeAttribute('value')
+	}
+</script>
+</html>

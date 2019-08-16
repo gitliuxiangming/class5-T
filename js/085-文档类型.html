@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>085-文档类型.html</title>
+</head>
+<body>
+	<ul id="ul1">
+		<li>1</li>
+		<li>2</li>
+		<li>3</li>
+		<li>4</li>
+		<li>5</li>
+	</ul>
+</body>
+<script>
+	var oUl = document.getElementById('ul1');
+	var aEle = oUl.childNodes;
+	// console.log(aEle)
+	for(var i=0;i<aEle.length;i++){
+		// console.log(aEle[i])
+		if(aEle[i].nodeType == 1){
+			// console.log(aEle[i])
+			aEle[i].style.color = 'red'
+		}
+		
+	}
+	console.log(window.document.nodeType)
+</script>
+</html>
