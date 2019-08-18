@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>102-克隆元素.html</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		.box{
+			width: 100px;
+			height: 100px;
+			background-color: red;
+		}
+	</style>
+</head>
+<body>
+	<input type="button" id="btn1" value="克隆false">
+	<input type="button" id="btn2" value="克隆ture">
+	<div class="box" id="box">我是一个盒子</div>
+</body>
+<script>
+	var oBtn1= document.getElementById('btn1');
+	var oBtn2= document.getElementById('btn2');
+	var oBox= document.getElementById('box');
+	oBtn1.onclick = function(){
+		var oDiv = oBox.cloneNode(false);
+		console.log(oDiv)
+		document.body.appendChild(oDiv)
+	}
+	oBtn2.onclick = function(){
+		var oDiv = oBox.cloneNode(true);
+		console.log(oDiv)
+		document.body.appendChild(oDiv)
+	}
+</script>
+</html>

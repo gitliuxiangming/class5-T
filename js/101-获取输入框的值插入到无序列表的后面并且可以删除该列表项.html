@@ -42,16 +42,23 @@
 		var val = oTxt.value;
 		var oLi = document.createElement('li');
 		var oA = document.createElement('a');
+
+
 		oA.href = 'javascript:;'
 		oA.innerHTML = '删除';
 		oLi.innerHTML = val;
+
+
 		oA.onclick = function(){
 			oUl.removeChild(oLi)
 		}
+
+
+
 		oLi.appendChild(oA);
 		oUl.insertBefore(oLi,oUl.firstChild)
 		oTxt.value = '';
-		
+
 	}
 </script>
 </html>
