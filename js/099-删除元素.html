@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>099-删除元素.html</title>
+</head>
+<body>
+	<ul id="ul1">
+		<li>1</li>
+		<li>2</li>
+		<li>3</li>
+	</ul>
+	<input type="button" id="btn" value="删除">
+</body>
+<script>
+	var oBtn = document.getElementById('btn')
+	var oUl = document.getElementById('ul1');
+	var aLi = oUl.children;
+	oBtn.onclick = function(){
+		oUl.removeChild(aLi[1])
+	}
+	
+</script>
+</html>

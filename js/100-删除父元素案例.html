@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>100-删除父元素案例.html</title>
+</head>
+<body>
+	<ul id="ul1">
+		<li>1<a href="javascript:;">隐藏</a></li>
+		<li>2<a href="javascript:;">隐藏</a></li>
+		<li>3<a href="javascript:;">隐藏</a></li>
+		<li>4<a href="javascript:;">隐藏</a></li>
+		<li>5<a href="javascript:;">隐藏</a></li>
+		<li>6<a href="javascript:;">隐藏</a></li>
+		<li>7<a href="javascript:;">隐藏</a></li>
+		<li>8<a href="javascript:;">隐藏</a></li>
+		<li>9<a href="javascript:;">隐藏</a></li>
+		<li>10<a href="javascript:;">隐藏</a></li>		
+	</ul>
+</body>
+<script>
+	var oUl = document.getElementById('ul1')
+	var aA = document.getElementsByTagName('a');
+	// console.log(aA)
+	for(var i=0;i<aA.length;i++){
+		
+		aA[i].onclick = function(){
+			var oLi = this.parentNode;
+			// console.log(oLi)
+			// oLi.style.display = 'none';
+			oUl.removeChild(oLi)
+		}
+	}
+</script>
+</html>

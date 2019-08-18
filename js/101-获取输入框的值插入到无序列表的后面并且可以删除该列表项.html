@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>101-获取输入框的值插入到无序列表的前面并且可以删除该列表项.html</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+			list-style: none;
+		}
+		.box{
+			width: 400px;
+			margin:100px auto;
+		}
+		li{
+			border-bottom: 1px dashed #000;
+			height: 40px;
+			line-height: 40px;
+		}
+		a{
+			text-decoration: none;
+			float: right;
+			color:#f67;
+		}
+	</style>
+</head>
+<body>
+	<div class="box">
+		<textarea  id="txt" cols="30" rows="10"></textarea>
+		<input type="button" id="btn" value="发布">
+		<ul id="ul1">
+		</ul>
+	</div>
+	
+</body>
+<script>
+	var oTxt = document.getElementById('txt');
+	var oUl = document.getElementById('ul1');
+	var oBtn = document.getElementById('btn');
+	oBtn.onclick = function(){
+		var val = oTxt.value;
+		var oLi = document.createElement('li');
+		var oA = document.createElement('a');
+		oA.href = 'javascript:;'
+		oA.innerHTML = '删除';
+		oLi.innerHTML = val;
+		oA.onclick = function(){
+			oUl.removeChild(oLi)
+		}
+		oLi.appendChild(oA);
+		oUl.insertBefore(oLi,oUl.firstChild)
+		oTxt.value = '';
+		
+	}
+</script>
+</html>

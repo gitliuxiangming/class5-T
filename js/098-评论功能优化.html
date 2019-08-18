@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>098-评论功能优化.html</title>
+</head>
+<body>
+	<textarea  id="txt" cols="30" rows="10"></textarea>
+	<input type="button" id="btn" value="提交">
+	<ul id="ul1">
+	</ul>
+</body>
+<script>
+	var oTxt = document.getElementById('txt');
+	var oBtn = document.getElementById('btn');
+	var oUl1 = document.getElementById('ul1');
+	oBtn.onclick = function(){
+		if(oTxt.value == ''){
+		alert('请输入内容后在提交')
+		}else{
+			var val = oTxt.value;
+			var oLi = document.createElement('li');
+			oLi.innerHTML = val;
+			oUl1.insertBefore(oLi,oUl1.firstChild);
+			oTxt.value = '';
+		}
+	}
+
+</script>
+</html>
