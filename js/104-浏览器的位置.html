@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>104-浏览器的位置.html</title>
+	<script>
+		console.log('window.screenTop',window.screenTop)
+		console.log('window.screenLeft',window.screenLeft)
+		console.log('window.screenY',window.screenY)
+		console.log('window.screenX',window.screenX)
+
+		var iTop = window.screenTop;
+		/*
+		if(window.screenTop){
+			iTop = window.screenY;
+		}else{
+			window.screenTop;
+		}
+		*/
+		/*
+		window.screenTop ? iTop = window.screenTop : window.screenTop;
+		*/
+		iTop = window.screenTop || window.screenY;
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

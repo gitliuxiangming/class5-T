@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>108-运行代码.html</title>
+</head>
+<body>
+	<textarea  id="txt" cols="30" rows="10"></textarea>
+	<input type="button" id="btn" value="运行">
+</body>
+	<script>
+		var oBtn= document.getElementById('btn');
+		var oTxt= document.getElementById('txt');
+		oBtn.onclick = function(){
+			var val = oTxt.value;
+			var newWin = window.open();
+			// console.log(newWin)
+			newWin.document.write(val);
+		}
+	</script>
+</html>

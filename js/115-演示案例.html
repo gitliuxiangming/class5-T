@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>115-演示案例.html</title>
+
+</head>
+<body>
+	<button id="btn">按钮</button>
+</body>
+<script>
+	var oBtn = document.getElementById('btn');//1
+	var i=0;//2
+
+	oBtn.onclick = function(){//5
+		i++;
+		console.log(i)
+	}
+
+	setTimeout(function(){//4
+		console.log(i)
+	},2000)
+
+	i++;//3
+</script>
+</html>

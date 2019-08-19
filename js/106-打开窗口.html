@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>106-打开窗口.html</title>
+	
+</head>
+<body>
+	<input type="button" id="btn" value="打开">
+</body>
+<script>
+	var oBtn = document.getElementById('btn');
+	oBtn.onclick = function(){
+		var newWin = window.open('about:blank','_blank');
+		console.log(newWin)
+	}
+</script>
+</html>

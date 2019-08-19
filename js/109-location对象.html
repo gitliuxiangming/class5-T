@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>109-location对象.html</title>
+	
+</head>
+<body>
+	<button id="btn">按钮</button>
+</body>
+<script>
+	console.log(window.location)
+	// console.log(document.location)
+	// console.log(document.location == window.location)
+	var oBtn = document.getElementById('btn');
+	oBtn.onclick = function(){
+		// window.location.assign('https://www.kuazhu.com')
+		// window.location.href = 'https://www.kuazhu.com';
+		window.location = 'https://www.baidu.com';
+
+	}
+</script>
+</html>

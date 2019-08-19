@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>114-循环型定时器.html</title>
+	
+</head>
+<body>
+	<button id="btn">停止</button>
+</body>
+<script>
+	var oBtn = document.getElementById('btn')
+	function sayHi(){
+		console.log('hi...')
+	}
+	// setInterval('console.log("aaa")',2000)
+	// setInterval(sayHi,2000)
+	var timer = setInterval(function(){
+		console.log('aaaa')
+	},2000)
+	oBtn.onclick = function(){
+		clearInterval(timer);
+	}
+</script>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>116-运行机制测试题.html</title>
+</head>
+<body>
+	
+</body>
+<script>
+	/*
+      console.log(1);
+      setTimeout(function () {
+          console.log(2);
+      }, 0);
+      console.log(3);
+     */
+     /*
+      console.log('A');
+      setTimeout(function () {
+          console.log('B');
+      }, 0);
+      while (true) {
+      	
+      }
+      */
+    for (var i = 0; i < 3; i++) {
+	    setTimeout(function () {
+	        console.log(i);
+	    }, 1000);
+    }
+    // console.log(i)
+
+</script>
+</html>
