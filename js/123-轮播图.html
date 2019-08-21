@@ -19,6 +19,7 @@
 			position: absolute;
 			top: 0px;
 			left: 0px;
+			transition: all 1s;
 		}
 		.carousel .carousel-imgs img{
 			width: 1226px;
@@ -91,4 +92,63 @@
 		</ul>
 	</div>
 </body>
+<script>
+	//1.获取元素
+	var aLI = document.querySelectorAll('.carousel-imgs li');
+	var oLeftBtn = document.querySelector('.left-btn');
+	var oRightBtn = document.querySelector('.right-btn');
+	var aBtns = document.querySelectorAll('.carousel-btns li');
+	var oCarousel = document.querySelector('.carousel')
+	var now = 0;//默认显示的下标
+	var timer = 0;
+	// console.log(aLI)
+	// console.log(oLeftBtn)
+	// console.log(oRightBtn)
+	// console.log(aBtns)
+	//抽取公共代码
+	function tab(){
+		for(var i=0;i<aLI.length;i++){
+			aLI[i].style.zIndex = '0';
+			aLI[i].style.opacity = '0';
+			aBtns[i].className = '';
+		}
+		aLI[now].style.zIndex = '99';
+		aLI[now].style.opacity = '1';
+		aBtns[now].className = 'active';
+	}
+	//2.添加事件（下一张）
+	oRightBtn.onclick = function(){
+		now++;
+		if(now>=aLI.length){
+			now=0;
+		}
+		tab();
+	}
+	//添加上一张事件
+	oLeftBtn.onclick = function(){
+		now--;
+		if(now < 0){
+			now = aLI.length -1;
+		}
+		tab();
+	}
+	//添加下边按钮事件
+	for(var i=0;i<aBtns.length;i++){
+		aBtns[i].index = i;//存i值
+		aBtns[i].onclick = function(){
+			now = this.index;
+			tab();
+		}
+	}
+	//添加自动轮播事件
+	timer = setInterval(oRightBtn.onclick,5000)
+	oCarousel.onmouseover = function(){
+		clearInterval(timer)
+	}
+	oCarousel.onmouseout = function(){
+		timer = setInterval(oRightBtn.onclick,5000)
+	}
+
+	
+</script>
 </html>

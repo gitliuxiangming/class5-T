@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>127-浏览器视口大小.html</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		body{
+			width: 3000px;
+			height: 3000px;
+		}
+	</style>
+</head>
+<body>
+	
+</body>
+<script>
+	console.log('document.compatMode',document.compatMode)
+	console.log('window.innerWidth',window.innerWidth)
+	console.log('window.innerHeight',window.innerHeight)
+	console.log('document.documentElement.clientWidth',document.documentElement.clientWidth)
+	console.log('document.documentElement.clientHeight',document.documentElement.clientHeight)
+	console.log('document.body.clientWidth',document.body.clientWidth);
+	console.log('document.body.clientHeight',document.body.clientHeight);
+	var w = 0;
+	var h = 0;
+	if(document.compatMode == 'CSS1Compat'){
+		w = document.documentElement.clientWidth;
+		h = document.documentElement.clientHeight;
+	}else{
+		w = document.body.clientWidth;
+		h = document.body.clientHeight;
+	}
+	console.log(w,h)
+</script>
+</html>
