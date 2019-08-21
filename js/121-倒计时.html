@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>121-倒计时.html</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		body{
+			background-color: #000;
+		}
+		#timer{
+			color:#fff;
+			font-size: 40px;
+			margin:100px auto;
+			text-align: center;
+		}
+	</style>
+</head>
+<body>
+	<div id="timer">
+		
+	</div>	
+</body>
+<script>
+	function to2Str(num){
+		return num<10 ?  '0'+num :  ''+num;
+	}
+	function handleTime(){
+		var allTime = parseInt((endTime - Date.now())/1000);
+		if(allTime<=0){
+			allTime=0;
+			clearInterval(timer)
+		}
+		var iHour = parseInt(allTime/3600);
+		var iMinute = parseInt((allTime%3600)/60);
+		var iSecond = (allTime%3600)%60;
+		oTimer.innerHTML = "距离活动结束还有"+to2Str(iHour)+"时"+to2Str(iMinute)+"分"+to2Str(iSecond)+"秒";
+	}
+	var oTimer = document.getElementById('timer');
+	var endDate = new Date('2019-08-21 10:55:00');
+	var endTime = endDate.getTime();
+	var timer = 0;
+	
+	timer = setInterval(handleTime,500);
+	handleTime();
+</script>
+</html>
