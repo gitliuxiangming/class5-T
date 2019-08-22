@@ -3,89 +3,90 @@
 <head>
 	<meta charset="UTF-8">
 	<title>136-多物体同时运动.html</title>
-	<style>
+<style>
 		*{
 			margin: 0;
 			padding: 0;
 		}
-		.box{
+		.container{
 			width: 400px;
-			margin:100px auto;
+			margin: 100px auto;
 		}
-		.box div{
+		.container div{
 			width: 100px;
 			height: 100px;
-			background-color: red;
-			text-align: center;
 			line-height: 100px;
-			margin-bottom: 10px;
-		}
-		#box3{
-			opacity: 0.5;
+			background-color: #f00;
+			margin-top: 10px;
+			opacity: 0.3;
+			text-align: center;
 		}
 	</style>
 </head>
 <body>
-	<div class="box">
-		<div id="box1">变宽</div>
-		<div id="box2">变高</div>
-		<div id="box3">变红</div>
+	<div class="container">
+		<div id="div1">变宽</div>
+		<div id="div2">变高</div>
+		<div id="div3">变红</div>
 	</div>
-	
 </body>
-<script src="js/util.js"></script>
 <script>
-	// function animate(obj,attr,target){
-	// 	clearInterval(obj.timer);
-	// 	var iSpeed = 0;
-	// 	obj.timer = setInterval(function(){
-	// 		var current = parseFloat(getComputedStyle(obj,false)[attr]);
-	// 		if(attr == 'opacity'){
-	// 			current = Math.round(current *100);
-	// 		}
-	// 		if(current < target){
-	// 			iSpeed = 7;
-	// 		}else{
-	// 			iSpeed = -7;
-	// 		}
-	// 		if(Math.abs(target - current) < Math.abs(iSpeed)){
-	// 			if(attr == 'opacity'){
-	// 				obj.style[attr] = target/100;
-	// 			}else{
-	// 				obj.style[attr] = target + 'px';
-	// 			}
-	// 			clearInterval(obj.timer);
-	// 		}else{
-	// 			if(attr == 'opacity'){
-	// 				obj.style[attr] = (current + iSpeed)/100;
-	// 			}else{
-	// 				obj.style[attr] = current + iSpeed +'px';
-	// 			}
-	// 			// console.log(current)
-	// 		}
-	// 	},30)
-	// }
-	var oDiv1 = document.getElementById('box1');
-	var oDiv2 = document.getElementById('box2');
-	var oDiv3 = document.getElementById('box3');
-	// var timer = 0;
+	var oDiv1 = document.getElementById('div1');
+	var oDiv2 = document.getElementById('div2');
+	var oDiv3 = document.getElementById('div3');
 	oDiv1.onmouseover = function(){
-		animate(oDiv1,'width',300);
+		clearInterval(oDiv1.timer);
+		var iSpeed = 0;
+		oDiv1.timer = setInterval(function(){
+			if(oDiv1.offsetWidth > 300){
+				iSpeed = -10;
+			}else{
+				iSpeed = 10;
+			}
+			if(Math.abs(300 - oDiv1.offsetWidth) < Math.abs(iSpeed)){
+				oDiv1.style.width = '300px';
+				clearInterval(oDiv1.timer);
+			}else{
+				oDiv1.style.width = oDiv1.offsetWidth + iSpeed + 'px';
+			}
+		},30)		
 	}
 	oDiv2.onmouseover = function(){
-		animate(oDiv2,'height',300);
+		clearInterval(oDiv2.timer);
+		var iSpeed = 0;
+		oDiv2.timer = setInterval(function(){
+			if(oDiv2.offsetHeight > 300){
+				iSpeed = -10;
+			}else{
+				iSpeed = 10;
+			}
+			if(Math.abs(300 - oDiv2.offsetHeight) < Math.abs(iSpeed)){
+				oDiv2.style.height = '300px';
+				clearInterval(oDiv2.timer);
+			}else{
+				oDiv2.style.height = oDiv2.offsetHeight + iSpeed + 'px';
+			}
+		},30)		
 	}
 	oDiv3.onmouseover = function(){
-		animate(oDiv3,'opacity',100);
-	}
-	oDiv1.onmouseout = function(){
-		animate(oDiv1,'width',100);
-	}
-	oDiv2.onmouseout = function(){
-		animate(oDiv2,'height',100);
-	}
-	oDiv3.onmouseout = function(){
-		animate(oDiv3,'opacity',50);
-	}
+		clearInterval(oDiv3.timer);
+		var iSpeed = 0;
+		oDiv3.timer = setInterval(function(){
+			var current = parseFloat(getComputedStyle(oDiv3,false)['opacity']);
+			current = Math.round(current * 100);
+			if(current > 100){
+				iSpeed = -3;
+			}else{
+				iSpeed = 3;
+			}
+			if(Math.abs(100 - current) < Math.abs(iSpeed)){
+				oDiv3.style.opacity = '1';
+				clearInterval(oDiv3.timer);
+			}else{
+				oDiv3.style.opacity = (current + iSpeed)/100;
+			}
+			
+		},30)		
+	}	
 </script>
 </html>
