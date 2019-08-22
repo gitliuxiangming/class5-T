@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>140-顶部固定.html</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		.top{
+			width: 100%;
+			height: 100px;
+			background-color: #ccc;
+		}
+		#nav{
+			position: fixed;
+			top: 0px;
+			left: 0px;
+			width: 100%;
+			height: 0px;
+			background-color: #f67;
+			overflow: hidden;
+		}
+		.main{
+			width: 100%;
+			height: 3000px;
+			background-color: #f0f;
+		}
+	</style>
+</head>
+<body>
+	<div class="top"></div>
+	<div id="nav">nav</div>
+	<div class="main"></div>
+</body>
+<script src="js/util.js"></script>
+<script>
+	var oNav = document.getElementById('nav');
+	var isShow = false;
+	window.onscroll = function(){
+		if(getScrollTop() >= 100){
+			if(!isShow){
+				// console.log('aaa')
+				animate(oNav,'height',100);
+				isShow= true;
+			}
+		}else{
+			if(isShow){
+				// console.log('bbb')
+				animate(oNav,'height',0);
+				isShow = false;
+			}
+		}
+	}
+	
+</script>
+</html>

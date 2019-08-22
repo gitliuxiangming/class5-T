@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>138-底部固定.html</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		body{
+			height: 3000px;
+		}
+		#box{
+			/*position: fixed;*/
+			position: absolute;
+			/*bottom: 0px;*/
+			top:0px;
+			right: 0px;
+			width: 100px;
+			height: 100px;
+			background-color: red;
+		}
+	</style>
+</head>
+<body>
+	<div id="box"></div>
+</body>
+<script src="js/util.js"></script>
+<script>
+	var oBox = document.getElementById('box');
+	oBox.style.top = window.innerHeight - oBox.offsetHeight + 'px';
+	window.onresize = window.onscroll = window.onload = function(){
+		var iTop = window.innerHeight - oBox.offsetHeight + getScrollTop();
+		console.log(iTop)
+		animate(oBox,'top',iTop)
+	}
+	
+	
+</script>
+</html>

@@ -7,9 +7,9 @@ function animate(obj,attr,target){
 			current = Math.round(current *100);
 		}
 		if(current < target){
-			iSpeed = 7;
+			iSpeed = 9;
 		}else{
-			iSpeed = -7;
+			iSpeed = -9;
 		}
 		if(Math.abs(target - current) < Math.abs(iSpeed)){
 			if(attr == 'opacity'){
@@ -27,4 +27,7 @@ function animate(obj,attr,target){
 			// console.log(current)
 		}
 	},30)
+}
+function getScrollTop(){
+	return window.pageYOffset ||  document.documentElement.scrollTop || document.body.scrollTop;
 }
