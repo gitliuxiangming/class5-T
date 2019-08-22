@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>135-处理透明度.html</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		#box{
+			width: 200px;
+			height: 200px;
+			background-color: red;
+			opacity: 1;
+		}
+	</style>
+</head>
+<body>
+	<button id="btn">开始动画</button>
+	<div id="box"></div>
+</body>
+<script>
+	var oBtn = document.getElementById('btn');
+	var oBox = document.getElementById('box');
+	var timer = 0;
+	oBtn.onclick = function(){
+		// console.log(getComputedStyle(oBox,false)['opacity']*100)
+		clearInterval(timer);
+		timer = setInterval(function(){
+			var iSpeed = 0;
+			var current = getComputedStyle(oBox,false)['opacity'];
+			console.log(current)
+			current = Math.round(current *100);
+
+			if(current < 50){
+				iSpeed = 7;
+			}else{
+				iSpeed = -7;
+			}
+			if(Math.abs(50 - current) < Math.abs(iSpeed)){//400 < 7
+				oBox.style.opacity = '0.5';
+				clearInterval(timer);
+			}else{
+				oBox.style.opacity = (current + iSpeed)/100;
+				// console.log(current)
+			}
+		},30)
+		
+	}
+</script>
+</html>
