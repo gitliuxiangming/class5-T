@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>145-减速动画多物体同时运动.html</title>
+<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		.container{
+			width: 400px;
+			margin: 100px auto;
+		}
+		.container div{
+			width: 100px;
+			height: 100px;
+			line-height: 100px;
+			background-color: #f00;
+			margin-top: 10px;
+			opacity: 0.3;
+			text-align: center;
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<div id="div1">变宽</div>
+		<div id="div2">变高</div>
+		<div id="div3">变红</div>
+	</div>
+</body>
+<script>
+	//减速动画
+	function animate1(obj,attr,target){
+		clearInterval(obj.timer);
+		obj.timer = setInterval(function(){
+			var current  = parseFloat(getComputedStyle(obj,false)[attr]);
+			if(attr == 'opacity'){
+				current = Math.round(current *100);
+			}
+			var iSpeed = 0;
+			iSpeed = (target - current)/10;
+			iSpeed = iSpeed >0 ? Math.ceil(iSpeed) : Math.floor(iSpeed);
+			if(!iSpeed){
+				clearInterval(obj.timer);
+			}else{
+				if(attr == 'opacity'){
+					obj.style[attr] = (current + iSpeed)/100;
+				}else{
+					obj.style[attr] = current + iSpeed +'px';
+				}
+			}
+			console.log(current,iSpeed)
+		},30)
+	}
+	var oDiv1 = document.getElementById('div1');
+	var oDiv2 = document.getElementById('div2');
+	var oDiv3 = document.getElementById('div3');
+	oDiv1.onmouseover = function(){
+		animate1(oDiv1,'width',300);
+	}
+	oDiv2.onmouseover = function(){
+		animate1(oDiv2,'height',300);
+	}
+	oDiv3.onmouseover = function(){
+		animate1(oDiv3,'opacity',100);
+	}	
+</script>
+</html>
