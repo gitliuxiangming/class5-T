@@ -239,7 +239,7 @@ function animation(obj,options,isLinear,fnEnd){
 		}
 		
 	},30)
-}
+}  
 function getScrollTop(){
 	return window.pageYOffset ||  document.documentElement.scrollTop || document.body.scrollTop;
 }
