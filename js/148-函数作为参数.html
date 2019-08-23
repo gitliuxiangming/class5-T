@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>148-函数作为参数.html</title>
+</head>
+<body>
+	
+</body>
+<script>
+	function sayHello(){
+		alert('hello')
+	}
+	function sayHi(fn){
+		fn()
+	}
+	// sayHi(sayHello)
+	sayHi(function(){
+		alert('nihao')
+	})
+</script>
+</html>
