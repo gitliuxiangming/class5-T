@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>152-事件处理程序.html</title>
+</head>
+<body>
+	<!-- <button onclick="alert('hello')">点击</button> -->
+	<!-- <button onclick="show()">点击</button> -->
+	<button id="btn">点击</button>
+</body>
+<script>
+	function show(){
+		alert('show...')
+	}
+	function sayHi(){
+		alert('hi....')
+	}
+	var oBtn = document.getElementById('btn');
+	
+	// oBtn.onclick = sayHi;
+	// oBtn.onclick = show;
+	oBtn.addEventListener('click',show,false);
+	oBtn.addEventListener('click',function(){
+		alert('hahaha')
+	},false);
+	
+	oBtn.addEventListener('click',sayHi,false);
+	oBtn.removeEventListener('click',show,false);
+	oBtn.removeEventListener('click',sayHi,false);
+	oBtn.removeEventListener('click',function(){
+		alert('hahaha')
+	},false);
+
+	
+	
+</script>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>158-事件-随着鼠标移动的物体.html</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0px;
+		}
+		body{
+			width: 3000px;
+			height: 3000px;
+		}
+		#box{
+			position: absolute;
+			width: 100px;
+			height: 100px;
+			background-color: red;
+		}
+	</style>
+</head>
+<body>
+	<div id="box"></div>
+</body>
+<script src="js/util.js"></script>
+<script>
+	var oBox = document.getElementById('box');
+	document.addEventListener('mousemove',function(ev){
+		console.log(ev.clientX,ev.clientY)
+		oBox.style.top = ev.clientY + getScrollTop() + 'px';
+		oBox.style.left = ev.clientX + getScrollLeft() + 'px';
+	},false)
+</script>
+</html>

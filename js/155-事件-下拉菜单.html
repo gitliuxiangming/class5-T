@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>155-事件-下拉菜单.html</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		#box{
+			display: none;
+			width: 300px;
+			height: 600px;
+			background-color: #ccc;
+		}
+	</style>
+</head>
+<body>
+	<button id="btn">消息</button>
+	<div id="box"></div>
+</body>
+<script>
+	var oBtn = document.getElementById('btn');
+	var oBox = document.getElementById('box');
+	oBtn.addEventListener('click',function(ev){
+		oBox.style.display = 'block';
+		ev.stopPropagation();
+	},false)
+	oBox.addEventListener('click',function(ev){
+		ev.stopPropagation();
+	},false)
+	document.addEventListener('click',function(){
+		oBox.style.display = 'none';
+	},false)
+</script>
+</html>

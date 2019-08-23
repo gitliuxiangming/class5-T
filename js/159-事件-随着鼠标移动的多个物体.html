@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>159-事件-随着鼠标移动的多个物体.html</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0px;
+		}
+		body{
+			width: 3000px;
+			height: 3000px;
+		}
+		div{
+			position: absolute;
+			width: 50px;
+			height: 50px;
+			background-color: red;
+		}
+	</style>
+</head>
+<body>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+</body>
+<script src="js/util.js"></script>
+<script>
+	var aDiv = document.getElementsByTagName('div');
+	document.addEventListener('mousemove',function(ev){
+		console.log(ev.clientX,ev.clientY)
+		aDiv[0].style.top = ev.clientY + getScrollTop() + 'px';
+		aDiv[0].style.left = ev.clientX + getScrollLeft() + 'px';
+		/*
+		for(var i=1;i<aDiv.length;i++){
+			aDiv[i].style.top = aDiv[i-1].offsetTop + 10 + 'px';
+			aDiv[i].style.left = aDiv[i-1].offsetLeft + 10 + 'px';
+		}
+		*/
+		
+		for(var i=aDiv.length-1;i>0;i--){
+			aDiv[i].style.top = aDiv[i-1].offsetTop + 10 + 'px';
+			aDiv[i].style.left = aDiv[i-1].offsetLeft + 10 + 'px';
+		}
+		
+	},false)
+</script>
+</html>

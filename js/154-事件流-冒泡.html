@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>154-事件流-冒泡.html</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		#box{
+			width: 200px;
+			height: 200px;
+			border: 1px solid #000;
+			margin:100px auto;
+		}
+	</style>
+</head>
+<body>
+	<div id="box"></div>
+</body>
+<script>
+	var oBox = document.getElementById('box');
+	oBox.addEventListener('click',function(){
+		console.log('box click')
+	},false)
+	document.documentElement.addEventListener('click',function(){
+		console.log('html click')
+	},false)
+	document.body.addEventListener('click',function(){
+		console.log('body click')
+	},false)
+	window.addEventListener('click',function(){
+		console.log('window click')
+	},false)
+	document.addEventListener('click',function(){
+		console.log('document click')
+	},false)
+	
+</script>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>157-mouseover和mouseenter之间的区别.html</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		#father{
+			width: 400px;
+			height: 400px;
+			background-color: red;
+			margin:100px auto;
+			overflow: hidden;
+		}
+		#son{
+			width: 100px;
+			height: 100px;
+			background-color: blue;
+			margin:150px 150px;
+		}
+	</style>
+</head>
+<body>
+	<div id="father">
+		<div id="son"></div>
+	</div>
+</body>
+<script>
+	var oFather = document.getElementById('father');
+	var oSon = document.getElementById('son');
+	// oFather.addEventListener('mouseover',function(){
+	// 	console.log('oFather over')
+	// },false)
+	// oFather.addEventListener('mouseout',function(){
+	// 	console.log('oFather out')
+	// },false)
+	// oSon.addEventListener('mouseover',function(){
+	// 	console.log('oSon over')
+	// },false)
+	// oSon.addEventListener('mouseout',function(){
+	// 	console.log('oSon out')
+	// },false)
+	oFather.addEventListener('mouseenter',function(){
+		console.log('oFather enter')
+	},false)
+	oFather.addEventListener('mouseleave',function(){
+		console.log('oFather leave')
+	},false)
+	/*
+	oSon.addEventListener('mouseenter',function(){
+		console.log('oSon enter')
+	},false)
+	oSon.addEventListener('mouseleave',function(){
+		console.log('oSon leave')
+	},false)
+	*/
+</script>
+</html>

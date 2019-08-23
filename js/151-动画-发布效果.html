@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>151-动画-发布效果.html</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		.box{
+			width: 400px;
+			margin:100px auto;
+		}
+		li{
+			list-style: none;
+			height: 40px;
+			line-height: 40px;
+			border-bottom: 1px dashed #000;
+		}
+	</style>
+</head>
+<body>
+	<div class="box">
+		<input type="text" id="txt">
+		<input type="button" id="btn" value="发布">
+		<ul id="ul1">
+		</ul>
+	</div>
+</body>
+<script src="js/util.js"></script>
+<script>
+	var oTxt = document.getElementById('txt');
+	var oBtn = document.getElementById('btn');
+	var oUl = document.getElementById('ul1');
+	oBtn.onclick = function(){
+		var oLi = document.createElement('li');
+		oLi.innerHTML = oTxt.value;
+		oUl.insertBefore(oLi,oUl.firstChild);
+		oTxt.value = '';
+		oLi.style.height = 0;
+		oLi.style.opacity = 0;
+		// animation(oLi,{height:40,opacity:100});
+		animation(oLi,{height:40},true,function(){
+			animation(oLi,{opacity:100})
+		})
+	}
+</script>
+</html>
