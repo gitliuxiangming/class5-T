@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>166-自定义滚动条-滚动文字.html</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		#wrap{
+			width: 330px;
+			height: 400px;
+			margin:50px auto;
+			border: 1px solid #000;
+			position: relative;
+			overflow: hidden;
+		}
+		#content{
+			width: 300px;
+			height: 400px;
+			position: relative;
+		}
+		#txt{
+			position: absolute;
+			top: 0px;
+			left: 0px;
+			line-height: 20px;
+		}
+		#box{
+			position: absolute;
+			top: 0px;
+			left: 300px;
+			width: 30px;
+			height: 400px;
+			background-color: #ccc;
+		}
+		#btn{
+			position: absolute;
+			top: 0px;
+			left: 0px;
+			width: 30px;
+			height: 30px;
+			background-color: red;
+		}
+	</style>
+</head>
+<body>
+	<div id="wrap">
+		<div id="content">
+			<div id="txt">
+				新华社北京8月25日电 国务院港澳事务办公室发言人杨光25日就澳门特别行政区第五任行政长官选举结果发表谈话，对贺一诚高票当选表示祝贺。
+
+杨光表示，8月25日，澳门特别行政区第五届行政长官选举委员会依法举行行政长官选举，贺一诚高票当选为澳门特别行政区第五任行政长官人选，我们对贺一诚先生表示诚挚祝贺。此次行政长官选举严格按照《中华人民共和国澳门特别行政区基本法》和澳门特别行政区有关法律的规定进行，体现了公开、公平、公正的原则。贺一诚先生符合中央政府关于行政长官必须爱国爱澳、中央信任、有管治能力及澳人拥护的标准，其高票当选充分表明澳门社会各界对他的广泛认同。
+
+杨光表示，中央政府将在收到澳门特别行政区政府关于选举情况的正式报告后，依法履行任命程序。
+新华社北京8月25日电 国务院港澳事务办公室发言人杨光25日就澳门特别行政区第五任行政长官选举结果发表谈话，对贺一诚高票当选表示祝贺。
+
+杨光表示，8月25日，澳门特别行政区第五届行政长官选举委员会依法举行行政长官选举，贺一诚高票当选为澳门特别行政区第五任行政长官人选，我们对贺一诚先生表示诚挚祝贺。此次行政长官选举严格按照《中华人民共和国澳门特别行政区基本法》和澳门特别行政区有关法律的规定进行，体现了公开、公平、公正的原则。贺一诚先生符合中央政府关于行政长官必须爱国爱澳、中央信任、有管治能力及澳人拥护的标准，其高票当选充分表明澳门社会各界对他的广泛认同。
+
+杨光表示，中央政府将在收到澳门特别行政区政府关于选举情况的正式报告后，依法履行任命程序。
+杨光表示，8月25日，澳门特别行政区第五届行政长官选举委员会依法举行行政长官选举，贺一诚高票当选为澳门特别行政区第五任行政长官人选，我们对贺一诚先生表示诚挚祝贺。此次行政长官选举严格按照《中华人民共和国澳门特别行政区基本法》和澳门特别行政区有关法律的规定进行，体现了公开、公平、公正的原则。贺一诚先生符合中央政府关于行政长官必须爱国爱澳、中央信任、有管治能力及澳人拥护的标准，其高票当选充分表明澳门社会各界对他的广泛认同。
+
+杨光表示，中央政府将在收到澳门特别行政区政府关于选举情况的正式报告后，依法履行任命程序。
+			</div>
+		</div>
+		<div id="box">
+			<div id="btn"></div>
+		</div>
+	</div>
+</body>
+<script>
+	function handleMove(){
+		if(t<0){
+			t=0;
+		}else if(t>(oBox.offsetHeight - oBtn.offsetHeight)){
+			t = (oBox.offsetHeight - oBtn.offsetHeight)
+		}
+		var scale = t / (oBox.offsetHeight - oBtn.offsetHeight);
+		// console.log(scale)
+
+		oBtn.style.top = t + 'px';
+		oTxt.style.top = (oContent.offsetHeight - oTxt.offsetHeight) * scale + 'px';
+	}
+	var oWrap = document.getElementById('wrap');
+	var oBox = document.getElementById('box');
+	var oBtn = document.getElementById('btn');
+	var oContent = document.getElementById('content');
+	var oTxt = document.getElementById('txt');
+	var disY=0,t=0;
+	oBtn.onmousedown = function(ev){
+		disY = ev.clientY - oBtn.offsetTop;
+		document.onmousemove = function(ev){
+			t = ev.clientY - disY;
+			handleMove();
+		}
+		document.onmouseup = function(){
+			document.onmousemove = null;
+			document.onmouseup = null;
+		}
+	}
+	oWrap.onmousewheel = function(ev){
+		// console.log(ev.wheelDelta).
+		if(ev.wheelDelta>0){
+			// console.log('aaa')
+			t -= 10;
+		}else{
+			t += 10;
+		}
+		handleMove();
+	}
+</script>
+</html>
