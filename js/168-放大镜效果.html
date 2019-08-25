@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>168-放大镜效果.html</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+			list-style: none;
+		}
+		#wrap{
+			position: relative;
+			top: 20px;
+			left: 20px;
+		}
+		#bImg{
+			position: absolute;
+			top: 0px;
+			left: 0px;
+			width: 450px;
+			height: 450px;
+			border: 1px solid #ccc;
+		}
+		#mask{
+			display: none;
+			position: absolute;
+			top: 0px;
+			left: 0px;
+			width: 200px;
+			height: 200px;
+			background:rgba(100,100,100,0.5);
+			cursor: move;
+		}
+		#sImgs{
+			position: absolute;
+			top: 472px;
+			left: 0px;
+			width: 450px;
+			height: 54px;
+		}
+		#sImgs li{
+			float: left;
+			margin-right: 50px;
+			width: 54px;
+			height: 54px;
+		}
+		#sImgs li.active{
+			border: 2px solid #f00;
+		}
+		#lImg{
+			display: none;
+			width: 600px;
+			height: 600px;
+			position: absolute;
+			top: 0px;
+			left: 452px;
+			border: 1px solid #ccc;
+			overflow: hidden;
+		}
+
+	</style>
+</head>
+<body>
+	<div id="wrap">
+		<div id="bImg">
+			<img src="images/p_b_0001.jpg" alt="">
+			<div id="mask"></div>
+		</div>
+		<ul id="sImgs">
+			<li class="active"><img src="images/p_s_0001.jpg" alt=""></li>
+			<li><img src="images/p_s_0002.jpg" alt=""></li>
+			<li><img src="images/p_s_0003.jpg" alt=""></li>
+		</ul>
+		<div id="lImg">
+			<img src="images/p_l_0001.jpg" alt="">
+		</div>
+	</div>
+</body>
+</html>
