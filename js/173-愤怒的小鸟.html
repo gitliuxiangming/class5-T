@@ -11,10 +11,11 @@
 		#wrap{
 			position: relative;
 			top: 20px;
-			left: 400px;
+			left: 100px;
 			width: 600px;
 			height: 550px;
 			border: 1px solid #000;
+			overflow: hidden;
 		}
 		#bird{
 			position: absolute;
@@ -28,6 +29,20 @@
 			width: 100%;
 			height: 100%;
 		}
+		.topLine{
+			position: absolute;
+			top: 0px;
+			left: 100%;
+			width: 30px;
+			background-color: green;
+		}
+		.bottomLine{
+			position: absolute;
+			bottom: 0px;
+			left: 100%;
+			width: 30px;
+			background-color: green;
+		}
 	</style>
 </head>
 <body>
@@ -38,15 +53,30 @@
 	</div>
 </body>
 <script>
+	function checkBump(obj1,obj2){
+		if((obj1.offsetLeft + obj1.offsetWidth) > obj2.offsetLeft
+			&& (obj1.offsetTop + obj1.offsetHeight) > obj2.offsetTop
+			&& (obj2.offsetLeft + obj2.offsetWidth) > obj1.offsetLeft
+			&&  (obj2.offsetTop + obj2.offsetHeight) > obj1.offsetTop
+			){
+			return true;
+		}else{
+			return false;
+		}
+	}
+	function getRandom(min,max){
+		return Math.round(min+(max-min)*Math.random());
+	}
 	var oWrap = document.getElementById('wrap');
 	var oBird = document.getElementById('bird');
-	var birdMoveTimer = 0;
+	var birdMoveTimer = 0,lineAddTimer = 0,lineMoveTimer = 0;
 	var iSpeed = 0;
+	var space = 200;
+	var isDie = false;
 
 
 	clearInterval(birdMoveTimer);
 	birdMoveTimer = setInterval(function(){
-		console.log('aaaa')
 		iSpeed += 1;
 		var t = oBird.offsetTop + iSpeed;
 		if(t<0){
@@ -60,8 +90,50 @@
 	},30)
 	function die(){
 		clearInterval(birdMoveTimer);
+		clearInterval(lineAddTimer);
+		clearInterval(lineMoveTimer);
+		isDie = true;
 	}
+
+
+	function addLine(){
+		var topLine = document.createElement('div');
+		var bottomLine = document.createElement('div');
+		topLine.className = 'topLine';
+		topLine.leftDate = 100;
+		bottomLine.className = 'bottomLine';
+		var h = getRandom(100,300);
+		// console.log(h)
+		topLine.style.height = h +'px';
+		bottomLine.style.height = oWrap.offsetHeight - h - space +'px';
+		oWrap.appendChild(topLine);
+		oWrap.appendChild(bottomLine);
+	}
+	clearInterval(lineAddTimer);
+	lineAddTimer = setInterval(addLine,800)
+	// addLine();
+	clearInterval(lineMoveTimer);
+	lineMoveTimer = setInterval(function(){
+		var aTopLine = document.querySelectorAll('.topLine');
+		var aBottomLine = document.querySelectorAll('.bottomLine');
+		// console.log(aTopLine)
+		for(var i=0;i<aTopLine.length;i++){
+			aTopLine[i].style.left = aTopLine[i].leftDate - 1 + '%';
+			aBottomLine[i].style.left = aTopLine[i].leftDate - 1 + '%';
+			aTopLine[i].leftDate = aTopLine[i].leftDate - 1;
+			if(checkBump(oBird,aTopLine[i]) || checkBump(oBird,aBottomLine[i])){
+				die();
+			}
+			if(aTopLine[i].leftDate<-10){
+				oWrap.removeChild(aTopLine[i]);
+				oWrap.removeChild(aBottomLine[i]);
+			}
+		}
+	},50)
 	document.onkeydown = function(){
+		if(isDie){
+			return false;
+		}
 		iSpeed -= 10;
 	}
 </script>
