@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>175-自定义右键菜单.html</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		#box{
+			position: absolute;
+			top: 0px;
+			left: 0px;
+			display: none;
+			width: 300px;
+			height: 400px;
+			background-color: #ccc;
+		}
+	</style>
+</head>
+<body>
+	<div id="box"></div>
+</body>
+<script>
+	var oBox = document.getElementById('box');
+	document.oncontextmenu = function(ev){
+
+		oBox.style.display = 'block';
+		oBox.style.top = ev.clientY + 'px';
+		oBox.style.left = ev.clientX + 'px';
+		// return false;
+		ev.preventDefault();
+
+
+	}
+	/*
+	oBox.onclick = function(ev){
+		ev.stopPropagation();
+	}
+	*/
+	oBox.addEventListener('click',function(ev){
+		ev.stopPropagation();
+	},false)
+
+	document.onclick = function(){
+		oBox.style.display = 'none';
+	}
+</script>
+</html>

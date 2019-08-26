@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>176-只能输入数字的输入框.html</title>
+</head>
+<body>
+	请输入你的手机号:
+	<input type="text" id="txt">
+</body>
+<script>
+	var oTxt = document.getElementById('txt');
+	oTxt.onkeydown = function(ev){
+		console.log(ev.keyCode)
+		if((ev.keyCode < 48 || ev.keyCode >57)
+		 	&& (ev.keyCode < 96 || ev.keyCode >105)
+		  	&& ev.keyCode != 8 
+		  	&& ev.keyCode != 37 
+		 	&& ev.keyCode != 39)
+		{
+			// return false;
+			ev.preventDefault();
+		}
+	}
+</script>
+</html>
