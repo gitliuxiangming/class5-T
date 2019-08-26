@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>180-鼠标事件属性.html</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		body{
+			width: 3000px;
+			height: 3000px;
+		}
+	</style>
+</head>
+<body>
+	
+</body>
+<script>
+	document.addEventListener('click',function(event){
+		console.log('event.clientY,event.clientX,可视区(浏览器)的内沿到鼠标的距离',event.clientY,event.clientX)
+		console.log('event.pageY,event.pageX 可视区(浏览器)的内沿加滚动距离到鼠标的距离',event.pageY,event.pageX)
+		console.log('event.screenY/event.screenX 显示器屏幕内沿到鼠标的距离',event.screenY,event.screenX )
+		
+	},false)
+	document.onmousewheel = function(event){
+		console.log(event.type)
+		console.log(event.wheelDelta)
+	}
+</script>
+</html>

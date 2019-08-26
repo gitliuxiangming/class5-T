@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>181-事件类型的补充.html</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		#box{
+			width: 100px;
+			height: 100px;
+			background-color: red;
+		}
+	</style>
+</head>
+<body>
+	<div id="box"></div>
+</body>
+<script>
+	var oBox = document.getElementById('box');
+	function hangleBox(ev){
+		if(ev.type == 'click'){
+			console.log('click........')
+		}else if(ev.type == 'mouseover'){
+			console.log('mouseover........')
+		}
+	}
+	oBox.addEventListener('click',hangleBox,false);
+	oBox.addEventListener('mouseover',hangleBox,false);
+</script>
+</html>

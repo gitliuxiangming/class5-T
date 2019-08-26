@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>177-事件委托.html</title>
+</head>
+<body>
+	<input type="text" id="txt">
+	<input type="button" id="btn" value="提交">
+	<ul id="ul1">
+		<li>li1 <a href="javascript:;" class="del">删除</a></li>
+		<li>li2 <a href="javascript:;" class="del">删除</a></li>
+		<li>li3 <a href="javascript:;" class="del">删除</a></li>
+		<li>li4 <a href="javascript:;" class="del">删除</a></li>
+		<li>li5 <a href="javascript:;" class="del">删除</a></li>
+		<li>li6 <a href="javascript:;" class="del">删除</a></li>
+		<li>li7 <a href="javascript:;" class="del">删除</a></li>
+		<li>li8 <a href="javascript:;" class="del">删除</a></li>
+		<li>li9 <a href="javascript:;" class="del">删除</a></li>
+	</ul>
+</body>
+<script>
+	var oUl = document.getElementById('ul1');
+	var aA = document.getElementsByTagName('a');
+	var oBtn = document.getElementById('btn');
+	var oTxt = document.getElementById('txt');
+	/*
+	for(var i=0;i<aA.length;i++){
+		aA[i].onclick = function(){
+			oUl.removeChild(this.parentNode);
+		}
+	}
+	*/
+	oUl.onclick = function(ev){
+		// alert('aaa')
+		// console.log(ev.target)
+		// console.log(ev.currentTarget)
+		if(ev.target.className == 'del'){
+			oUl.removeChild(ev.target.parentNode);
+		}
+		
+	}
+	oBtn.onclick  = function(){
+		var oLi = document.createElement('li');
+		var oA = document.createElement('a');
+		oA.href = "javascript:;"
+		oA.innerHTML = '删除';
+		oA.className = 'del';
+		oLi.innerHTML = oTxt.value;
+
+		oLi.appendChild(oA);
+		oUl.appendChild(oLi);
+		oTxt.value = '';
+
+	}
+</script>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>182-自定义事件.html</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		#box{
+			width: 100px;
+			height: 100px;
+			background-color: red;
+		}
+	</style>
+</head>
+<body>
+	<div id="box"></div>
+</body>
+<script>
+	var oBox = document.getElementById('box');
+	var textEvent = new Event('test');
+	
+	oBox.addEventListener('test',function(){
+		console.log('test.......')
+	},false)
+	
+	/*不能这样写
+	oBox.ontest = function(){
+		console.log('test...')
+	}
+	*/
+	oBox.dispatchEvent(textEvent);
+</script>
+</html>
