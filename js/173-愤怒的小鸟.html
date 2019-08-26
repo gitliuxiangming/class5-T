@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>173-愤怒的小鸟.html</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		#wrap{
+			position: relative;
+			top: 20px;
+			left: 400px;
+			width: 600px;
+			height: 550px;
+			border: 1px solid #000;
+		}
+		#bird{
+			position: absolute;
+			top: 0px;
+			left: 50%;
+			margin-left: -25px;
+			width: 50px;
+			height: 50px;
+		}
+		#bird img{
+			width: 100%;
+			height: 100%;
+		}
+	</style>
+</head>
+<body>
+	<div id="wrap">
+		<div id="bird">
+			<img src="images/bird.jpg" alt="">
+		</div>
+	</div>
+</body>
+<script>
+	var oWrap = document.getElementById('wrap');
+	var oBird = document.getElementById('bird');
+	var birdMoveTimer = 0;
+	var iSpeed = 0;
+
+
+	clearInterval(birdMoveTimer);
+	birdMoveTimer = setInterval(function(){
+		console.log('aaaa')
+		iSpeed += 1;
+		var t = oBird.offsetTop + iSpeed;
+		if(t<0){
+			t =0;
+			die();
+		}else if(t > (oWrap.offsetHeight - 2 - oBird.offsetHeight)){
+			t = (oWrap.offsetHeight - 2 - oBird.offsetHeight);
+			die();
+		}
+		oBird.style.top = t + 'px';
+	},30)
+	function die(){
+		clearInterval(birdMoveTimer);
+	}
+	document.onkeydown = function(){
+		iSpeed -= 10;
+	}
+</script>
+</html>

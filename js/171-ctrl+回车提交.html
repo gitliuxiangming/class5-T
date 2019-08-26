@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>171-ctrl+回车提交.html</title>
+</head>
+<body>
+	<textarea  id="txt" cols="30" rows="10"></textarea>
+	<input type="button" id="btn" value="提交">
+	<ul id="ul1">
+		
+	</ul>
+</body>
+<script>
+	var oTxt = document.getElementById('txt');
+	var oBtn = document.getElementById('btn');
+	var oUl = document.getElementById('ul1');
+	oBtn.onclick = function(){
+		if(oTxt.value){
+			var oLi = document.createElement('li');
+			oLi.innerHTML = oTxt.value;
+			oUl.appendChild(oLi);
+			oTxt.value = '';
+		}
+		
+	}
+	oTxt.onkeydown = function(ev){
+		console.log(ev.ctrlKey)
+		if(ev.keyCode == 13 && ev.ctrlKey){
+			oBtn.onclick();
+		}
+	}	
+</script>
+</html>

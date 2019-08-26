@@ -246,3 +246,6 @@ function getScrollTop(){
 function getScrollLeft(){
 	return window.pageXOffset ||  document.documentElement.scrollLeft || document.body.scrollLeft;
 }
+function getRandom(min,max){
+	return Math.round(min+(max-min)*Math.random());
+}
