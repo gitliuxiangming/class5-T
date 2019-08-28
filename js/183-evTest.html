@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>183-evTest.html</title>
+	
+</head>
+<body>
+	
+</body>
+<script>
+	/*
+	document.onclick = function(ev){
+		var oEvent = ev || event;
+		console.log(oEvent)
+	}	
+	*/
+	/*
+	document.addEventListener('click',function(ev){
+		var oEvent = ev || event;
+		console.log(oEvent)
+	},false)
+	*/
+	function handleEvent(){
+		console.log('click....')
+	}
+	// document.attachEvent('onclick',handleEvent)	
+	// document.detachEvent('onclick',handleEvent)	
+
+	function addEventHandle(elem,type,handle){
+		if(elem.addEventListener){
+			elem.addEventListener(type,handle,false);
+		}else if(elem.attachEvent){
+			elem.attachEvent('on'+type,handle)
+		}else{
+			elem['on'+type] = handle;
+		}
+	}
+	function removeEventHandle(elem,type,handle){
+		if(elem.removeEventListener){
+			elem.removeEventListener(type,handle,false);
+		}else if(elem.detachEvent){
+			elem.detachEvent('on'+type,handle)
+		}else{
+			elem['on'+type] = null;
+		}
+	}
+	addEventHandle(document,'click',handleEvent);
+	removeEventHandle(document,'click',handleEvent);
+</script>
+</html>
