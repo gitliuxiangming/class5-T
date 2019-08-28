@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>190-Object构造函数创建对象.html</title>
+	<script>
+		var obj = new Object();
+		var obj1 = new Object();
+		var obj2 = new Object();
+		console.log(obj);
+		obj.name = "tom";
+		obj.age = 18;
+		obj.sayHi = function(){
+			console.log('hi...')
+		}
+		console.log(obj);
+		console.log(obj1);
+		obj1.name = "leo";
+		obj1.age = 78;
+		obj1.sayHi = function(){
+			console.log('hi...')
+		}
+		console.log(obj1);
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

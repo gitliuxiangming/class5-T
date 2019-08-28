@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>195-prptotype原型对象.html</title>
+	<script>
+		function Person(name,age){
+			this.name = name;
+			this.age = age;
+		}
+		console.log(Person.prototype);
+		Person.prototype.sayName = function(){
+			console.log('I am '+ this.name)
+		}
+		Person.prototype.LEGS = 2;
+		console.log(Person.prototype);
+		var person1 = new Person('tom',18);
+		console.log(person1)
+		person1.sayName()
+		console.log(person1.LEGS)
+		var person2 = new Person('leo',78)
+		console.log(person2)
+		person2.sayName()
+		console.log(person2.LEGS)
+		console.log(person1.sayName == Person.prototype.sayName)
+		console.log(person2.sayName == Person.prototype.sayName)
+		console.log(person1.sayName == person2.sayName)
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

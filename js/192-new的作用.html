@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>192-new的作用.html</title>
+	<script>
+		function show(){
+			//var obj = new Object();
+			console.log(this);
+			this.name = "tom";
+			this.age = 18;
+			this.sayHi = function(){
+				console.log('hi...')
+			}
+			// return {a:1,b:2}
+			return 'aaa'
+			//return obj;
+		}
+		show();//window
+		// console.log(new show())
+		var obj = new show();
+		console.log('返回值',obj)
+		obj.sayHi();
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

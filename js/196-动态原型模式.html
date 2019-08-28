@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>195-动态原型模式.html</title>
+	<script>
+		// var arr = new Array();
+		function Person(name,age){
+			this.name = name;
+			this.age = age;
+			//添加前需要之一唯一判断
+			if(!this.sayName){
+				console.log('添加前',Person.prototype);
+				Person.prototype.sayName = function(){
+					console.log('I am '+ this.name)
+				}
+			}
+			if(!this.sayAge){
+				Person.prototype.sayAge = function(){
+					console.log('I am '+ this.age +' years old')
+				}
+				console.log('添加后',Person.prototype);
+			}
+		}
+		var person1 = new Person('tom',18);
+		console.log(person1)
+		person1.sayName()
+		person1.sayAge()
+		var person2 = new Person('leo',28);
+		console.log(person2)
+		person2.sayName()
+		person2.sayAge()
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

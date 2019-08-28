@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>193-new + 工厂函数生成对象.html</title>
+	<script>
+		// var arr = new Array();
+		function Person(name,age){
+			this.name = name;
+			this.age = age;
+			this.sayName = function(){
+				console.log('I am '+this.name)
+			}
+			this.sayAge= function(){
+				console.log('I am '+this.age+' years old' )
+			}
+		}
+		var person1 = new Person('tom',18);
+		console.log(person1)
+		person1.sayName()
+		person1.sayAge()
+		var person2 = new Person('leo',78)
+		console.log(person2)
+		person2.sayName()
+		person2.sayAge()
+		console.log(person1.sayName == person2.sayName)
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

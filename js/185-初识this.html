@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>185-初识this.html</title>
+</head>
+<body>
+		
+</body>
+<script>
+	var obj = {
+		name:"tom",
+		// name:"mike",
+		age:18,
+		friends:['amy','bob','leo'],
+		sayHi:function(){
+			console.log('this',this)
+			console.log('hi... I am ' ,this.name + ' I am '+ this.age+' years old')
+		}
+	}
+	console.log(obj);
+	obj.sayHi();
+</script>
+</html>
