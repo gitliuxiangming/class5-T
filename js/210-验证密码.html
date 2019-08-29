@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>210-验证密码.html</title>
+</head>
+<body>
+	<input type="text" id="txt">
+	<input type="button" id="btn" value="检测">
+</body>
+<script>
+	var oTxt = document.getElementById('txt');
+	var oBtn = document.getElementById('btn');
+	oBtn.onclick = function(){
+		//合法密码以字母开头,长度在6~12之间,只能包含字母、数字和下划线)
+		var val = oTxt.value;
+		var reg = /^[a-zA-Z]\w{5,11}$/;
+		// console.log(reg.test(val))
+		if(reg.test(val)){
+			alert('合法')
+		}else{
+			alert('不合法')
+		}
+	}
+</script>
+</html>

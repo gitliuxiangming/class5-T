@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>204-原子筛选-区间.html</title>
+	<script>
+		var str = 'iofasfgsdfgasdkl1341234jhsdfkvklsdjf7893457#$% 4238957rwehfzdkln abcdefg';
+		var str2 = '你好world世界'
+		var reg1 = /a|b|c|d|e|f|g/g;
+		var reg2 = /[a-z]/;
+		var reg3 = /[a-z]/g;
+		var reg4 = /[0-9]/g;
+		var reg5 = /[a|b|c|d|e|f|g]/g;
+		var reg6 = /[abcdefg]/g;
+		var reg7 = /abcdefg/g;
+		var reg8 = /[a-z0-9]/g;
+		var reg9 = /[\u4e00-\u9fa5]/g;
+		console.log(str);
+		console.log(str.replace(reg1,"*"))
+		console.log(str.replace(reg2,"*"))
+		console.log(str.replace(reg3,"*"))
+		console.log(str.replace(reg4,"*"))
+		console.log(str.replace(reg5,"*"))
+		console.log(str.replace(reg6,"*"))
+		console.log(str.replace(reg7,"*"))
+		console.log(str.replace(reg8,"*"))
+		console.log(str2.replace(reg9,"*"))
+		console.log(str2.length)
+		function getLength(str){
+			return str.replace(/[\u4e00-\u9fa5]/g,'aa').length;
+		}
+		console.log(getLength(str2))
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

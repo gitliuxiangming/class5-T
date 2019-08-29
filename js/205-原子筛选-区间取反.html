@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>205-原子筛选-区间取反.html</title>
+	<script>
+		var str = 'asfas1342sdfs888756   #$%';
+		var reg1 = /[a-z]/g;
+		var reg2 = /[^a-z]/g;
+		var reg3 = /[0-9]/g;
+		var reg4 = /[^0-9]/g;
+		console.log(str.replace(reg1,"*"));
+		console.log(str.replace(reg2,"*"));
+		console.log(str.replace(reg3,"*"));
+		console.log(str.replace(reg4,"*"));
+	</script>
+</head>
+<body>
+	<a></a>
+	<textarea  id="txt1" cols="30" rows="10"></textarea>
+	<input type="button" id="btn" value="过滤">
+	<textarea  id="txt2" cols="30" rows="10"></textarea>
+</body>
+<script>
+	var oTxt1 = document.getElementById('txt1');
+	var oTxt2 = document.getElementById('txt2');
+	var oBtn = document.getElementById('btn');
+	oBtn.onclick = function(){
+		var reg = /<[^<>]+>/g;
+		oTxt2.value = oTxt1.value.replace(reg,"*") ;
+	}
+</script>
+</html>

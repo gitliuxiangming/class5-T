@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>208-检测年份</title>
+
+</head>
+<body>
+	<input type="text" id="txt">
+	<input type="button" id="btn" value="检测">
+</body>
+<script>
+	var oTxt = document.getElementById('txt');
+	var oBtn = document.getElementById('btn');
+	oBtn.onclick = function(){
+		//合法年份(公元1000年至公元2999年)
+		var val = oTxt.value;
+		var reg = /^[12]\d{3}$/g;
+		// console.log(reg.test(val))
+		if(reg.test(val)){
+			alert('合法')
+		}else{
+			alert('不合法')
+		}
+	}
+</script>
+</html>

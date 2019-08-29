@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>207-量词.html</title>
+	<script>
+		var str = 'adf 1234 sa 123456 dfs 985 adf 21 asd 3'
+		var reg1 = /\d/;
+		var reg2 = /\d/g;
+		var reg3 = /\d{3}/g;
+		var reg4 = /\d{3,}/g;
+		var reg5 = /\d{2,4}/g;
+		var reg6 = /\d+/g;//{1,}
+		var reg7 = /\d?/g;//{0,1}
+		var reg8 = /\d*/g;//{0,}
+		console.log(str);
+		console.log(str.replace(reg1,"*"))
+		console.log(str.replace(reg2,"*"))
+		console.log(str.replace(reg3,"*"))
+		console.log(str.replace(reg4,"*"))
+		console.log(str.replace(reg5,"*"))
+		console.log(str.replace(reg6,"*"))
+		console.log(str.replace(reg7,"*"))
+		console.log(str.replace(reg8,"*"))
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

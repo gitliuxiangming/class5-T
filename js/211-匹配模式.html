@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>211-匹配模式.html</title>
+	<script>
+		var str = '12345';
+		var reg1 = /\d{2,4}/g;//默认是贪婪模式，尽可能多的匹配
+		var reg2 = /\d{2,4}?/g;//非贪婪模式，尽可能少的匹配
+		console.log(str.replace(reg1,"*"))
+		console.log(str.replace(reg2,"*"))
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

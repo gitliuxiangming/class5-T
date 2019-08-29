@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>206-原子集合.html</title>
+	<script>
+		var str = 'adfaASDFSDFSDsdlf12423720234 	23423fhsdjkfsdkl#$%$_fdasfas423423';
+		var reg1 = /[0-9]/g;
+		var reg2 = /\d/g;
+		var reg3 = /[^0-9]/g;
+		var reg4 = /\D/g;
+		var reg5 = /[0-9a-z_A-Z]/g;
+		var reg6 = /\w/g;
+		var reg7 = /\W/g;
+		var reg8 = /[^0-9a-z_A-Z]/g;
+		var reg9 = /[\n\r\t\v\f ]/g;
+		var reg10 = /\s/g;
+		var reg11 = /\S/g;
+		var reg12 = /[^\n\r\t\v\f ]/g;
+		var reg13 = /./g;
+		console.log(str);
+		console.log(str.replace(reg1,"*"))
+		console.log(str.replace(reg2,"*"))
+		console.log(str.replace(reg3,"*"))
+		console.log(str.replace(reg4,"*"))
+		console.log(str.replace(reg5,"*"))
+		console.log(str.replace(reg6,"*"))
+		console.log(str.replace(reg7,"*"))
+		console.log(str.replace(reg8,"*"))
+		console.log(str.replace(reg9,"*"))
+		console.log(str.replace(reg10,"*"))
+		console.log(str.replace(reg11,"*"))
+		console.log(str.replace(reg12,"*"))
+		console.log(str.replace(reg13,"*"))
+	</script>
+</head>
+<body>
+	
+</body>
+</html>
