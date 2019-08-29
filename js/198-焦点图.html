@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>198-焦点图.html</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+			list-style: none;
+		}
+		.leftBtn{
+			width: 40px;
+			height: 60px;
+			background-color: rgba(0,0,0,0.5);
+			top: 50%;
+			margin-top: -30px;
+			left: 0px;
+			text-align: center;
+			line-height: 60px;
+			font-size: 30px;
+			color: #fff;
+			cursor: pointer;
+			user-select: none;
+		}
+		.rightBtn{
+			width: 40px;
+			height: 60px;
+			background-color: rgba(0,0,0,0.5);
+			top: 50%;
+			margin-top: -30px;
+			right: 0px;
+			text-align: center;
+			line-height: 60px;
+			font-size: 30px;
+			color: #fff;
+			cursor: pointer;
+			user-select: none;
+		}
+		.bottomBtn{
+			bottom: 10px;
+			left: 50%;
+		}
+		.bottomBtn li{
+			width: 20px;
+			height: 20px;
+			border-radius: 50%;
+			margin-right: 10px;
+			background-color: rgba(0,0,0,0.5);
+			float: left;
+		}
+		.bottomBtn li.active{
+			background-color: rgba(0,0,0,0.8)
+		}
+	</style>
+</head>
+<body>
+	<div id="box">
+	
+	</div>
+</body>
+<script>
+	function Carousel(options){
+		//罗列属性
+		this.oBox = document.getElementById(options.id);
+		this.aImg = options.aImg;
+		this.width = options.width;
+		this.height = options.height;
+		// console.log(this.oBox)
+		//初始化Dom节点
+		this.init();
+
+	}
+	Carousel.prototype.init = function(){
+		//针对最外层大盒子设定基本样式
+		this.oBox.style.position = 'relative';
+		this.oBox.style.width = this.width + 'px';
+		this.oBox.style.height = this.height + 'px';
+		//生成图片容器
+		var oImgUl = document.createElement('ul');
+		//生成底部按钮容器
+		var oBtnUl = document.createElement('ul');
+		//设置底部按钮定位属性
+		oBtnUl.style.position = 'absolute';
+		oBtnUl.style.zIndex = 99;
+		oBtnUl.className = 'bottomBtn'
+		for(var i=0;i<this.aImg.length;i++){
+			var oLi = document.createElement('li');
+			var oImg = document.createElement('img');
+			var oBtnLi = document.createElement('li');
+			//给每个li元素设置样式
+			oLi.style.position = 'absolute';
+			oLi.style.top = 0 ;
+			oLi.style.left = 0 ;
+			//给图片设置大小
+			oImg.style.width = this.oBox.offsetWidth + 'px';
+			oImg.style.height = this.oBox.offsetHeight + 'px';
+			if(i == 0){
+				oLi.style.zIndex = 50;
+				oLi.style.opacity = 1;
+				oBtnLi.className = 'active';
+			}else{
+				oLi.style.zIndex = 0;
+				oLi.style.opacity = 0;
+				oBtnLi.className = '';
+			}
+			oImg.src = this.aImg[i];
+
+			//设置顶部按钮列表居中
+			oLi.appendChild(oImg);
+			oImgUl.appendChild(oLi);
+			oBtnUl.appendChild(oBtnLi);
+		}
+		//生成左右按钮
+		var oLeftBtn = document.createElement('span');
+		var oRightBtn = document.createElement('span');
+		oLeftBtn.className = 'leftBtn';
+		oRightBtn.className = 'rightBtn';
+		//设置按钮的位置属性
+		oLeftBtn.style.position = 'absolute';
+		oRightBtn.style.position = 'absolute';
+		oLeftBtn.style.zIndex = 99;
+		oRightBtn.style.zIndex = 99;
+		oLeftBtn.innerHTML = '&lt;'
+		oRightBtn.innerHTML = '&gt;'
+
+
+
+		this.oBox.appendChild(oImgUl)
+		this.oBox.appendChild(oLeftBtn)
+		this.oBox.appendChild(oRightBtn)
+		this.oBox.appendChild(oBtnUl)
+		// console.log(oBtnUl.offsetWidth)
+		//设置底部按钮居中
+		oBtnUl.style.marginLeft = - oBtnUl.offsetWidth * 0.5 +'px';
+	}
+	/*
+	new Carousel('box',['images/carousel1.jpg','images/carousel2.jpg','images/carousel3.jpg'],800,400);
+	*/
+	new Carousel({
+		id:'box',
+		aImg:['images/carousel1.jpg','images/carousel2.jpg','images/carousel3.jpg'],
+		width:800,
+		height:400
+	})
+</script>
+</html>
