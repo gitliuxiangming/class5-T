@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>214-邮箱验证.html</title>
+</head>
+<body>
+	<input type="text" id="txt">
+	<input type="button" id="btn" value="验证">
+</body>
+<script>
+	var oTxt = document.getElementById('txt');
+	var oBtn = document.getElementById('btn');
+	oBtn.onclick = function(){
+		//556545665@qq.com
+		//faslajk_adf@.com
+		//slojwggkl@liyuit.com
+		var val = oTxt.value;
+		var reg = /^\w+@\w{2,6}\.[a-z]{2,5}$/;
+		// console.log(reg.test(val))
+		if(reg.test(val)){
+			alert('合法')
+		}else{
+			alert('不合法')
+		}
+	}
+</script>
+</html>

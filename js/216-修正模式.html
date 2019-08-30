@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>216-修正模式.html</title>
+	<script>
+		var str = 'ABFabf ABEabe ABDabd';
+		var reg1 = /a/;
+		var reg2 = /a/g;
+		var reg3 = /a/i;
+		var reg4 = /a/ig;
+		// console.log(reg1.global)
+		// console.log(reg2.global)
+		console.log(reg1.ignoreCase)
+		console.log(reg2.ignoreCase)
+		console.log(reg3.ignoreCase)
+		console.log(reg4.ignoreCase)
+		
+		console.log(str.replace(reg1,"*"));
+		console.log(str.replace(reg2,"*"));
+		console.log(str.replace(reg3,"*"));
+		console.log(str.replace(reg4,"*"));
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

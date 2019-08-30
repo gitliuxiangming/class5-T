@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>217-前瞻.html</title>
+	<script>
+		var str = 'ab c2 d@ e3 f5 g!'
+		var reg1 = /[a-z]/g;
+		var reg2 = /[a-z](?=\d)/g;
+		var reg3 = /[a-z](?!\d)/g;
+		// var reg4 = /[a-z](?\!\d)/g;错误的
+		console.log(str.replace(reg1,"*"))
+		console.log(str.replace(reg2,"*"))
+		console.log(str.replace(reg3,"*"))
+		// console.log(str.replace(reg4,"*"))
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

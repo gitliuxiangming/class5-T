@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>221-字符串正则相关的方法.html</title>
+	<script>
+		var str = '123abc2018-08-08 abe2019-09-09	ab2017-07-07f'
+		/*
+		var reg = /a/g;
+		console.log(str.search(reg));
+		*/
+		/*
+		var reg = /(\d{4})-(\d{2})-(\d{2})/g;
+		var reg = /(?<years>\d{4})-(\d{2})-(\d{2})/;
+		console.log(str.match(reg))
+		console.log(reg.exec(str))
+		*/
+		/*
+		var reg = /\s+/;
+		console.log(str.split(reg))
+		*/
+		/*
+		var str = 'cabbac'
+		function getH(str){
+			return str.split('').reverse().join('') === str;
+		}
+		getH(str);
+		*/
+		var str = 'abc fabd abe'
+		var reg = /a/g;
+		// console.log(str.replace(reg,"*"));
+		console.log(str.replace(reg,function(result,index,before){
+			console.log(result,index,before);
+			if(index%2){
+				return '1'
+			}else{
+				return '2'
+			}
+		}));
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

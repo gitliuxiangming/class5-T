@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>224-表单元素的属性.html</title>
+</head>
+<body>
+	<form action="https://www.kuazhu.com" id="form1">
+		<div>
+			用户名：
+			<input type="text" id="txt" name="username" value="tom">
+		</div>
+		<div>
+			密码：
+			<input type="password" id="password" name="password">
+		</div>
+		<div>
+			性别：
+			<input type="radio" name="sex">男
+			<input type="radio" name="sex">女
+		</div>
+		<div>
+			爱好:
+			<input type="checkbox" name="hobby" value="basketball">篮球
+			<input type="checkbox" name="hobby" value="football">足球
+		</div>
+		<div>
+			住址:
+			<select name="city" id="city">
+				<option value="bj">北京</option>
+				<option value="sh">上海</option>
+			</select>
+		</div>
+		<div>
+			<input type="submit" name="submit" value="提交">
+		</div>
+		<div>
+			<input type="button" value="测试" id="btn">
+		</div>
+	</form>
+</body>
+<script>
+	var oBtn = document.getElementById('btn');
+	var oForm = document.forms[0];
+	var oUsername = oForm.username;
+	var aSex = oForm.sex;
+	var aHobby = oForm.hobby;
+	var oSelect = oForm.city;
+	console.log(oSelect.options)
+	/*
+	oUsername.disabled = true;
+	oSex.disabled = true;
+	*/
+	/*
+	oUsername.readOnly = true;
+	oSex.readOnly = true;
+	oSex.checked = true;
+	aHobby[0].checked = true;
+	*/
+	/*
+	oBtn.onclick = function(){
+	
+		for(var i=0;i<aHobby.length;i++){
+			console.log(aHobby[i].checked)
+		}
+		
+		for(var i=0;i<aSex.length;i++){
+			console.log(aSex[i].checked)
+		}
+	}
+	*/
+	/*
+	oBtn.onclick = function(){
+	
+		for(var i=0;i<oSelect.options.length;i++){
+			console.log(oSelect.options[i].selected)
+		}
+	}
+	*/
+	oUsername.focus();
+	oUsername.blur();
+</script>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>215-url验证.html</title>
+</head>
+<body>
+	<input type="text" id="txt">
+	<input type="button" id="btn" value="验证">
+</body>
+<script>
+	var oTxt = document.getElementById('txt');
+	var oBtn = document.getElementById('btn');
+	oBtn.onclick = function(){
+		//https://www.kuazhu.com
+		//http://www.liyuit.com
+		//https://www.baidu.com/?tn=78040160_15_pg&ch=12
+		var val = oTxt.value;
+		var reg = /^[a-z]{4,5}:\/\/w{3}\.\w+\.[a-z]{2,5}$/;
+		// console.log(reg.test(val))
+		if(reg.test(val)){
+			alert('合法')
+		}else{
+			alert('不合法')
+		}
+	}
+</script>
+</html>

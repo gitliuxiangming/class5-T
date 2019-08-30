@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>225-表单的提交和重置.html</title>
+</head>
+<body>
+	<form action="https://www.kuazhu.com" id="form1">
+		<div>
+			用户名：
+			<input type="text" id="txt" name="username">
+		</div>
+		<div>
+			密码：
+			<input type="password" id="password" name="password">
+		</div>
+		<div>
+			性别：
+			<input type="radio" value="male" name="sex">男
+			<input type="radio" value="female" name="sex">女
+		</div>
+		<div>
+			爱好:
+			<input type="checkbox" name="hobby" value="basketball">篮球
+			<input type="checkbox" name="hobby" value="football">足球
+		</div>
+		<div>
+			住址:
+			<select name="city" id="city">
+				<option value="bj">北京</option>
+				<option value="sh">上海</option>
+			</select>
+		</div>
+		<div>
+			<input type="submit" value="提交">
+			<input type="image" src="images/0.png">
+			<button type="submit">提交button</button>
+			<input type="button" value="submit方法提交" id="btn1">
+			<input type="reset" value="重置">
+			<button type="reset">重置</button>
+			<input type="button" value="reset方法重置" id="btn2">
+		</div>
+	</form>
+
+</body>
+<script>
+
+	var oBtn1 = document.getElementById('btn1');
+	var oBtn2 = document.getElementById('btn2');
+	var oForm = document.forms[0];
+	console.log(oForm);	
+	oForm.onsubmit = function(){
+		console.log('on submit....');
+		return false;
+	}
+	oBtn1.onclick = function(){
+		// console.log(oForm.submit);
+		oForm.submit();
+	}
+	oForm.onreset = function(){
+		console.log('on reset....');
+	}
+	oBtn2.onclick = function(){
+		oForm.reset();
+	}
+
+	
+	
+
+</script>
+</html>
