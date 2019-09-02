@@ -416,6 +416,7 @@
     }
     //验证密码
     function checkPwd(){
+        var bPwd1 = false,bPwd1 = false,bPwd2 = false,bPwd3 = false;
         oPwd.oninput = function(){
             var sVal = oPwd.value;
             //长度为8~14个字符
@@ -424,30 +425,38 @@
             var reg2 = /[^0-9_a-z\.\!\@\s]/i;
             //不允许有空格
             var reg3 = /\s/g;
+            //当输入内容长度为零时，让后面面板内容重置
             if(sVal.length == 0){
                 aPwdCheckli[0].className = 'pwd-checklist-item';
                 aPwdCheckli[1].className = 'pwd-checklist-item';
                 aPwdCheckli[2].className = 'pwd-checklist-item';
-
+            //当输入内容长度大于1时，再进行判断
             }else{
                  if(!reg1.test(sVal)){
-                    aPwdCheckli[0].className = 'pwd-checklist-item pwd-checklist-item-error'
+                    aPwdCheckli[0].className = 'pwd-checklist-item pwd-checklist-item-error';
+                    bPwd1 = false;
                 }else{
-                    aPwdCheckli[0].className = 'pwd-checklist-item pwd-checklist-item-success'
+                    aPwdCheckli[0].className = 'pwd-checklist-item pwd-checklist-item-success';
+                    bPwd1 = true;
                 }
                 if(reg2.test(sVal)){
-                    aPwdCheckli[1].className = 'pwd-checklist-item pwd-checklist-item-error'
+                    aPwdCheckli[1].className = 'pwd-checklist-item pwd-checklist-item-error';
+                    bPwd2 = false;
                 }else{
-                    aPwdCheckli[1].className = 'pwd-checklist-item pwd-checklist-item-success'
+                    aPwdCheckli[1].className = 'pwd-checklist-item pwd-checklist-item-success';
+                    bPwd2 = true;
                 }
                 if(reg3.test(sVal)){
-                    aPwdCheckli[2].className = 'pwd-checklist-item pwd-checklist-item-error'
+                    aPwdCheckli[2].className = 'pwd-checklist-item pwd-checklist-item-error';
+                    bPwd3 = false;
                 }else{
-                    aPwdCheckli[2].className = 'pwd-checklist-item pwd-checklist-item-success'
+                    aPwdCheckli[2].className = 'pwd-checklist-item pwd-checklist-item-success';
+                    bPwd3 = true;
                 }
             }
            
         }
+        //当点击密码的取消按钮时，需要将后面面板重置
         aCancel[2].onclick = function(){
             aPwdCheckli[0].className = 'pwd-checklist-item';
             aPwdCheckli[1].className = 'pwd-checklist-item';
@@ -462,16 +471,17 @@
                 oPwd.value = '';
                 oPwdChecklist.style.display = 'none'
                 aCancel[2].style.display = 'none';
-            }else{
-                setOk(aMsg[2],oPwd);
+            //代表密码验证全部成功
+            }else if(bPwd1 && bPwd2 && bPwd3){
+                oPwdChecklist.style.display = 'none';
+                aMsg[2].className = 'ok';
             }
         }
 
         oPwd.onfocus = function(){
-            oPwdChecklist.style.display = 'block'
+            oPwdChecklist.style.display = 'block';
+            aMsg[2].className = 'msg';
         }
-
-
     }
 </script>
 </html>
