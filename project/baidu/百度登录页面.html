@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>仿百度登录页面</title>
+    <title>仿百度注册页面</title>
     <style>
         * {
             margin: 0;
@@ -281,7 +281,71 @@
         <div class="left-box"></div>
     </div>
 </body>
+<script>
+    function getLength(str){
+        return str.replace(/[\u4e00-\u9fa5]/g,"aa").length;
+    }
+	var oForm = document.forms[0];
+	var oUsername = oForm.username;
+	var aMsg = document.querySelectorAll('.msg')
+	var aCancel = document.querySelectorAll('.cancel')
 
+	//初始化页面
+	oUsername.focus();
+	aMsg[0].className = 'tiptext';
+	aMsg[0].innerHTML = '设置后不可更改<br>中英文均可，最长14个英文或7个汉字';
+
+
+	//用户名输入时
+	oUsername.oninput = function(){
+
+		var sVal = oUsername.value;
+		if(sVal.length > 0){
+			aCancel[0].style.display = 'block';
+		}else{
+			aCancel[0].style.display = 'none';
+		}
+	}
+	//清空用户名
+	aCancel[0].onclick = function(){
+		oUsername.value = '';
+		aCancel[0].style.display = 'none';
+		oUsername.focus();
+	}
+    //验证用户名
+    oUsername.onblur = function(){
+        var sVal = oUsername.value;
+        //全空正则
+        var reg1 = /^\s+$/;
+        //用户名仅支持中英文、数字和下划线
+        var reg2 = /[^\u4e00-\u9fa50-9a-z_]/ig;
+        //不能时纯数字
+        var reg3 = /^[0-9]+$/;
+        if(sVal == ''){
+            aMsg[0].className = 'msg';
+        }else if(reg1.test(sVal)){
+            oUsername.value = '';
+            aMsg[0].className = 'msg';
+            aCancel[0].style.display = 'none';
+        }else if(getLength(sVal) > 14){
+            aMsg[0].className = 'err';
+            aMsg[0].innerHTML = '用户名不能超过7个汉字或14个字符字';
+            oUsername.className = 'input-err';
+        }else if(reg2.test(sVal) || reg3.test(sVal)){
+            aMsg[0].className = 'err';
+            aMsg[0].innerHTML = '用户名仅支持中英文、数字和下划线,且不能为纯数字';
+            oUsername.className = 'input-err';
+        }else{
+            aMsg[0].className = 'ok';
+            aMsg[0].innerHTML = '';
+        }
+    }
+    oUsername.onfocus = function(){
+        aMsg[0].className = 'tiptext';
+        aMsg[0].innerHTML = '设置后不可更改<br>中英文均可，最长14个英文或7个汉字';
+        oUsername.className = '';
+    }
+</script>
 </html>
 
 
