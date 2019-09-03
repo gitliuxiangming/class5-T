@@ -61,7 +61,7 @@ function animate1(obj,attr,target){
 //综合动画(匀速动画和减速动画最大的区别就是速度和结束条件不同)
 function animate2(obj,attr,target,isLinear){
 	//让动画默认就是匀速执行
-	if(typeof isLinear == undefined){
+	if(isLinear == undefined){
 		isLinear = true;
 	}
 	//防止开启多个定时器
@@ -119,7 +119,7 @@ function animate2(obj,attr,target,isLinear){
 //综合动画-链式调用(匀速动画和减速动画最大的区别就是速度和结束条件不同)
 function animate3(obj,attr,target,isLinear,fnEnd){
 	//让动画默认就是匀速执行
-	if(typeof isLinear == undefined){
+	if(isLinear == undefined){
 		isLinear = true;
 	}
 	//防止开启多个定时器
@@ -187,7 +187,7 @@ function animate3(obj,attr,target,isLinear,fnEnd){
 //综合动画-多值动画(匀速动画和减速动画最大的区别就是速度和结束条件不同)
 function animation(obj,options,isLinear,fnEnd){
 	//让动画默认就是匀速执行
-	if(typeof isLinear == undefined){
+	if(isLinear == undefined){
 		isLinear = true;
 	}
 	//防止开启多个定时器
