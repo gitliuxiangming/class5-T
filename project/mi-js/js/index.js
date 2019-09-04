@@ -1,6 +1,7 @@
 
 handleCart();
 handleNavContent();
+handleCarousel();
 //购物车交互功能
 function handleCart(){
 	//1.获取元素
@@ -40,16 +41,21 @@ function handleNavContent(){
 	var aNavtiem = document.querySelectorAll('.header .header-nav-item');
 	var oNavContent = document.querySelector('.header .header-nav-content');
 	var oNavContentBox = oNavContent.querySelector('.container')
-	var hideTimer = 0;
+	var hideTimer = 0,loadTimer = 0;
 	for(var i=0;i<aNavtiem.length-2;i++){
 		aNavtiem[i].index = i;
 		aNavtiem[i].onmouseenter = function(){
-
+			oNavContentBox.innerHTML = '<div class="loader"></div>'
 			clearTimeout(hideTimer);
 			oNavContent.style.borderTop = '1px solid #ccc';
 			animation(oNavContent,{height:200});
+			var index = this.index;
 			//加载数据
-			loadData(this.index);
+			clearTimeout(loadTimer)
+			loadTimer = setTimeout(function(){
+				loadData(index);
+			},1000)
+			
 		}
 		aNavtiem[i].onmouseleave = function(){
 			handleHide();
@@ -70,10 +76,10 @@ function handleNavContent(){
 		},500)
 	}
 	function loadData(index){
+		console.log(index)
 		var data = aNavContentData[index];
 		var html = '<ul>';
 		for(var i=0;i<data.length;i++){
-			console.log(data[i])
 			html +=' <li>';
 			html +='	<div class="img-box">';
 			html +='		<a href="'+data[i].url+'"><img src="'+data[i].img+'" alt=""></a>';
@@ -86,4 +92,14 @@ function handleNavContent(){
 		html += '</ul>';
 		oNavContentBox.innerHTML = html;
 	}
+}
+//实现轮播图
+function handleCarousel(){
+	new Carousel({
+		id:'carousel',
+		aImg:['images/carousel1.jpg','images/carousel2.jpg','images/carousel3.jpg'],
+		width:1226,
+		height:460,
+		autoPlayTime:1000
+	})
 }
