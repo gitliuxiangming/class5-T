@@ -817,7 +817,13 @@
 	.home .flash .bd .bd-left .timer-time .timer-dash{
 		font-size: 24px;
 	}
-	
+	.home .flash .bd .bd-right{
+		overflow: hidden;
+	}
+	.home .flash .bd .product-list{
+		width: 200%;
+		transition: all 0.5s;
+	}
 	.home .flash .bd .product-list>li:first-child{
 		margin-left: 0px;
 		border-top: 1px solid blue;
@@ -829,6 +835,19 @@
 		border-top: 1px solid yellow;
 	}
 	.home .flash .bd .product-list>li:nth-child(4){
+		border-top: 1px solid tomato;
+	}
+	.home .flash .bd .product-list>li:nth-child(5){
+		margin-left: 0px;
+		border-top: 1px solid blue;
+	}
+	.home .flash .bd .product-list>li:nth-child(6){
+		border-top: 1px solid green;
+	}
+	.home .flash .bd .product-list>li:nth-child(7){
+		border-top: 1px solid yellow;
+	}
+	.home .flash .bd .product-list>li:nth-child(8){
 		border-top: 1px solid tomato;
 	}
 /*home样式结束*/

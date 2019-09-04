@@ -3,6 +3,8 @@ handleCart();
 handleNavContent();
 handleCarousel();
 handleCate();
+handleTimeDown();
+handleFlashPart();
 //购物车交互功能
 function handleCart(){
 	//1.获取元素
@@ -144,4 +146,43 @@ function handleCate(){
 		oCateContent.innerHTML = html;
 	}
 
+}
+//处理倒计时
+function handleTimeDown(){
+
+	function to2Str(num){
+		return num < 10 ? '0'+num : ''+num;
+	}
+	var aTiemrNum = document.querySelectorAll('.flash .bd .timer-num');
+	var timer = 0;
+	// console.log(aTiemrNum)
+	var endDate = new Date('2019-09-04 20:34:00');
+	var endTime = endDate.getTime();
+	function handleTime(){
+		var allTime = parseInt((endTime - Date.now())/1000);
+		if(allTime<0){
+			allTime = 0;
+			clearInterval(timer)
+		}
+		var iHour = parseInt(allTime / 3600);
+		var iMinite = parseInt((allTime % 3600)/60);
+		var iSecond = (allTime % 3600)%60;
+		aTiemrNum[0].innerHTML = to2Str(iHour);
+		aTiemrNum[1].innerHTML = to2Str(iMinite);
+		aTiemrNum[2].innerHTML = to2Str(iSecond);
+	}
+	timer = setInterval(handleTime,500);
+	handleTime();
+}
+//处理闪购部分
+function handleFlashPart(){
+	var aSpan = document.querySelectorAll('.flash .move span');
+	var oFlashBox = document.querySelector('.flash .bd .bd-right');
+	var oProdcutList = document.querySelector('.flash .bd .product-list');
+	aSpan[0].onclick = function(){
+		oProdcutList.style.marginLeft = '0px';
+	}
+	aSpan[1].onclick = function(){
+		oProdcutList.style.marginLeft = '-978px';
+	}
 }
