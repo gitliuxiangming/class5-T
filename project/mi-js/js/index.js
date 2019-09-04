@@ -110,12 +110,15 @@ function handleCate(){
 	var oCateContent = document.querySelector('.home .banner .cate-content');
 	var oCateBox = document.querySelector('.home .banner .cate-box');
 	for(var i=0;i<aCateItem.length;i++){
+		aCateItem[i].index = i;
 		aCateItem[i].onmouseenter = function(){
 			for(var j=0;j<aCateItem.length;j++){
 				aCateItem[j].className = 'cate-item';
 			}
 			this.className = 'cate-item active';
 			oCateContent.style.display = 'block';
+			//加载数据
+			loadData(this.index);
 		}
 	}
 	oCateBox.onmouseleave = function(){
@@ -123,6 +126,22 @@ function handleCate(){
 		for(var j=0;j<aCateItem.length;j++){
 			aCateItem[j].className = 'cate-item';
 		}
+	}
+	function loadData(index){
+		//通过下标获取到对应的数据
+		var data = aCateContentData[index];
+		// console.log(data)
+		var html = '<ul>';
+		for(var i=0;i<data.length;i++){
+			html += '<li>';
+			html += '	<a href="'+data[i].url+'">';
+			html += '		<img src="'+data[i].img+'" alt="">';
+			html += '		<span>'+data[i].name+'</span>';
+			html += '	</a>';
+			html += '</li>';
+		}
+		html += '</ul>';
+		oCateContent.innerHTML = html;
 	}
 
 }

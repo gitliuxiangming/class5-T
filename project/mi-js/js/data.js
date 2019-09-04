@@ -147,4 +147,80 @@ var aNavContentData = [
 			price:"1799"
 		}
 	],
+];
+
+var aCateContentData = [
+	[
+		{
+			url:"https://www.kuazhu.com",
+			img:"images/shouji1.jpg",
+			name:"小米手机1-1"
+		},
+		{
+			url:"https://www.kuazhu.com",
+			img:"images/shouji1.jpg",
+			name:"小米手机1-2"
+		},
+		{
+			url:"https://www.kuazhu.com",
+			img:"images/shouji1.jpg",
+			name:"小米手机1-3"
+		},
+		{
+			url:"https://www.kuazhu.com",
+			img:"images/shouji1.jpg",
+			name:"小米手机1-4"
+		}
+	],
+	[
+		{
+			url:"https://www.kuazhu.com",
+			img:"images/shouji1.jpg",
+			name:"小米手机2-1"
+		},
+		{
+			url:"https://www.kuazhu.com",
+			img:"images/shouji1.jpg",
+			name:"小米手机2-2"
+		},
+		{
+			url:"https://www.kuazhu.com",
+			img:"images/shouji1.jpg",
+			name:"小米手机2-3"
+		},
+		{
+			url:"https://www.kuazhu.com",
+			img:"images/shouji1.jpg",
+			name:"小米手机2-4"
+		},
+		{
+			url:"https://www.kuazhu.com",
+			img:"images/shouji1.jpg",
+			name:"小米手机2-5"
+		},
+		{
+			url:"https://www.kuazhu.com",
+			img:"images/shouji1.jpg",
+			name:"小米手机2-6"
+		}
+	],
+	[
+		{
+			url:"https://www.kuazhu.com",
+			img:"images/shouji1.jpg",
+			name:"小米手机3-1"
+		},
+		{
+			url:"https://www.kuazhu.com",
+			img:"images/shouji1.jpg",
+			name:"小米手机3-2"
+		}
+	],
+	[
+		{
+			url:"https://www.kuazhu.com",
+			img:"images/shouji1.jpg",
+			name:"小米手机4-1"
+		}
+	]
 ]
