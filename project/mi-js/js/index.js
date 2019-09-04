@@ -2,6 +2,7 @@
 handleCart();
 handleNavContent();
 handleCarousel();
+handleCate();
 //购物车交互功能
 function handleCart(){
 	//1.获取元素
@@ -102,4 +103,26 @@ function handleCarousel(){
 		height:460,
 		autoPlayTime:1000
 	})
+}
+//分类列表交互
+function handleCate(){
+	var aCateItem = document.querySelectorAll('.home .banner .cate .cate-item');
+	var oCateContent = document.querySelector('.home .banner .cate-content');
+	var oCateBox = document.querySelector('.home .banner .cate-box');
+	for(var i=0;i<aCateItem.length;i++){
+		aCateItem[i].onmouseenter = function(){
+			for(var j=0;j<aCateItem.length;j++){
+				aCateItem[j].className = 'cate-item';
+			}
+			this.className = 'cate-item active';
+			oCateContent.style.display = 'block';
+		}
+	}
+	oCateBox.onmouseleave = function(){
+		oCateContent.style.display = 'none';
+		for(var j=0;j<aCateItem.length;j++){
+			aCateItem[j].className = 'cate-item';
+		}
+	}
+
 }

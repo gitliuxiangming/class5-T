@@ -621,7 +621,7 @@
 		padding-right: 20px;
 		line-height: 42px;
 	}
-	.home .banner .cate ul li:hover{
+	.home .banner .cate ul li.active{
 		background-color: #ff6700;
 	}
 	
@@ -632,6 +632,32 @@
 	.home .banner .cate ul li a i{
 		float: right;
 	}
+	.home .banner .cate-content{
+		display: none;
+		position: absolute;
+		top: 0px;
+		left: 234px;
+		min-width: 516px;
+		height: 100%;
+		background-color: #fff;
+		z-index: 99;
+		box-shadow: 2px 2px 2px rgba(0,0,0,0.3);
+		padding: 10px 20px;
+		box-sizing: border-box;
+	}
+	.home .banner .cate-content li{
+		width: 248px;
+		float: left;
+	}
+	.home .banner .cate-content li:hover a{
+		color:#ff6700;
+	}
+	.home .banner .cate-content li img{
+		width: 60px;
+		height: 60px;
+		vertical-align: middle;
+	}
+	/*
 	.home .banner .carousel{
 		position: relative;
 		width: 1226px;
@@ -695,6 +721,7 @@
 		background-color: #e3f4fe;
 		border-color: #889298;
 	}
+	*/
 	.home .hot{
 		margin-top: 14px;
 		margin-bottom: 14px;
