@@ -1,5 +1,4 @@
 
-
 handleCart();
 handleNavContent();
 //购物车交互功能
@@ -40,12 +39,17 @@ function handleNavContent(){
 	//1.获取元素
 	var aNavtiem = document.querySelectorAll('.header .header-nav-item');
 	var oNavContent = document.querySelector('.header .header-nav-content');
+	var oNavContentBox = oNavContent.querySelector('.container')
 	var hideTimer = 0;
-	for(var i=0;i<aNavtiem.length;i++){
+	for(var i=0;i<aNavtiem.length-2;i++){
+		aNavtiem[i].index = i;
 		aNavtiem[i].onmouseenter = function(){
+
 			clearTimeout(hideTimer);
 			oNavContent.style.borderTop = '1px solid #ccc';
-			animation(oNavContent,{height:200})
+			animation(oNavContent,{height:200});
+			//加载数据
+			loadData(this.index);
 		}
 		aNavtiem[i].onmouseleave = function(){
 			handleHide();
@@ -64,5 +68,22 @@ function handleNavContent(){
 				oNavContent.style.borderTop = '';
 			})
 		},500)
+	}
+	function loadData(index){
+		var data = aNavContentData[index];
+		var html = '<ul>';
+		for(var i=0;i<data.length;i++){
+			console.log(data[i])
+			html +=' <li>';
+			html +='	<div class="img-box">';
+			html +='		<a href="'+data[i].url+'"><img src="'+data[i].img+'" alt=""></a>';
+			html +='	</div>';
+			html +='	<p class="product-name">'+data[i].name+'</p>';
+			html +='	<p class="product-price">'+data[i].price+'元起</p>';
+			html +='</li>';
+		}
+
+		html += '</ul>';
+		oNavContentBox.innerHTML = html;
 	}
 }
