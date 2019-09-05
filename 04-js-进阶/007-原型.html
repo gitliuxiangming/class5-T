@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>007-原型.html</title>
+</head>
+<body>
+	
+</body>
+<script>
+	function Person(name,age){
+		this.name = name;
+		this.age = age;
+	}
+	Person.prototype.sayName = function(){
+		console.log(this.name);
+	};
+	Person.prototype.sayAge = function(){
+		console.log(this.age)
+	}
+	Person.prototype.LEGS = 2;
+
+
+	console.log('Person.prototype',Person.prototype);
+	console.log('Person.prototype.constructor',Person.prototype.constructor);
+	console.log('Person.prototype.constructor === Person',Person.prototype.constructor === Person);
+	console.log('Person.prototype.__proto__',Person.prototype.__proto__);
+	console.log('Person.prototype.__proto__ ==Object.prototype',Person.prototype.__proto__ ==Object.prototype);
+	console.log('Object.prototype',Object.prototype)
+	console.log('Object.prototype.constructor',Object.prototype.constructor)
+	console.log('Object.prototype.__proto__',Object.prototype.__proto__)
+	var p1 = new Person('tom',18);
+	console.log(p1);
+	console.log('p1.__proto__',p1.__proto__);
+	console.log('p1.__proto__ == Person.prototype',p1.__proto__ == Person.prototype);
+	// console.log(window)
+</script>
+</html>
