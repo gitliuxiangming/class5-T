@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>002-运行时错误.html</title>
+	<script>
+		// console.log(a);
+		/*
+		var a = 'aaa';
+		a();
+		*/
+		var i=1;
+		function fn(){
+			// i++;
+			if(i == 100){
+				return false;
+			}
+			fn();
+		}
+		fn();
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

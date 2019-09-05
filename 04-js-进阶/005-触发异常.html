@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>005-触发异常.html</title>
+	<script>
+		function sum(num){
+			try{
+				if(isNaN(parseInt(num))){
+					throw new Error('not a number');
+				}
+				var result = 0;
+				for(var i=0;i<=num;i++){
+					result += i;
+				}
+				return result;
+			}catch(e){
+				//处理异常
+				console.log(e)
+			}finally{
+				console.log('finally....')
+			}
+			
+		}
+		function sum1(num){
+			return num*10;
+		}
+		console.log('111');
+		var target = sum('a');
+		console.log('222');
+		console.log(sum1(target))
+		console.log('333');
+	</script>
+</head>
+<body>
+	
+</body>
+</html>
