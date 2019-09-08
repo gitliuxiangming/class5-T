@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>018-继承二.html</title>
+	<script>
+		function Person(name,age){
+			this.name = name;
+			this.age = age;
+		}
+		Person.prototype.sayName = function(){
+			console.log(this.name);
+		};
+		Person.prototype.sayAge = function(){
+			console.log(this.age)
+		}
+		Person.prototype.LEGS = 2;
+		Object.defineProperty(Person.prototype,'EYES',{
+			value:2
+		})
+		console.log('Person.prototype',Person.prototype)
+		function Student(name,age,major){
+			Person.call(this,name,age);
+			this.major = major;
+		}
+		/*
+		Student.prototype.sayName = function(){
+			console.log(this.name);
+		};
+		Student.prototype.sayAge = function(){
+			console.log(this.age)
+		}
+		Student.prototype.LEGS = 2;
+		*/
+		
+		for(var attr in Person.prototype){
+			Student.prototype[attr] = Person.prototype[attr]
+		}
+
+		console.log('Student.prototype',Student.prototype)
+		console.log('Student.prototype.sayName == Person.prototype.sayName',Student.prototype.sayName == Person.prototype.sayName)
+		Student.prototype.sayMajor = function(){
+			console.log('i am from ' + this.major);
+		}
+		
+
+		var p1 = new Person('tom',18);
+		console.log('p1',p1);
+		p1.sayName();
+		p1.sayAge();
+		// p1.sayMajor();
+		var s1 = new Student('bob',15,'computer');
+		console.log('s1',s1);
+		s1.sayName();
+		s1.sayAge();
+		s1.sayMajor();
+		// console.log(s1.EYES)
+	</script>
+</head>
+<body>
+	
+</body>
+</html>
