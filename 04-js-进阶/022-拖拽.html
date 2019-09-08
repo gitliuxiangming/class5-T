@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>022-拖拽.html</title>
+</head>
+<body>
+	
+</body>
+<script>
+	function Drag(options){
+		//1.罗列属性
+		this.oBox = null;
+		this.width = options.width;
+		this.height = options.height;
+		this.backgroundColor = options.backgroundColor;
+		this.disX = 0;
+		this.disY = 0;
+
+		//2.初始化
+		this.init();
+		//3.绑定事件
+		this.bindEvent();
+	}
+	Drag.prototype.init = function(){
+		this.oBox = document.createElement('div');
+		this.oBox.style.position = 'absolute';
+		this.oBox.style.left = '0px';
+		this.oBox.style.top = '0px';
+		this.oBox.style.width = this.width + 'px';
+		this.oBox.style.height = this.height + 'px';
+		this.oBox.style.backgroundColor = this.backgroundColor;
+		document.body.appendChild(this.oBox);
+	}
+	Drag.prototype.bindEvent = function(){
+		// var _this = this;
+		this.oBox.onmousedown = function(ev){
+			var oEvent = ev || event;
+			// console.log(this)
+			this.disX = oEvent.clientX - this.oBox.offsetLeft;
+			this.disY = oEvent.clientY - this.oBox.offsetTop;
+			/*
+			document.onmousemove = function(ev){
+				var oEvent = ev || event;
+				this.oBox.style.left = oEvent.clientX - this.disX + 'px';
+				this.oBox.style.top = oEvent.clientY - this.disY + 'px';
+			}.bind(this);
+			*/
+			/*
+			document.onmouseup = function(){
+				document.onmousemove = null;
+				document.onmouseup = null;
+			}
+			*/
+			document.onmousemove = this.fnMove.bind(this);
+			document.onmouseup = this.fnUp;
+		}.bind(this)
+	}
+	Drag.prototype.fnMove = function(ev){
+		var oEvent = ev || event;
+		this.oBox.style.left = oEvent.clientX - this.disX + 'px';
+		this.oBox.style.top = oEvent.clientY - this.disY + 'px';
+	}
+	Drag.prototype.fnUp = function(){
+		document.onmousemove = null;
+		document.onmouseup = null;
+	}
+
+	new Drag({
+		width:200,
+		height:200,
+		backgroundColor:'red'
+	});
+	new Drag({
+		width:300,
+		height:300,
+		backgroundColor:'blue'
+	});
+</script>
+</html>
