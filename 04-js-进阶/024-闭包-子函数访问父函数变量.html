@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>024-闭包-子函数访问父函数变量.html</title>
+	<script>
+		function fn(){
+			var n = 1;
+			function fn1(){
+				console.log(n);
+			}
+			fn1();
+		}
+		fn();
+		// console.log(n);
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

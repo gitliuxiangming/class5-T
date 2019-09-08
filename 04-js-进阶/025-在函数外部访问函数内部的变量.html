@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>025-在函数外部访问函数内部的变量.html</title>
+	<script>
+		function fn(){
+			var n = 1;
+
+			add = function(){
+				n++;
+			}
+
+			return function(){
+				// console.log(n);
+				return n;
+			}
+		}
+		console.log(fn());
+		var result = fn();
+		console.log(result());
+		add();
+		console.log(result());
+		add();
+		console.log(result());
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

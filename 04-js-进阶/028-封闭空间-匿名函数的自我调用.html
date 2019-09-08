@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>028-封闭空间-匿名函数的自我调用.html</title>
+	<script>
+		/*
+		function aa(){
+			alert('aa')
+		}
+		aa();
+		var bb = function(){
+			alert('bb')
+		}
+		bb()
+		*/
+		
+		(function(){
+			alert('111')
+		})();
+	</script>
+</head>
+<body>
+	
+</body>
+</html>
