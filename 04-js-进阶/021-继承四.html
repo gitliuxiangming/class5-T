@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>019-继承三.html</title>
+	<title>021-继承四.html</title>
 	<script>
 		function Person(name,age){
 			console.log('父类被调用')
@@ -19,34 +19,37 @@
 		Object.defineProperty(Person.prototype,'EYES',{
 			value:2
 		})
-		console.log('Person.prototype',Person.prototype)
+		console.log('Person.prototype',Person.prototype);
+
+
 		function Student(name,age,major){
 			Person.call(this,name,age);
 			this.major = major;
 		}
-		/*
-		for(var attr in Person.prototype){
-			Student.prototype[attr] = Person.prototype[attr]
-		}
-		*/
-		Student.prototype = new Person();
+
+		Student.prototype = Object.create(Person.prototype);
 		Student.prototype.constructor = Student;
 		console.log('Student.prototype',Student.prototype)
 		Student.prototype.sayMajor = function(){
 			console.log('i am from ' + this.major);
 		}
 		
+		
 		var p1 = new Person('tom',18);
 		console.log('p1',p1);
 		p1.sayName();
 		p1.sayAge();
-		// console.log(p1.EYES);
+		// p1.sayMajor()
+
+
 		var s1 = new Student('bob',15,'computer');
 		console.log('s1',s1);
 		s1.sayName();
 		s1.sayAge();
 		s1.sayMajor();
 		console.log(s1.EYES);
+		// console.log(p1.EYES);
+		
 	</script>
 </head>
 <body>

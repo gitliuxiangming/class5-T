@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>020-创建只有__proto__的对象.html</title>
+	<script>
+		var obj = new Object();
+		console.log(obj);
+		var obj1 = {};
+		console.log(obj1);
+
+		var obj2 = Object.create(null);
+		console.log(obj2)
+
+		var obj3 = Object.create({});
+		console.log(obj3)
+
+		var obj4 = Object.create({name:"tom"});
+		console.log(obj4)
+	</script>
+</head>
+<body>
+	
+</body>
+</html>
