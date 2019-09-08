@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>019-继承三.html</title>
+	<script>
+		function Person(name,age){
+			console.log('父类被调用')
+			this.name = name;
+			this.age = age;
+		}
+		Person.prototype.sayName = function(){
+			console.log(this.name);
+		};
+		Person.prototype.sayAge = function(){
+			console.log(this.age)
+		}
+		Person.prototype.LEGS = 2;
+		Object.defineProperty(Person.prototype,'EYES',{
+			value:2
+		})
+		console.log('Person.prototype',Person.prototype)
+		function Student(name,age,major){
+			Person.call(this,name,age);
+			this.major = major;
+		}
+		/*
+		for(var attr in Person.prototype){
+			Student.prototype[attr] = Person.prototype[attr]
+		}
+		*/
+		Student.prototype = new Person();
+		console.log('Student.prototype',Student.prototype)
+		Student.prototype.sayMajor = function(){
+			console.log('i am from ' + this.major);
+		}
+		
+		var p1 = new Person('tom',18);
+		console.log('p1',p1);
+		p1.sayName();
+		p1.sayAge();
+		// console.log(p1.EYES);
+		var s1 = new Student('bob',15,'computer');
+		console.log('s1',s1);
+		s1.sayName();
+		s1.sayAge();
+		s1.sayMajor();
+		console.log(s1.EYES);
+	</script>
+</head>
+<body>
+	
+</body>
+</html>
