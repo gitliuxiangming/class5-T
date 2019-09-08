@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>016-改变this的指向.html</title>
+	<script>
+		function show(n1,n2){
+			console.log(this,n1,n2);
+		}
+		/*
+		show();//window
+		window.show();//window
+		new show();
+		*/
+		show();
+		// show.call({name:"tom"},1,2);
+		// show.apply({name:"tom"},[1,2]);
+		/*
+		var result = show.bind({name:"tom"});
+		result(1,2);
+		*/
+		/*
+		show.bind({name:"tom"})(1,2);
+		*/
+		/*
+		show.call();
+		show.apply();
+		show.bind()();
+
+		*/
+		show.call(null);
+		show.apply(null);
+		show.bind(null)();
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

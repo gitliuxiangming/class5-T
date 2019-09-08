@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>011-对象属性的删除.html</title>
+	<script>
+		function Person(name,age){
+
+			this.name = name;
+			this.age = age;
+
+		}
+		Person.prototype.sayName = function(){
+			console.log(this.name);
+		};
+		Person.prototype.sayAge = function(){
+			console.log(this.age)
+		}
+		Person.prototype.LEGS = 2;
+		delete Person.prototype.LEGS;
+		var p1 = new Person('tom',18)
+		console.log('p1',p1);
+		/*
+		console.log(delete p1.name);
+		console.log('p1',p1);
+		console.log(delete p1.eyes);
+		*/
+		console.log(p1.LEGS);
+		var p2 = new Person('leo',78);
+		console.log('p2',p2);
+		console.log(p2.LEGS);
+
+
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

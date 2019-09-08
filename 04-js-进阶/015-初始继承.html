@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>015-初始继承.html</title>
+	<script>
+		function Person(name,age){
+			this.name = name;
+			this.age = age;
+		}
+		Person.prototype.sayName = function(){
+			console.log(this.name);
+		};
+		Person.prototype.sayAge = function(){
+			console.log(this.age)
+		}
+		Person.prototype.LEGS = 2;
+
+
+		function Student(name,age,major){
+			this.name = name;
+			this.age = age;
+			this.major = major;
+		}
+		Student.prototype.sayName = function(){
+			console.log(this.name);
+		};
+		Student.prototype.sayAge = function(){
+			console.log(this.age)
+		}
+		Student.prototype.sayMajor = function(){
+			console.log('i am from ' + this.major);
+		}
+		Student.prototype.LEGS = 2;
+
+		var p1 = new Person('tom',18);
+		console.log('p1',p1);
+		p1.sayName();
+		p1.sayAge();
+
+		var s1 = new Student('bob',15,'computer');
+		console.log('s1',s1);
+		s1.sayName();
+		s1.sayAge();
+		s1.sayMajor();
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

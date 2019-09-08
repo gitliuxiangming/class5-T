@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>013-属性的定义.html</title>
+	<script>
+		function Person(name,age){
+			this.name = name;
+			this.age = age;
+		}
+		Person.prototype.sayName = function(){
+			console.log(this.name);
+		};
+		Person.prototype.sayAge = function(){
+			console.log(this.age)
+		}
+		Person.prototype.LEGS = 2;
+		// Person.prototype.mouth = 1;
+		var p1 = new Person('tom',18);
+		// p1.EYES = 2;
+		Object.defineProperty(p1,'EYES',{
+			value:2,
+			enumerable:false,//表示可以枚举
+			writable:false,//表示可以更改
+			configurable:true
+		});
+		Object.defineProperty(p1,'EYES',{
+			value:2,
+			enumerable:true,//表示可以枚举
+			writable:true,//表示可以更改
+		});
+		p1.EYES = 4;
+		// console.log(delete p1.EYES);
+		console.log(p1);
+		console.log(p1.EYES);
+
+
+		for(var attr in p1){
+			console.log(attr,p1[attr]);
+		}
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>014-属性的定义-多个.html</title>
+	<script>
+		function Person(name,age){
+			this.name = name;
+			this.age = age;
+		}
+		Person.prototype.sayName = function(){
+			console.log(this.name);
+		};
+		Person.prototype.sayAge = function(){
+			console.log(this.age)
+		}
+		Person.prototype.LEGS = 2;
+		var p1 = new Person('tom',18);
+		console.log(p1);
+
+		Object.defineProperties(p1,{
+			'EYES':{value:2,enumerable:true,writable:true},
+			'MOUTH':{value:1,enumerable:true,writable:true},
+			'sayHi':{value:function(){
+				console.log('hi')
+			}}
+		})
+		p1.EYES = 4;
+		console.log(p1.EYES)
+		for(var attr in p1){
+			console.log(attr,p1[attr]);
+		}
+		p1.sayHi();
+		var result = Object.getOwnPropertyDescriptor(p1,'EYES');
+		console.log(result)
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

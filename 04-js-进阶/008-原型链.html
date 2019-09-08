@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>008-原型链.html</title>
+	<script>
+		function Person(name,age){
+
+			this.name = name;
+			this.age = age;
+
+		}
+		Person.prototype.sayName = function(){
+			console.log(this.name);
+		};
+		Person.prototype.sayAge = function(){
+			console.log(this.age)
+		}
+		/*
+		Person.prototype.LEGS = 2;
+		console.log(Person.prototype)
+		console.log(Person.prototype.__proto__ == Object.prototype)
+		console.log(Object.prototype)
+		console.log(Object.prototype.__proto__);
+		*/
+		var p1 = new Person('tom',18);
+		console.log(p1);
+		console.log(p1.__proto__);
+		console.log(p1.__proto__ == Person.prototype);
+
+		var p2 = new Person('leo',78);
+		console.log(p2);
+		console.log(p2.__proto__);
+		console.log(p2.__proto__ == Person.prototype);
+
+		p1.sayName();
+		p2.sayName();
+		p1.toString();
+		console.log(p1.test)
+		p1.test();
+
+
+
+
+
+
+	</script>
+</head>
+<body>
+	
+</body>
+</html>
