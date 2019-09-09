@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>036-单例模式-皇帝上朝.html</title>
+	<script>
+		(function(w){
+			var king = null;
+			function King(name){
+				if(!king){
+					this.name = name;
+					this.id = Math.random();
+					king = this;
+				}
+				return king;
+				
+			}
+			King.prototype = {
+				constructor:King,
+				work:function(){
+					console.log(this.name + this.id+'说：有事早奏，无事退朝')
+				}
+			}
+
+			w.King = King;
+		})(window);
+		for(var i=0;i<5;i++){
+			new King('康熙').work();
+		}
+		
+	</script>
+</head>
+<body>
+	
+</body>
+</html>
