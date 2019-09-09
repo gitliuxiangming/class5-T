@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>033-内存生命周期与垃圾回收.html</title>
+	<script>
+		/*
+		var a = 1;
+
+		console.log(a)
+		a = 2;
+	
+		
+		var obj = {
+			name:'tom',
+			age:18,
+			friend:obj1
+		}
+		var obj1 = {
+			name:'leo',
+			age:78,
+			friend:obj
+		}
+		/*
+		var obj1 = obj; 
+		obj1 = {}
+		{
+			name:'tom1',
+			age:19
+		}
+		*/
+
+
+
+
+
+	</script>
+</head>
+<body>
+	<div id="box">sdfsfsd</div>
+</body>
+<script>
+	bindEvent();
+	function bindEvent(){
+		var oBox = document.getElementById('box');
+		oBox.onclick = function(){
+			alert(oBox.id);
+		}
+	}
+</script>
+</html>

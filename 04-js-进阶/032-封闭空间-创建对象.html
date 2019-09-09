@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>032-封闭空间-创建对象.html</title>
+	<script>
+		(function(w){
+			function Person(name,age){
+				this.name = name;
+				this.age = age;
+			}
+			/*
+			Person.prototype.sayName = function(){
+				console.log(this.name);
+			};
+			Person.prototype.sayAge = function(){
+				console.log(this.age)
+			}
+			Person.prototype.LEGS = 2;
+			*/
+			Person.prototype = {
+				constructor:Person,
+				sayName:function(){
+					console.log(this.name);
+				},
+				sayAge:function(){
+					console.log(this.age)
+				},
+				LEGS:2
+
+			};
+
+			//导出到window
+			w.Person = Person;
+		})(window);
+
+
+		var p1 = new Person('tom',18);
+		p1.sayName()
+		p1.sayAge()
+		console.log(p1.LEGS)
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

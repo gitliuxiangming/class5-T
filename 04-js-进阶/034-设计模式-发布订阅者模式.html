@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>034-设计模式-发布订阅者模式.html</title>
+	<script>
+		function Teacher(name){
+			this.name = name;
+			this.students = [];
+		}
+		Teacher.prototype = {
+			constructor:Teacher,
+			register:function(student){
+				this.students.push(student);
+			},
+			publish:function(task){
+				for(var i =0;i<this.students.length;i++){
+					this.students[i].listen(task);
+				}
+			}
+		}
+
+		function Student(name,teacher){
+			this.name = name;
+			teacher.register(this);
+		}
+		Student.prototype = {
+			constructor:Student,
+			listen:function(task){
+				console.log(this.name +'收到今天的作业：：：'+ task);
+			}
+		}
+
+
+
+		var t1 = new Teacher('tom');
+		var s1 = new Student('amy',t1)
+		var s2 = new Student('bob',t1)
+		var s3 = new Student('coco',t1)
+		var s4 = new Student('dev',t1)
+		var s4 = new Student('eson',t1)
+		console.log(t1)
+		console.log(s1)
+		console.log(s2)
+		t1.publish('今天的作业是没有作业')
+	</script>
+</head>
+<body>
+	
+</body>
+</html>
