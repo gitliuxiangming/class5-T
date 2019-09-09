@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>汇率计算</title>
+</head>
+<body>
+	<!--  
+	<p>
+		人民币cny： <input type="text">
+	</p>
+	<p>
+		美元usd: <span></span>
+	</p>
+	<p>
+		日元jpy: <span></span>
+	</p>
+	-->
+</body>
+<script>
+	(function(w){
+		function Local(name){
+			this.oInput = null;
+			this.init(name);
+			this.foreigns = [];
+			this.bindEvent();
+		}
+		Local.prototype = {
+			constructor:Local,
+			init:function(name){
+				var oP = document.createElement('p');
+				this.oInput = document.createElement('input');
+				oP.innerHTML = name+' : ';
+				oP.appendChild(this.oInput)
+				document.body.appendChild(oP);
+			},
+			register:function(foreign){
+				this.foreigns.push(foreign);
+			},
+			publish:function(val){
+				for(var i=0;i<this.foreigns.length;i++){
+					this.foreigns[i].listen(val);
+				}
+			},
+			bindEvent:function(){
+				this.oInput.oninput = function(){
+					var sVal = this.oInput.value;
+					this.publish(sVal);
+				}.bind(this)
+			}
+		}
+
+		w.Local = Local;
+	})(window);
+
+
+	(function(w){
+		function Foreign(name,rate,local){
+			this.oSpan = null;
+			this.rate = rate;
+			this.init(name);
+			local.register(this);
+		}
+		Foreign.prototype = {
+			constructor:Foreign,
+			init:function(name){
+				var oP = document.createElement('p');
+				this.oSpan = document.createElement('span');
+				oP.innerHTML = name+' : ';
+				oP.appendChild(this.oSpan);
+				document.body.appendChild(oP);
+			},
+			listen:function(val){
+				this.oSpan.innerHTML = val / this.rate;
+			}
+		}
+
+		w.Foreign = Foreign;
+	})(window);
+
+
+	var cny = new Local('人民币cny');
+	var usd = new Foreign('美元usd',7,cny);
+	var usd = new Foreign('日元jpy',0.07,cny);
+	console.log(cny)
+	console.log(usd)
+
+</script>
+</html>
