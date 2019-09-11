@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>042-ajax1.html</title>
+</head>
+<body>
+	<button id="btn">获取数据</button>
+</body>
+<script>
+	var oBtn = document.getElementById('btn');
+	oBtn.onclick =  function(){
+		// alert('aaaaa')
+		//第一步(拿到电话)
+		var oAjax = new XMLHttpRequest();
+		// console.log('new',oAjax.readyState);
+		//第二步(拨号)
+		oAjax.open('GET','http://127.0.0.1:3000/043-data.json',true);
+		// console.log('afterOpen',oAjax.readyState);
+		//第三步(拨出号码)
+		oAjax.send();
+		//第四步(等对方回应)
+		oAjax.onreadystatechange = function(){
+			// console.log('ddddddd');
+			// console.log(oAjax.readyState);
+			if(oAjax.readyState == 4){
+				if(oAjax.status == 200){
+					// console.log(oAjax.responseText);
+					var obj = JSON.parse(oAjax.responseText);
+					console.log(obj)
+				}
+			}
+		}
+	}
+</script>
+</html>
