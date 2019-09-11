@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>038-数组的高级方法.html</title>
+	<script>
+		var arr = [1,3,5,8,9,15];
+		/*
+		var result = arr.forEach(function(value,index){
+			console.log('value,index',value,index);
+		})
+		console.log(result)
+		*/
+		/*
+		var result = arr.map(function(value,index){
+			console.log('value,index',value,index);
+			return value *10;
+		})
+		console.log(result);
+		*/
+		/*
+		var result = arr.filter(function(value,index){
+			console.log('value,index',value,index);
+			return value>5;
+		})
+		console.log(result);
+		*/
+		/*
+		var result = arr.every(function(value,index){
+			console.log('value,index',value,index);
+			return value > 0;
+		})
+		console.log(result);
+		*/
+		var result = arr.some(function(value,index){
+			console.log('value,index',value,index);
+			return value < 0;
+		})
+		console.log(result);
+	</script>
+</head>
+<body>
+	
+</body>
+</html>
