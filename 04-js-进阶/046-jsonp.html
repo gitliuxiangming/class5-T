@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>046-jsonp.html</title>
+</head>
+<body>
+	<input type="text" id="txt">
+	<button id="btn">检测</button>
+</body>
+<script>
+	function handleCallback(obj){
+		console.log(obj);
+	}
+</script>
+<script>
+	var oBtn = document.getElementById('btn');
+	var oTxt = document.getElementById('txt');
+	oBtn.onclick  = function(){
+		var script = document.createElement('script');
+		// script.src = "http://127.0.0.1:3001/getData?callback=handleCallback";
+		script.src = "https://suggest.taobao.com/sug?code=utf-8&q=li&_ksTS=1568630352412_309&callback=handleCallback&k=1&area=c2c&bucketid=1";
+		document.body.appendChild(script);
+	}
+	oTxt.oninput = function(){
+		var script = document.createElement('script');
+		// script.src = "http://127.0.0.1:3001/getData?callback=handleCallback";
+		script.src = "https://suggest.taobao.com/sug?code=utf-8&q="+oTxt.value+"&_ksTS=1568630352412_309&callback=handleCallback&k=1&area=c2c&bucketid=1";
+		document.body.appendChild(script);
+	}
+</script>
+
+<!-- <script src="http://127.0.0.1:3001/getData?callback=handleCallback"></script> -->
+</html>
