@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>002-$的冲突解决.html</title>
+</head>
+<body>
+	
+</body>
+<script>
+	window.$ = function(){
+		alert('test...')
+	}
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script>
+	window.jQuery || document.write('<script src="js/jquery-3.4.1.js"><\/script>');
+</script>
+
+<script>
+	/*
+	jQuery.noConflict();
+	$(function(){
+		alert('aaa')
+	})
+	jQuery(function(){
+		alert('jquery')
+	})
+	*/
+	var kz = jQuery.noConflict();
+	$(function(){
+		alert('aaa')
+	})
+	kz(function(){
+		alert('jquery')
+	})
+</script>
+</html>

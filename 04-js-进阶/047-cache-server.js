@@ -27,8 +27,8 @@ var server = http.createServer(function(req,res){
 		}else{
 			if(/\.css$/.test(req.url)){
 				res.setHeader('Content-Type', 'text/css');
-				res.setHeader('Expires', new Date(Date.now()+10000));
-				res.setHeader('Cache-Control','max-age=30');
+				// res.setHeader('Expires', new Date(Date.now()+10000));
+				res.setHeader('Cache-Control','max-age=300');
 			}
 			var filePath  = "./" + req.url;
 			fs.readFile(filePath,function(err,data){

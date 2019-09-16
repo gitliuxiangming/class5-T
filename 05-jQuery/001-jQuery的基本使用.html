@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>001-jQuery的基本使用.html</title>
+</head>
+<body>
+	
+</body>
+<!-- <script src="js/jquery-3.4.1.js"></script> -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script>
+	window.jQuery || document.write('<script src="js/jquery-3.4.1.js"><\/script>');
+</script>
+
+<script>
+	// console.log(window)
+	/*
+	jQuery(document).ready(function(){
+		console.log('hello1')
+	})
+	jQuery(document).ready(function(){
+		console.log('hello2')
+	})
+	window.onload = function(){
+		console.log('nihao1');
+	}
+	window.onload = function(){
+		console.log('nihao2');
+	}
+	*/
+	/*
+	$(document).ready(function(){
+		console.log('hello1')
+	})
+	$(document).ready(function(){
+		console.log('hello2')
+	})
+	*/
+	$(function(){
+		console.log('hello1')
+	})
+	$(function(){
+		console.log('hello2')
+	})
+</script>
+</html>
