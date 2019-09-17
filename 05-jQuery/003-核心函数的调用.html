@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>003-核心函数的调用.html</title>
+</head>
+<body>
+	<div class="box">asfsdfsd</div>
+	<div id="box">asfsdfsd</div>
+</body>
+<script src="js/jquery-3.4.1.js"></script>
+<script>
+	/*
+	console.log($(function(){
+		alert('aaa')
+	}));
+	*/
+	// console.log($('#box'));
+	// console.log($('<h1>nihao</h1>'));
+
+	var oDiv = document.getElementById('box');
+	// console.log(oDiv);
+	console.log($(oDiv));
+	console.log($(null));
+	console.log($(undefined));
+	console.log($(''));
+	console.log($(0));
+</script>
+</html>

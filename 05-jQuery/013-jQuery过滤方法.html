@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>013-jQuery过滤方法.html</title>
+	<style>
+		.box{
+			/*display: none;*/
+		}
+	</style>
+</head>
+<body>
+	<div>div1</div>
+	<div>div2	<p>nihao</p></div>
+	<div>div3	<p>nihao</p></div>
+	<div class="box">div4</div>
+	<div>div5</div>
+	<div class="box">div6</div>
+	<div>div7</div>
+	<div class="box">div8</div>
+	<div>div9</div>
+	<div>div10</div>
+</body>
+<script src="js/jquery-3.4.1.js"></script>
+<script>
+	$(function(){
+	   // console.log($('div').eq(-2))
+	   // console.log($('div:eq(2)').siblings());
+	   /*
+	   console.log($('div:hidden').css({
+	   	display:"block"
+	   }))
+	   console.log($('div:visible'))
+	   */
+	   console.log($('div p'))
+	   // console.log($('div').find('p'))
+	});
+</script>
+</html>

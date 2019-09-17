@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>007-jQuery的静态方法-map.html</title>
+</head>
+<body>
+	<div>div1</div>
+	<div>div2</div>
+	<div>div3</div>
+	<div>div4</div>
+	<div>div5</div>
+	<div>div6</div>
+	<div>div7</div>
+	<div>div8</div>
+	<div>div9</div>
+	<div>div10</div>
+</body>
+<script src="js/jquery-3.4.1.js"></script>
+<script>
+	var arr = [1,5,6,7,8];
+	/*
+	var res = arr.map(function(value,index){
+		console.log(value,index);
+		return value *10;
+	})
+	*/
+	/*
+	var res = $.map(arr,function(value,index){
+		console.log(value,index);
+		return value *10;
+	})*/
+	/*
+	var likeArr = {0:"aaa",1:"bbb",2:"ccc",length:3};
+	// var res = likeArr.map()
+	var res = $.map(likeArr,function(value,index){
+		console.log(value,index);
+		return value * 10;
+	})
+	*/
+
+	var aDiv = document.getElementsByTagName('div');
+	// var res = aDiv.map()
+	var res = $.map(aDiv,function(value,index){
+		console.log(value,index);
+		return value * 10;
+	})
+	console.log(res)
+
+</script>
+</html>

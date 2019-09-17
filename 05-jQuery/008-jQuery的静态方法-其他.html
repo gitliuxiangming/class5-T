@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>008-jQuery的静态方法-其他.html</title>
+</head>
+<body>
+	
+</body>
+<script src="js/jquery-3.4.1.js"></script>
+<script>
+	/*
+	var str = '   ab  cd   '
+	var res = $.trim(str);
+	console.log(str)
+	console.log(res)
+
+	console.log($.isWindow());
+	console.log($.isWindow(window));
+
+	console.log($.isArray());
+	console.log($.isArray({0:"aaa",1:"bbb",2:"ccc",length:3}));
+	console.log($.isArray([1,2,3,4]));
+
+
+	function show(){
+
+	}
+	console.log($.isFunction());
+	console.log($.isFunction(show));
+	*/
+
+	var obj1 = {
+		name:"tom",
+		age:18
+	}
+	var obj2 = {
+		name:"amy",
+		sex:'male'
+	}
+	/*
+	console.log('before:::',obj1)
+	console.log('before:::',obj2)
+	var res = $.extend(obj1,obj2);
+	console.log('agter:::',res)
+	console.log('agter:::',obj1)
+	console.log('agter:::',obj2)
+	console.log('agter:::',obj1 === res)
+	*/
+	/*
+	console.log('before:::',obj1)
+	console.log('before:::',obj2)
+	var res = $.extend({},obj1,obj2);
+	console.log('agter:::',res)
+	console.log('agter:::',obj1)
+	console.log('agter:::',obj2)
+	console.log('agter:::',obj1 === res)
+	*/
+
+	function show(){
+		console.log(this)
+	}
+	show();
+	$.proxy(show,{name:"tom"})();
+</script>
+</html>

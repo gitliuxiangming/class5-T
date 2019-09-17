@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>006-jQuery的静态方法-each.html</title>
+</head>
+<body>
+	<div>div1</div>
+	<div>div2</div>
+	<div>div3</div>
+	<div>div4</div>
+	<div>div5</div>
+	<div>div6</div>
+	<div>div7</div>
+	<div>div8</div>
+	<div>div9</div>
+	<div>div10</div>
+</body>
+<script src="js/jquery-3.4.1.js"></script>
+<script>
+	var arr = [1,5,6,7,8];
+	/*
+	arr.forEach(function(value,index){
+		console.log('1:::',value,index)
+	})
+
+	$.each(arr,function(index,value){
+		console.log('1:::',index,value)
+	})
+	*/
+	var likeArr = {0:"aaa",1:"bbb",2:"ccc",length:3};
+	// console.log(likeArr)
+	/*
+	likeArr.forEach(function(){
+
+	})
+	*/
+	/*
+	$.each(likeArr,function(index,value){
+		console.log('2:::',index,value)
+	})
+	*/
+	var aDiv = document.getElementsByTagName('div');
+	// console.log(aDiv)
+	/*
+	aDiv.forEach(function(){
+
+	})*/
+	var res = $.each(aDiv,function(index,value){
+		console.log('3:::',index,value)
+	})
+	console.log(res)
+</script>
+</html>
