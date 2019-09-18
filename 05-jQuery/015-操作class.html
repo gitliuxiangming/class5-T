@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>015-操作class.html</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		.box1{
+			width: 100px;
+			height: 100px;
+		}
+		.box2{
+			color:red;
+		}
+		.box3{
+			background-color: blue;
+		}
+	</style>
+</head>
+<body>
+	<div class=" box2">我是div</div>
+	<div class="box1 box2 box3">我是div</div>
+</body>
+<script src="js/jquery-3.4.1.js"></script>
+<script>
+	$(function(){
+	   // $('div').attr('class','box1 box2 box3')
+	   // $('div').addClass('box1 box2 box3');
+	   // $('div').removeClass('box3 box2 box1')
+	   // $('div').toggleClass('box3')
+	   console.log($('div').hasClass('box3'));
+	});
+</script>
+</html>

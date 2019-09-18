@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>023-事件的移除.html</title>
+</head>
+<body>
+	<div>divdivdiv</div>
+	<div>divdivdiv</div>
+	<div>divdivdiv</div>
+</body>
+<script src="js/jquery-3.4.1.js"></script>
+<script>
+	$(function(){
+	   function fn(){
+	   		alert('fnclick...')
+	   }
+	   $('div').on('click',function(){
+	   		alert('click...')
+	   })
+	   $('div').on('click',function(){
+	   		alert('click1...')
+	   })
+	   $('div').on('click',fn)
+	   $('div').on('mouseover',function(){
+	   		alert('mouseover...')
+	   })
+
+	    // $('div').off();
+	    // $('div').off('click',fn);
+	    $('div').off('click',function(){
+	   		alert('click1...')
+	   });
+	   
+	});
+</script>
+</html>

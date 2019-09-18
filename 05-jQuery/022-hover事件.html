@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>022-hover事件.html</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		div{
+			width: 100px;
+			height: 100px;
+			background-color: red;
+		}
+	</style>
+</head>
+<body>
+	<div>测试hover事件</div>
+</body>
+<script src="js/jquery-3.4.1.js"></script>
+<script>
+	$(function(){
+		/*
+	   $('div').on('mouseover',function(){
+	   	alert('mouseover...')
+	   })
+	   
+	   $('div').on('mouseout',function(){
+	   	alert('mouseout...')
+	   })
+	   */
+	   $('div').hover(function(){
+	   		alert('mouseover...')
+	   },function(){
+	   	alert('mouseout...')
+	   })
+
+	});
+</script>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>024-阻止默认行为.html</title>
+</head>
+<body>
+	<a href="http://www.kuazhu.com">
+		跨猪
+	</a>
+</body>
+<script src="js/jquery-3.4.1.js"></script>
+<script>
+	$(function(){
+		$('body').on('click',function(){
+			alert('body.....')
+		})
+	   $('a').on('click',function(event){
+	   		event.preventDefault();
+	   		alert('aaaa');
+	   		// return false;
+	   })
+	});
+</script>
+</html>

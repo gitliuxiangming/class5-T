@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>020-滚动距离.html</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		.father{
+			width: 300px;
+			height: 300px;
+			border: 1px solid #000;
+			overflow: auto;
+		}
+		.son{
+			width: 3000px;
+			height: 3000px;
+		}
+	</style>
+</head>
+<body>
+	<div class="father">
+		<div class="son"></div>
+	</div>
+	<button>按钮</button>
+</body>
+<script src="js/jquery-3.4.1.js"></script>
+<script>
+	$(function(){
+	   
+	   var oBtn = $('button')[0];
+	   oBtn.onclick = function(){
+	   		console.log($('.father').scrollTop(500));
+	   		console.log($('.father').scrollLeft(500));
+	   }
+	});
+</script>
+</html>
