@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>026-自定义事件.html</title>
+</head>
+<body>
+	<div>测试</div>
+</body>
+<script src="js/jquery-1.12.4.js"></script>
+<script>
+	$(function(){
+		/*
+	   $('div').on('click',function(){
+	   	alert('aaa')
+	   })
+	   */
+	   $('div').on('test',function(event,agr1,agr2){
+	   		console.log(agr1)
+	   		console.log(agr2)
+	   		alert('test'+agr1+agr2)
+	   })
+	   $('div').trigger('test',['aaaa','bbbbb']);
+	});
+</script>
+</html>

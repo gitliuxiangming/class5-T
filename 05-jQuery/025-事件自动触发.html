@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>025-事件自动触发.html</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		.gf{
+			width: 400px;
+			height: 400px;
+			background-color: blue;
+			margin:50px auto;
+			position: relative;
+		}
+		.f{
+			width: 200px;
+			height: 200px;
+			background-color: green;
+			position: absolute;
+			top: 100px;
+			left: 100px;
+		}
+		.s{
+			width: 100px;
+			height: 100px;
+			background-color: red;
+			position: absolute;
+			top: 50px;
+			left: 50px;
+		}
+	</style>
+</head>
+<body>
+	<div class="gf">
+		<div class="f">
+			<div class="s"></div>
+		</div>
+	</div>
+	<a href="http://www.kuazhu.com"><span>跨猪</span></a>
+</body>
+<form action="http://www.kuazhu.com">
+	<input type="text" name="username">
+	<input type="submit" id="btn" value="提交">
+</form>
+<script src="js/jquery-1.12.4.js"></script>
+<script>
+	$(function(){
+	   $('.gf').on('click',function(){
+	   		alert('gf.....')
+	   })
+	   $('.f').on('click',function(){
+	   		alert('f.....')
+	   })
+	   $('.s').on('click',function(event,agr1,agr2){
+	   		alert('s.....'+agr1+agr2)
+	   })
+	   $('a').on('click',function(){
+	   	alert('aClick...')
+	   })
+	   $('.s').triggerHandler('click',['11111','222222'])
+
+	});
+</script>
+</html>

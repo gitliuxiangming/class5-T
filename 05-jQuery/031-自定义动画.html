@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>031-自定义动画.html</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		div{
+			width: 200px;
+			height: 200px;
+			border: 1px solid #000;
+			margin-top: 10px;
+			background-color: red;
+		}
+
+	</style>
+</head>
+<body>
+	<button>开始动画</button>
+	<div>div1</div>
+	<div>div2</div>
+</body>
+<script src="js/jquery-1.12.4.js"></script>
+<script>
+	$(function(){
+	   $('button').on('click',function(){
+	   	/*
+	   		$('div').animate({
+	   			width:'+=100',
+	   			height:'-=50'
+	   		},1000,function(){
+	   			console.log('aaaa')
+	   		}) */
+	   		/*
+	   		$('div').animate({width:400},1000,function(){
+	   			console.log('done...')
+	   		})
+	   		$('div').animate({height:400},1000,function(){
+	   			console.log('done...')
+	   		})
+	   		$('div').animate({opacity:0.5},1000,function(){
+	   			console.log('done...')
+	   		})
+	   		*/
+	   	
+	   		$('div').animate({width:400},1000,function(){
+	   			$('div').animate({height:400},1000,function(){
+	   				$('div').animate({opacity:0.5},1000,function(){
+			   			console.log('done...')
+			   		})
+	   			})
+	   		})
+	   		
+	   		/*
+	   		$('div').animate({width:400},1000,function(){
+	   			console.log('done...')
+	   		})
+	   		.animate({height:400},1000,function(){
+	   			console.log('done...')
+	   		})
+	   		.animate({opacity:0.5},1000,function(){
+	   			console.log('done...')
+	   		})
+	   		*/
+	   })
+	  
+	   
+	});
+</script>
+</html>
