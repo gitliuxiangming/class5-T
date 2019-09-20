@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>040-ajax1.html</title>
+</head>
+<body>
+	<button>获取数据</button>
+</body>
+<script src="js/jquery-1.12.4.js"></script>
+<script>
+	$(function(){
+	   $('button').on('click',function(){
+			   	/*
+			   	 url:'./data.json', //请求的地址
+			    type:'GET',//指定请求的方法,默认是GET
+			    data:{name:'Tom',age:18},//发送到服务器的数据，字符串键值对或者对象
+			    dataType:'json',//返回数据的类型,可以是xml json script text html,默认是text
+			    success:function(返回数据,状态信息,jqXHR对象){},//请求成功后的回调函数
+			    error:function(jqXHR对象,状态信息){},//请求失败后的回调函数
+			    complete:function(jqXHR对象,状态信息){},//请求完成后的回调函数
+			    timeout:3000, //设置请求超时的时间,单位为毫秒
+			    statusCode:{304:function(){},503:function(){}.....}//设置不同状态码的回调函数
+			    headers:{test:'test'}//设置请求头
+			    */
+	   		$.ajax({
+			   url:'040-data.json',
+			   type:'POST',
+			   dataType:'text',
+			   data:{name:'bob',age:28},
+			   success:function(data,status,jqXHR){
+			   		// console.log(JSON.parse(data))
+			   		console.log('bbbdddbbb')
+			   		console.log('data',data)
+			   		console.log(status)
+			   		console.log(jqXHR)
+			   },
+			   error:function(jqXHR,status){
+			   		console.log('aaaaa')
+			   		console.log(jqXHR)
+			   		console.log(status)
+			   },
+			   complete:function(){
+			   	console.log('bbbb')
+			   },
+			   statusCode:{
+			   		200:function(){
+			   			console.log('hahaha')
+			   		},
+			   		404:function(){
+			   			console.log('not found')
+			   		}
+			   },
+			   headers:{test:'test'}
+			})
+	   })
+	});
+</script>
+</html>

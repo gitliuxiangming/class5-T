@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>038-复制节点.html</title>
+</head>
+<body>
+	<div>div div <span>i am span</span></div>
+</body>
+<script src="js/jquery-1.12.4.js"></script>
+<script>
+	$(function(){
+		$('div').on('click',function(){
+			alert('i am div')
+		})
+	   // var $dom = $('div').clone(false);
+	   var $dom = $('div').clone(true);
+	   $('body').append($dom)
+	});
+</script>
+</html>

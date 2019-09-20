@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>035-插入节点.html</title>
+</head>
+<body>
+	<button>插入</button>
+	<ul>
+		<li>li1</li>
+		<li>li2</li>
+		<li>li3</li>
+		<li>li4</li>
+	</ul>
+</body>
+<script src="js/jquery-1.12.4.js"></script>
+<script>
+	$(function(){
+	   $('button').eq(0).on('click',function(){
+	   		// var oLi = document.createElement('li');
+	   		// oLi.innerHTML = 'aaaa'
+	   		// console.log(oLi)
+	   		// console.log($('<li>我是新建的</li>'))
+	   		// var oLi = $('<li>我是新建的</li>');
+	   		// $('ul').append(oLi);
+	   		// oLi.appendTo($('ul'))
+	   		// $('ul').prepend(oLi)
+	   		// oLi.prependTo($('ul'))
+	   		var oP = $('<p>我是新建的p标签</p>');
+	   		// $('ul').after(oP)
+	   		$('ul').before(oP)
+	   })
+	});
+</script>
+</html>

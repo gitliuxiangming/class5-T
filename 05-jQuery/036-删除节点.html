@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>036-删除节点.html</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		div{
+			width: 200px;
+			height: 200px;
+			border: 1px solid #000;
+		}
+	</style>
+</head>
+<body>
+	<div>
+		我是div
+		<p>我是它儿子p</p>
+	</div>
+</body>
+<script src="js/jquery-1.12.4.js"></script>
+<script>
+	$(function(){
+	   $('div').on('click',function(){
+	   		alert('i am div click...')
+	   })
+	  
+	  // var dom = $('div').remove();
+	  // $('div').empty()
+	  var dom = $('div').detach()
+	  // console.log(dom)
+	  $('body').append(dom)	
+
+
+	});
+
+</script>
+</html>
