@@ -24,10 +24,11 @@
 			    headers:{test:'test'}//设置请求头
 			    */
 	   		$.ajax({
-			   url:'040-data.json',
-			   type:'POST',
-			   dataType:'text',
-			   data:{name:'bob',age:28},
+			   url:'http://127.0.0.1:3001/040-data.json',
+			   type:'GET',
+			   dataType:'jsonp',
+			   // jsonp:'callback',
+			   // data:{name:'bob',age:28},
 			   success:function(data,status,jqXHR){
 			   		// console.log(JSON.parse(data))
 			   		console.log('bbbdddbbb')

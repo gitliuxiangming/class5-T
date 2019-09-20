@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>041-接口封装.html</title>
+</head>
+<body>
+	<button>获取</button>
+</body>
+<script src="js/jquery-1.12.4.js"></script>
+<script>
+	$(function(){
+	   $('button').on('click',function(){
+	   	/*
+	   		$.get('040-data.json',{name:"bob",age:28},function(data,status,jqXHR){
+	   			console.log(data)
+	   			console.log(status)
+	   			console.log(jqXHR)
+	   		},'json')	
+	   		*/
+	   		/*
+	   		$.post('./',{name:"amy",age:38},function(data,status,jqXHR){
+	   			console.log(data)
+	   			console.log(status)
+	   			console.log(jqXHR)
+	   		},'text')
+	   		*/
+	   		$.getJSON('040-data.json',function(data,status,jqXHR){
+	   			console.log(data)
+	   			console.log(status)
+	   			console.log(jqXHR)
+	   		})
+	   })
+	});
+</script>
+</html>
