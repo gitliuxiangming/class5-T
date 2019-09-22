@@ -5,7 +5,6 @@
 	kquery.fn = kquery.prototype = {
 		constructor:kquery,
 		init:function(selector){
-			
 			if(!selector){//1.false
 				return this;
 			}else if(kquery.isFunction(selector)){//2.函数
@@ -14,7 +13,6 @@
 				this[0] = document;
 				this.context = document;
 				this.length=1;
-				return this;
 			}else if(kquery.isString(selector)){//3.字符串
 				//3.1html代码段
 				if(kquery.isHtml(selector)){
@@ -24,18 +22,33 @@
 						this[i] = dom.children[i];
 					}
 					this.length = dom.children.length;
-					return this;
+				}else{//3.2选择器
+					var allEle = document.querySelectorAll(selector);
+					for(var i=0;i<allEle.length;i++){
+						this[i] = allEle[i];
+					}
+					this.context = document;
+					this.length = allEle.length;
 				}
+			}else if(kquery.isArray(selector)){//4. 数组
+				var arr = [];//4.1真数组//4.2伪数组
+				for(var i=0;i<selector.length;i++){
+					arr.push(selector[i]);
+				}
+				return arr;
+			}else{//5.对象 其他
+				this[0] = selector;
+				this.length = 1;
 			}
 			
 			
 			
-			//3.3选择器
-			//4. 数组
-			//4.1真数组
-			//4.2伪数组
+			
+			
+			
+			
 
-			//5.对象
+			
 		},
 		test:function(){
 			console.log('test')
@@ -49,6 +62,9 @@
 	}
 	kquery.isHtml = function(str){
 		return /<[^<>]+>$/.test(str);
+	}
+	kquery.isArray = function(arr){
+		return typeof arr == 'object' && (length in arr);
 	}
 	kquery.fn.init.prototype = kquery.prototype;
 	w.$ = w.kquery = kquery;

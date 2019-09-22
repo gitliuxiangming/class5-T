@@ -13,14 +13,14 @@
 <script src="js/kquery.js"></script>
 <script>
 	//1.false
-	// console.log('1::::',$(null));
+	console.log('1::::',$(null));
 	// console.log('1::::',$(undefined));
 	// console.log('1::::',$(''));
 	// console.log('1::::',$(0));
 	// console.log('1::::',$(false));
 	// console.log('1::::',$(NaN));
 	//2.函数
-	// console.log('2:::',$(function(){}));
+	console.log('2:::',$(function(){}));
 	//3.字符串
 	// 3.1html代码段
 	console.log('3.1:::',$('<h1>hello</h1><p>i am p</p>'));
@@ -28,15 +28,15 @@
 	console.log('3.2:::',$('div'));
 	//4. 数组
 	//4.1真数组
-	// var arr = [1,2,3,4];
-	// console.log('4.1:::',$(arr))
+	var arr = [1,2,3,4];
+	console.log('4.1:::',$(arr))
 	//4.2伪数组
-	// var likeArr = {0:"aaa",1:"bbb",length:2}
-	// console.log('4.2:::',$(likeArr))
+	var likeArr = {0:"aaa",1:"bbb",length:2}
+	console.log('4.2:::',$(likeArr))
 
 	//5.对象
-	// var obj = {name:"tom",age:18}
-	// console.log('5:::',$(obj))
+	var obj = {name:"tom",age:18}
+	console.log('5:::',$(obj))
 	/*
 	window.onload = function(){
 		console.log('load')
