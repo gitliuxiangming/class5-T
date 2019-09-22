@@ -42,9 +42,6 @@
 				this.length = 1;
 			}
 		},
-		test:function(){
-			console.log('test')
-		},
 		get:function(num){
 			// console.log(this.selector)
 			var allEle = document.querySelectorAll(this.selector);
@@ -68,21 +65,31 @@
 			}
 		}
 	}
-	kquery.isFunction = function(fn){
-		return typeof fn == 'function';
+
+	kquery.fn.extend = kquery.extend = function(options){
+		for(attr in options){
+			this[attr] = options[attr]
+		}
 	}
-	kquery.isString = function(str){
-		return typeof str == 'string';
-	}
-	kquery.isHtml = function(str){
-		return /<[^<>]+>$/.test(str);
-	}
-	kquery.isArray = function(arr){
-		return typeof arr == 'object' && (length in arr);
-	}
-	kquery.isNumber = function(num){
-		return typeof num == 'number';
-	}
+	kquery.extend({
+		isFunction : function(fn){
+			return typeof fn == 'function';
+		},
+		isString : function(str){
+			return typeof str == 'string';
+		},
+		isHtml : function(str){
+			return /<[^<>]+>$/.test(str);
+		},
+		isArray : function(arr){
+			return typeof arr == 'object' && (length in arr);
+		},
+		isNumber : function(num){
+			return typeof num == 'number';
+		}
+	})
+
+	
 	kquery.fn.init.prototype = kquery.prototype;
 	w.$ = w.kquery = kquery;
 })(window);

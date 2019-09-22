@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>046-extend体验.html</title>
+</head>
+<body>
+	<div>div</div>
+</body>
+<!-- <script src="js/kquery.js"></script> -->
+<script>
+	function kquery(){
+
+	}
+	kquery.prototype = {
+		constructor:kquery,
+	}
+	kquery.prototype.extend = kquery.extend = function(options){
+		console.log(this)
+		for(attr in options){
+			this[attr] = options[attr]
+		}
+	}
+	$ = kquery;
+</script>
+<script>
+	console.log($.prototype)
+	$.prototype.extend({
+		test:function(){
+			console.log('test')
+		}
+	})
+	$.extend({
+		test1:function(){
+			console.log('test1')
+		}
+	})
+	var k1 = new kquery();
+	k1.test()
+	kquery.test1()
+</script>
+</html>
