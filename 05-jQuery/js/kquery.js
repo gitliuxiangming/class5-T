@@ -29,6 +29,7 @@
 					}
 					this.context = document;
 					this.length = allEle.length;
+					this.selector = selector;
 				}
 			}else if(kquery.isArray(selector)){//4. 数组
 				var arr = [];//4.1真数组//4.2伪数组
@@ -40,31 +41,47 @@
 				this[0] = selector;
 				this.length = 1;
 			}
-			
-			
-			
-			
-			
-			
-			
-
-			
 		},
 		test:function(){
 			console.log('test')
+		},
+		get:function(num){
+			// console.log(this.selector)
+			var allEle = document.querySelectorAll(this.selector);
+			// console.log(allEle)
+			if(num){//有参数
+				if(kquery.isNumber){//参数是数字
+					if(num>=0){//参数大于0
+						return allEle[num];
+					}else{//参数小于0
+						return allEle[allEle.length+num];
+					}
+				}else{//参数不是数字
+					//默认返回就是undefined
+				}
+			}else{//没参数
+				var arr = [];
+				for(var i=0;i<allEle.length;i++){
+					arr.push(allEle[i])
+				}
+				return arr;
+			}
 		}
 	}
 	kquery.isFunction = function(fn){
-		return typeof fn == 'function'
+		return typeof fn == 'function';
 	}
 	kquery.isString = function(str){
-		return typeof str == 'string'
+		return typeof str == 'string';
 	}
 	kquery.isHtml = function(str){
 		return /<[^<>]+>$/.test(str);
 	}
 	kquery.isArray = function(arr){
 		return typeof arr == 'object' && (length in arr);
+	}
+	kquery.isNumber = function(num){
+		return typeof num == 'number';
 	}
 	kquery.fn.init.prototype = kquery.prototype;
 	w.$ = w.kquery = kquery;
