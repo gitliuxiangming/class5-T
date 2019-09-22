@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>042-创建插件-方法二.html</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		div{
+			width: 200px;
+			height: 200px;
+			border: 1px solid #000;
+			margin-top: 10px;
+		}
+	</style>
+</head>
+<body>
+	<button>测试</button>
+	<div></div>
+	<div></div>
+</body>
+<script src="js/jquery-1.12.4.js"></script>
+<script>
+	$.fn.extend({
+		setColor:function(options){
+			var defaults = {background:'red'}
+			options = $.extend({},defaults,options)
+			console.log(options)
+			this.each(function(){
+				this.style.background = options.background;
+			})
+			return this;
+		}
+	})
+</script>
+<script>
+	$(function(){
+	   $('button').on('click',function(){
+	   
+	   		$('div').setColor().animate({width:400})
+
+	   		//$('div').css({background:'red'}).animate({width:400})
+	   })
+	   
+
+	});
+</script>
+</html>
