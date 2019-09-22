@@ -1,0 +1,36 @@
+/* 头部导航开始 */
+	.nav-dist{
+		height: 50px;
+		background-color: gray;
+	}
+/* 头部导航结束 */
+
+/* 头部区域开始 */
+	.header{
+		height: 100px;
+		background-color: tomato;
+	}
+/* 头部区域结束 */
+
+/* 焦点区域开始 */
+	.focus{
+		height: 400px;
+		background-color: blue;
+	}
+/* 焦点区域结束 */
+
+/* 今日热销开始 */
+	.todays{
+		height: 200px;
+		background-color: red;
+	}
+/* 今日热销结束 */
+
+/* 楼层开始 */
+	.floor{
+		height: 400px;
+		background-color: purple;
+		margin-top: 10px;
+	}
+/* 楼层结束 */
+
