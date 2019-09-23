@@ -34,3 +34,11 @@ a.link:hover{
 .transition{
 	transition: all 0.5s;
 }
+
+.dropdown{
+	position: relative;
+}
+.dropdown-layer{
+	display: none;
+	position: absolute;
+}

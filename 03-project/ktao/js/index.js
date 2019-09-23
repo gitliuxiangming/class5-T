@@ -1,10 +1,12 @@
 ;(function($){
 	$('.dropdown')
 	.hover(function(){
-		$('.dropdown').addClass('dropdown-active');
+		var activeClass = $('.dropdown').data('active') + '-active';
+		$('.dropdown').addClass(activeClass);
 		$('.dropdown-layer').show();
 	},function(){
-		$('.dropdown').removeClass('dropdown-active');
+		var activeClass = $('.dropdown').data('active') + '-active';
+		$('.dropdown').removeClass(activeClass);
 		$('.dropdown-layer').hide();
 	})
 })(jQuery);
