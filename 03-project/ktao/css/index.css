@@ -1,7 +1,62 @@
 /* 头部导航开始 */
-	.nav-dist{
-		height: 50px;
-		background-color: gray;
+	.nav-side{
+		height: 44px;
+		background-color: #f3f5f7;
+	}
+	.nav-left{
+		height: 44px;
+		line-height: 44px;
+	}
+	.nav-left .login{
+		color: #ea675a;
+	}
+	.nav-left li{
+		margin-right: 5px;
+	}
+	.dropdown{
+		position: relative;
+	}
+	.dropdown-toggle{
+		display: block;
+		height: 44px;
+		line-height: 44px;
+		padding: 0px 5px;
+		/*background-color: #fff;*/
+		border-left: 1px solid #f3f5f7;
+		border-right: 1px solid #f3f5f7;
+	}
+	.dropdown-layer{
+		display: none;
+		position: absolute;
+		background-color: #fff;
+		border: 1px solid #f3f5f7;
+		border-top: none;
+	}
+	.menu-item{
+		height: 30px;
+		line-height: 30px;
+		white-space: nowrap;
+		padding: 0px 5px;
+	}
+	.menu-item:hover{
+		background-color:#f3f5f7; 
+	}
+	/*
+	.dropdown:hover .dropdown-layer{
+		display: block;
+	}
+	.dropdown:hover .dropdown-toggle{
+		background-color: #fff;
+	}
+	.dropdown:hover .dropdown-arrow{
+		transform: rotate(180deg);
+	}
+	*/
+	.dropdown-active{
+		background-color: #fff;
+	}
+	.dropdown-active .dropdown-arrow{
+		transform: rotate(180deg);
 	}
 /* 头部导航结束 */
 

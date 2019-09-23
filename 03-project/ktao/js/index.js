@@ -1,0 +1,10 @@
+;(function($){
+	$('.dropdown')
+	.hover(function(){
+		$('.dropdown').addClass('dropdown-active');
+		$('.dropdown-layer').show();
+	},function(){
+		$('.dropdown').removeClass('dropdown-active');
+		$('.dropdown-layer').hide();
+	})
+})(jQuery);
