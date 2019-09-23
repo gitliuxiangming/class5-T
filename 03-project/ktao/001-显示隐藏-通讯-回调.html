@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>001-显示隐藏-通讯-回调.html</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		button{
+			width: 60px;
+			height: 30px;
+		}
+		#box{
+			display: none;
+			width: 200px;
+			height: 200px;
+			background-color: red;
+		}
+	</style>
+</head>
+<body>
+	<button>显示</button>
+	<button>隐藏</button>
+	<div id="box"></div>
+</body>
+<script src="js/jquery-1.12.4.js"></script>
+<script>
+	var slient = {
+		show:function($elem,cb1){
+			$elem.show();
+			cb1();
+		},
+		hide:function($elem){
+			$elem.hide();
+		}
+	}
+
+
+
+
+
+	var $elem = $('#box')
+
+  $('button').eq(0).on('click',function(){
+   		slient.show($elem,function(){
+   			console.log('shown')
+   		},function(){
+   			console.log('aaaa')
+   		}
+   		,function(){
+   			console.log('bbbb')
+   		}
+   		,function(){
+   			console.log('cccc')
+   		});
+   })
+   $('button').eq(1).on('click',function(){
+   		slient.hide($elem);
+   })
+
+
+	
+	 
+</script>
+</html>
