@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>010-显示隐藏-插件封装-测试.html</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		button{
+			width: 60px;
+			height: 30px;
+		}
+		.box{
+			display: none;
+			width: 200px;
+			padding: 10px;
+			border: 20px solid #000;
+			height: 200px;
+			background-color: red;
+		}
+		.transition{
+			transition: all 0.5s;
+		}
+	</style>
+</head>
+<body>
+	<button>显示</button>
+	<button>隐藏</button>
+	<div id="box1" class="transition box"></div>
+	<div id="box2" class="transition box"></div>
+</body>
+<script src="js/jquery-1.12.4.js"></script>
+<script src="js/showHide.js"></script>
+<script>
+	
+	var $elem = $('.box');
+	//初始化插件
+	$elem.showHide({js:true,mode:"slideLeftRight"});
+	$elem.on('show shown hide hidden',function(ev){
+		if(ev.type == 'show'){
+			console.log('show...')
+		}else if(ev.type == 'shown'){
+			console.log('shown...')
+		}else if(ev.type == 'hide'){
+			console.log('hide...')
+		}else if(ev.type == 'hidden'){
+			console.log('hidden...')
+		}
+	})
+	$('button').eq(0).on('click',function(){
+		$elem.showHide('show');
+	})
+	$('button').eq(1).on('click',function(){
+		$elem.showHide('hide');
+	})
+
+
+	
+	 
+</script>
+</html>

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>008-显示隐藏-js-左右卷入卷出.html</title>
+	<title>009-显示隐藏-js-淡入淡出的左右卷入卷出.html</title>
 	<style>
 		*{
 			margin: 0;
@@ -100,31 +100,6 @@
 		},
 		slideLeftRight:{
 			init:function($elem){
-				$elem.removeClass('transition');
-				//1.将隐藏之前的状态（水平方向的值）存起来
-				//borderLeftWidth,paddingLeft,width,paddingRight,borderRightWidth
-				var styles = {
-					borderLeftWidth:$elem.css('borderLeftWidth'),
-					paddingLeft:$elem.css('paddingLeft'),
-					width:$elem.css('width'),
-					paddingRight:$elem.css('paddingRight'),
-					borderRightWidth:$elem.css('borderRightWidth')
-				}
-				// console.log(styles)
-				$elem.data('styles',styles)
-				//2.如果当前是隐藏的话，需要把水平方向的值设置为0
-				init($elem,function(){
-					$elem.css({
-						borderLeftWidth:0,
-						paddingLeft:0,
-						width:0,
-						paddingRight:0,
-						borderRightWidth:0
-					})
-				});
-
-
-
 				/*
 				$elem.removeClass('transition');
 				//1.将隐藏之前的状态（水平方向的值）存起来
@@ -149,27 +124,30 @@
 					})
 				});
 				*/
+				js._customInit($elem,{
+					borderLeftWidth:0,
+					paddingLeft:0,
+					width:0,
+					paddingRight:0,
+					borderRightWidth:0
+				})
 			},
 			show:function($elem){
+				/*
 				show($elem,function(){
 					$elem.show()//让display变为block
 					$elem.stop();
-					/*
-					$elem[mode]();
-					$elem.trigger('shown').data('status','shown');
-					*/
 					$elem.animate($elem.data('styles'),function(){
 						$elem.trigger('shown').data('status','shown');
 					})
 				});
+				*/
+				js._customShow($elem);
 			},
 			hide:function($elem){
+				/*
 				hide($elem,function(){
 					$elem.stop();
-					/*
-					$elem[mode]();
-					$elem.trigger('hidden').data('status','hidden');
-					*/
 					$elem.animate({
 						borderLeftWidth:0,
 						paddingLeft:0,
@@ -181,9 +159,92 @@
 						$elem.trigger('hidden').data('status','hidden');
 					})
 				})
+				*/
+				js._customHide($elem,{
+					borderLeftWidth:0,
+					paddingLeft:0,
+					width:0,
+					paddingRight:0,
+					borderRightWidth:0,
+				})
 			}
 		},
-
+		fadeSlideLeftRight:{
+			init:function($elem){
+				/*
+				$elem.removeClass('transition');
+				//1.将隐藏之前的状态（水平方向的值）存起来
+				//borderLeftWidth,paddingLeft,width,paddingRight,borderRightWidth
+				var styles = {
+					borderLeftWidth:$elem.css('borderLeftWidth'),
+					paddingLeft:$elem.css('paddingLeft'),
+					width:$elem.css('width'),
+					paddingRight:$elem.css('paddingRight'),
+					borderRightWidth:$elem.css('borderRightWidth'),
+					opacity:$elem.css('opacity')
+				}
+				$elem.data('styles',styles)
+				// console.log(styles)
+				//2.如果当前是隐藏的话，需要把水平方向的值设置为0
+				init($elem,function(){
+					$elem.css({
+						borderLeftWidth:0,
+						paddingLeft:0,
+						width:0,
+						paddingRight:0,
+						borderRightWidth:0,
+						opacity:0
+					})
+				});
+				*/
+				js._customInit($elem,{
+					borderLeftWidth:0,
+					paddingLeft:0,
+					width:0,
+					paddingRight:0,
+					borderRightWidth:0,
+					opacity:0
+				});
+			},
+			show:function($elem){
+				/*
+				show($elem,function(){
+					$elem.show()//让display变为block
+					$elem.stop();
+					$elem.animate($elem.data('styles'),function(){
+						$elem.trigger('shown').data('status','shown');
+					})
+				});
+				*/
+				js._customShow($elem);
+			},
+			hide:function($elem){
+				/*
+				hide($elem,function(){
+					$elem.stop();
+					$elem.animate({
+						borderLeftWidth:0,
+						paddingLeft:0,
+						width:0,
+						paddingRight:0,
+						borderRightWidth:0,
+						opacity:0
+					},function(){
+						$elem.hide()//让display变为none
+						$elem.trigger('hidden').data('status','hidden');
+					})
+				})
+				*/
+				js._customHide($elem,{
+					borderLeftWidth:0,
+					paddingLeft:0,
+					width:0,
+					paddingRight:0,
+					borderRightWidth:0,
+					opacity:0
+				})
+			}
+		}
 
 	}
 
@@ -204,6 +265,41 @@
 			$elem.stop();
 			$elem[mode]();
 			$elem.trigger('hidden').data('status','hidden');
+		})
+	}
+	js._customInit = function($elem,options){
+		$elem.removeClass('transition');
+		//1.将隐藏之前的状态（水平方向的值）存起来
+		//borderLeftWidth,paddingLeft,width,paddingRight,borderRightWidth
+		var styles = {};
+		for(key in options){
+			styles[key] = $elem.css(key);
+		}
+
+		console.log(styles)
+		$elem.data('styles',styles)
+		// console.log(styles)
+		//2.如果当前是隐藏的话，需要把水平方向的值设置为0
+		init($elem,function(){
+			$elem.css(options)
+		});
+	}
+	js._customShow = function($elem){
+		show($elem,function(){
+			$elem.show()//让display变为block
+			$elem.stop();
+			$elem.animate($elem.data('styles'),function(){
+				$elem.trigger('shown').data('status','shown');
+			})
+		});
+	}
+	js._customHide = function($elem,options){
+		hide($elem,function(){
+			$elem.stop();
+			$elem.animate(options,function(){
+				$elem.hide()//让display变为none
+				$elem.trigger('hidden').data('status','hidden');
+			})
 		})
 	}
 
@@ -252,15 +348,24 @@
    		js.slideDownUp.hide($elem);
    	})
    	*/
+ 
    	js.slideLeftRight.init($elem);
   	$('button').eq(0).on('click',function(){
    		js.slideLeftRight.show($elem);
    	})
    	$('button').eq(1).on('click',function(){
    		js.slideLeftRight.hide($elem);
+  	 })
+  
+   	/*
+   	js.fadeSlideLeftRight.init($elem);
+  	$('button').eq(0).on('click',function(){
+   		js.fadeSlideLeftRight.show($elem);
    	})
-
-
+   	$('button').eq(1).on('click',function(){
+   		js.fadeSlideLeftRight.hide($elem);
+	})
+	*/
 	
 	 
 </script>
