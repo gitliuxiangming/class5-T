@@ -195,7 +195,7 @@
 	$.fn.extend({
 		showHide:function(options){
 			// console.log(options)
-			this.each(function(){
+			return this.each(function(){
 				var $elem = $(this);
 				var showHideObj = $elem.data('showHideObj');
 				if(!$elem.data('showHideObj')){//进行初始化的
@@ -208,9 +208,8 @@
 				if(typeof showHideObj[options] == 'function'){
 					showHideObj[options]($elem);
 				}
-				
-
 			})
+
 		}
 	})
 })(jQuery);
