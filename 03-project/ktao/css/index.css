@@ -65,7 +65,55 @@
 /* 头部区域开始 */
 	.header{
 		height: 100px;
-		background-color: tomato;
+		background-color: #fff;
+	}
+	.header .header-logo{
+		display: block;
+		width: 150px;
+		height: 70px;
+		background-image: url(../images/header-logo.png);
+		background-size: 150px;
+		background-repeat: no-repeat;
+		margin-top: 30px;
+	}
+	.header .search{
+		position: relative;
+		margin-left: 300px;
+		margin-top: 30px;
+	}
+	.header .search-input{
+		width: 400px;
+		height: 40px;
+		outline: none;
+		border: 1px solid #ccc;
+		padding: 0 10px;
+		box-sizing: border-box;
+	}
+	.header .search-btn{
+		width: 80px;
+		height: 40px;
+		background-color: #000;
+		color:#fff;
+		border-color: #000;
+		cursor: pointer;
+	}
+	.header .search-layer{
+		display: none;
+		position: absolute;
+		top: 40px;
+		left: 0px;
+		width: 100%;
+		border: 1px solid #ccc;
+		box-sizing: border-box;
+		border-top: none;
+	}
+	.header .search-item{
+		width: 100%;
+		height: 30px;
+		line-height: 30px;
+		background-color: #fff;
+		padding: 0 10px;
+		box-sizing: border-box;
 	}
 /* 头部区域结束 */
 
