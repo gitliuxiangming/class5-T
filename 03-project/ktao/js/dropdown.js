@@ -19,11 +19,19 @@
 				this.$elem.trigger('dropdown-'+ev.type);
 			}.bind(this))
 			//3.绑定事件
-			this.$elem.hover($.proxy(this.show,this),$.proxy(this.hide,this));
+			if(this.options.eventName == 'click'){
+				this.$elem.on('click',function(ev){
+					ev.stopPropagation()
+					this.show();
+				}.bind(this));
+				$(document).on('click',$.proxy(this.hide,this));
+			}else{
+				this.$elem.hover($.proxy(this.show,this),$.proxy(this.hide,this));
+			}
 		},
 		show:function(){
 			if(this.options.delay){
-				console.log(this.options.delay)
+				// console.log(this.options.delay)
 				this.timer = setTimeout(function(){
 					this.$elem.addClass(this.activeClass);
 					this.$layer.showHide('show');
