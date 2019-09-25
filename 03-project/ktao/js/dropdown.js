@@ -67,7 +67,6 @@
 					dropdown = new Dropdown($elem,options);
 					$elem.data('dropdown',dropdown)
 				}
-				console.log(dropdown[options])
 				if(typeof dropdown[options] == 'function'){
 					dropdown[options]();
 				}
