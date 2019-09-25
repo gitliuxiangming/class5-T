@@ -26,7 +26,7 @@
 		},
 		hide:function(){
 			console.log(this)
-			this.$elem.removeClass(this.activeClass);
+			this.$elem.removeClass(this.activeClass); 
 			this.$layer.showHide('hide');
 		}
 	}
