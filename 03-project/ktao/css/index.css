@@ -54,6 +54,9 @@
 	.nav-side .menu-active .dropdown-arrow{
 		transform: rotate(180deg);
 	}
+	.nav-side .dropdown{
+		margin-left: 10px;
+	}
 /* 头部导航结束 */
 
 /* 头部区域开始 */

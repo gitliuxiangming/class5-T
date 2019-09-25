@@ -5,6 +5,7 @@
 		this.options = options;
 		this.$layer = $elem.find('.dropdown-layer');
 		this.activeClass = $elem.data('active') + '-active';
+		this.timer = 0;
 		//2.初始化
 		this.init();
 	}
@@ -21,14 +22,28 @@
 			this.$elem.hover($.proxy(this.show,this),$.proxy(this.hide,this));
 		},
 		show:function(){
-			this.$elem.addClass(this.activeClass);
-			this.$layer.showHide('show');
+			if(this.options.delay){
+				console.log(this.options.delay)
+				this.timer = setTimeout(function(){
+					this.$elem.addClass(this.activeClass);
+					this.$layer.showHide('show');
+				}.bind(this),this.options.delay)
+			}else{
+				this.$elem.addClass(this.activeClass);
+				this.$layer.showHide('show');
+			}
 		},
 		hide:function(){
-			console.log(this)
+			clearTimeout(this.timer);
 			this.$elem.removeClass(this.activeClass); 
 			this.$layer.showHide('hide');
 		}
+	}
+
+	Dropdown.DEFAULTS = {
+		js:true,
+		mode:'slideDownUp',
+		delay:''
 	}
 
 
@@ -37,6 +52,7 @@
 		dropdown:function(options){
 			return this.each(function(){
 				var $elem = $(this);
+				options = $.extend({},Dropdown.DEFAULTS,options);
 				new Dropdown($elem,options);
 			})
 		}
