@@ -58,10 +58,20 @@
 
 	$.fn.extend({
 		dropdown:function(options){
+
 			return this.each(function(){
 				var $elem = $(this);
-				options = $.extend({},Dropdown.DEFAULTS,options);
-				new Dropdown($elem,options);
+				var dropdown  = $elem.data('dropdown');
+				if(!dropdown){
+					options = $.extend({},Dropdown.DEFAULTS,options);
+					dropdown = new Dropdown($elem,options);
+					$elem.data('dropdown',dropdown)
+				}
+				console.log(dropdown[options])
+				if(typeof dropdown[options] == 'function'){
+					dropdown[options]();
+				}
+
 			})
 		}
 	})
