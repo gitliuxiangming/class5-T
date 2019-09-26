@@ -61,28 +61,27 @@
 				jsonp:'callback'
 			})
 			.done(function(data){
+				/*
 				// console.log(data)
 				//1.将数据包装成html代码
 				var html = '';
 				for(var i=0;i<data.result.length;i++){
 					html += '<li class="search-item">'+data.result[i][0]+'</li>'
 				}
-				// console.log(html)
-
 				//2.将html代码放入到下拉层中
 				this.addHtml(html);
-
 				//3.将下拉层展示出来
 				this.showLayer()
-
-				
-
-
-
+				*/
+				this.$elem.trigger('getData',[data]);
 			}.bind(this))
 			.fail(function(err){
-				console.log(err)
-			})
+				/*
+				this.addHtml('');
+				this.hideLayer();
+				*/
+				this.$elem.trigger('getNoData');
+			}.bind(this))
 		},
 		hideLayer:function(){
 			this.$searchLayer.showHide('hide');
@@ -92,22 +91,19 @@
 			this.$searchLayer.showHide('show');
 		},
 		addHtml:function(html){
+			console.log(html)
 			this.isLoaded = !!html;
 			this.$searchLayer.html(html)
 		}
 	}
-	//https://suggest.taobao.com/sug?code=utf-8&q=a&_ksTS=1569493529438_1927&callback=jsonp1928&k=1&area=c2c&bucketid=16
 	Search.DEFAULTS = {
 		autocomplete:true,
 		url:'https://suggest.taobao.com/sug?q=',
 		js:true,
 		mode:'slideDownUp'
 	}
-
-
-
 	$.fn.extend({
-		search:function(options){
+		search:function(options,val){
 
 			return this.each(function(){
 				var $elem = $(this);
@@ -118,7 +114,7 @@
 					$elem.data('search',search)
 				}
 				if(typeof search[options] == 'function'){
-					search[options]();
+					search[options](val);
 				}
 
 			})
