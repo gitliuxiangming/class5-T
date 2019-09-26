@@ -115,6 +115,9 @@
 		padding: 0 10px;
 		box-sizing: border-box;
 	}
+	.header .search-item:hover{
+		background-color: #f3f5f7;
+	}
 /* 头部区域结束 */
 
 /* 焦点区域开始 */

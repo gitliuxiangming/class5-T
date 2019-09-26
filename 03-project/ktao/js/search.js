@@ -45,6 +45,18 @@
 			this.$searchInput.on('click',function(ev){
 				ev.stopPropagation();
 			})
+			//6.利用事件委托给下拉层的子元素绑定事件
+			var _this = this;
+			this.$searchLayer.on('click','.search-item',function(){
+				$elem = $(this);
+				//1.获取具体元素的值
+				var val = $elem.html();
+				console.log(val)
+				//2.将值放入输入框中
+				_this.$searchInput.val(val);
+				//3.触发表单的提交事件
+				_this.$searchForm.submit();
+			})
 			
 		},
 		getData:function(){
@@ -91,7 +103,6 @@
 			this.$searchLayer.showHide('show');
 		},
 		addHtml:function(html){
-			console.log(html)
 			this.isLoaded = !!html;
 			this.$searchLayer.html(html)
 		}

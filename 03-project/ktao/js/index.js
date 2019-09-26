@@ -61,7 +61,7 @@
 			var html = '';
 			for(var i=0;i<data.result.length;i++){
 				if(i >= itenNum) break;
-				html += '<li class="search-item">'+data.result[i][0]+'</li>'
+				html += '<li class="search-item">'+data.result[i][0]+'</li>';
 			}
 			return html;
 		}
