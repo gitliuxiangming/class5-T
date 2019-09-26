@@ -1,4 +1,19 @@
 ;(function($){
+
+	var cache = {
+		data:{},
+		count:0,
+		addData:function(key,val){
+			this.data[key] = val;
+			this.count++;
+		},
+		getData:function(key){
+			return this.data[key]
+		}
+	}
+
+
+
 	function Search($elem,options){
 		//1.罗列属性
 		this.$elem = $elem;
@@ -8,6 +23,8 @@
 		this.$searchForm = $elem.find('.search-form')
 		this.$searchLayer = $elem.find('.search-layer')
 		this.isLoaded = false;
+		this.timer = 0;
+		this.jqXHR = null;
 	
 		
 		//2.初始化
@@ -36,7 +53,16 @@
 			//1.将显示隐藏插件初始化
 			this.$searchLayer.showHide(this.options);
 			//2.监听输入框的oninput事件
-			this.$searchInput.on('input',$.proxy(this.getData,this))
+			this.$searchInput.on('input',function(){
+				if(this.options.getDataDelay){
+					clearTimeout(this.timer);
+					this.timer = setTimeout(function(){
+						this.getData();
+					}.bind(this),this.options.getDataDelay)
+				}else{
+					this.getData();
+				}
+			}.bind(this))
 			//3.当点击页面其他地方时，让下拉层消失
 			$(document).on('click',$.proxy(this.hideLayer,this))
 			//4.当输入框再次获取焦点时，让下拉层再次显示出来
@@ -61,13 +87,24 @@
 		},
 		getData:function(){
 			//判断输入框的值不能时空格
-			if(this.getValue() == ''){
+			var inputVal = this.getValue();
+			if(inputVal == ''){
 				//如果输入框内容为空，则下拉层不显示
 				this.addHtml('');
 				this.hideLayer();
 				 return;
 			}
-			$.ajax({
+			if(this.jqXHR){
+				this.jqXHR.abort();
+			}
+			//判断缓存中有没有
+			if(cache.data[inputVal]){
+				this.$elem.trigger('getData',[cache.data[inputVal]]);
+				return;
+			}
+
+			console.log('发送请求')
+			this.jqXHR = $.ajax({
 				url:this.options.url+this.getValue(),
 				dataType:'jsonp',
 				jsonp:'callback'
@@ -86,6 +123,8 @@
 				this.showLayer()
 				*/
 				this.$elem.trigger('getData',[data]);
+				var inputVal = this.getValue();
+				cache.addData(inputVal,data)
 			}.bind(this))
 			.fail(function(err){
 				/*
@@ -93,6 +132,9 @@
 				this.hideLayer();
 				*/
 				this.$elem.trigger('getNoData');
+			}.bind(this))
+			.always(function(){
+				this.jqXHR = null;
 			}.bind(this))
 		},
 		hideLayer:function(){
@@ -111,7 +153,8 @@
 		autocomplete:true,
 		url:'https://suggest.taobao.com/sug?q=',
 		js:true,
-		mode:'slideDownUp'
+		mode:'slideDownUp',
+		getDataDelay:200
 	}
 	$.fn.extend({
 		search:function(options,val){
