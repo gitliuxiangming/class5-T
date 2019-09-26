@@ -7,7 +7,6 @@
 		this.$searchInput = $elem.find('.search-input')
 		this.$searchForm = $elem.find('.search-form')
 		this.$searchLayer = $elem.find('.search-layer')
-		this.isLoaded = false;
 	
 		
 		//2.初始化
@@ -37,24 +36,11 @@
 			this.$searchLayer.showHide(this.options);
 			//2.监听输入框的oninput事件
 			this.$searchInput.on('input',$.proxy(this.getData,this))
-			//3.当点击页面其他地方时，让下拉层消失
-			$(document).on('click',$.proxy(this.hideLayer,this))
-			//4.当输入框再次获取焦点时，让下拉层再次显示出来
-			this.$searchInput.on('focus',$.proxy(this.showLayer,this))
-			//5.阻止输入框点击时的冒泡事件
-			this.$searchInput.on('click',function(ev){
-				ev.stopPropagation();
-			})
 			
 		},
 		getData:function(){
 			//判断输入框的值不能时空格
-			if(this.getValue() == ''){
-				//如果输入框内容为空，则下拉层不显示
-				this.addHtml('');
-				this.hideLayer();
-				 return;
-			}
+			if(this.getValue() == '') return;
 			$.ajax({
 				url:this.options.url+this.getValue(),
 				dataType:'jsonp',
@@ -70,12 +56,10 @@
 				// console.log(html)
 
 				//2.将html代码放入到下拉层中
-				this.addHtml(html);
+				this.$searchLayer.html(html)
 
 				//3.将下拉层展示出来
-				this.showLayer()
-
-				
+				this.$searchLayer.showHide('show')
 
 
 
@@ -83,17 +67,6 @@
 			.fail(function(err){
 				console.log(err)
 			})
-		},
-		hideLayer:function(){
-			this.$searchLayer.showHide('hide');
-		},
-		showLayer:function(){
-			if(!this.isLoaded) return;
-			this.$searchLayer.showHide('show');
-		},
-		addHtml:function(html){
-			this.isLoaded = !!html;
-			this.$searchLayer.html(html)
 		}
 	}
 	//https://suggest.taobao.com/sug?code=utf-8&q=a&_ksTS=1569493529438_1927&callback=jsonp1928&k=1&area=c2c&bucketid=16
