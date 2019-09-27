@@ -147,4 +147,10 @@
 		$dropdown.dropdown({delay:200,js:true,mode:"fade"});
 	}
 	handleCategory();
+
+	function handleCarousel(){
+		var $carousel = $('.carousel-wrap');
+		$carousel.carousel({});
+	}
+	handleCarousel();
 })(jQuery);
