@@ -5,8 +5,10 @@
 		this.options = options;
 		this.now = this.options.showIndex;
 		this.$carouselItem = this.$elem.find('.carousel-item');
+		this.itemNum = this.$carouselItem.length;
 		this.$btns = this.$elem.find('.btn-item');
 		this.$control = this.$elem.find('.control');
+		this.timer = 0;
 		//初始化
 		this.init();
 	}
@@ -14,7 +16,7 @@
 		constructor:Carousel,
 		init:function(){
 			if(this.options.slide){//划入划出
-
+				
 			}else{//淡入淡出
 				//将所有图片隐藏
 				this.$elem.addClass('fade');
@@ -22,7 +24,7 @@
 				this.$carouselItem.eq(this.now).show();
 				this.$btns.eq(this.now).addClass('active');
 				//将显示隐藏插件初始化
-				this.$carouselItem.showHide({js:true,mode:'fade'})
+				this.$carouselItem.showHide()
 				//将左右按钮显示出来(监听事件)
 				this.$elem
 				.hover(function(){
@@ -31,14 +33,27 @@
 					this.$control.hide();
 				}.bind(this))
 				.on('click','.control-left',function(){
-					this._fade(this.now - 1)
+					this._fade(this.getIndex(this.now - 1))
 				}.bind(this))
 				.on('click','.control-right',function(){
-					this._fade(this.now + 1)
+					this._fade(this.getIndex(this.now + 1))
 				}.bind(this))
+				//处理自动轮播
+				if(this.options.interval){
+					this.autoplay();
+					this.$elem.hover($.proxy(this.paused,this),$.proxy(this.autoplay,this))
+				}
+				//处理底部按钮的点击事件
+				var _this = this;
+				this.$btns.on('click',function(){
+					//获取对应的下标
+					_this._fade(_this.$btns.index($(this)))
+				})
 			}
 		},
 		_fade(index){
+			//如果当前值和即将显示的值相等的话，不执行
+			if(this.now == index) return;
 			//让当前显示的隐藏
 			this.$carouselItem.eq(this.now).showHide('hide');
 			this.$btns.eq(this.now).removeClass('active');
@@ -47,13 +62,29 @@
 			this.$btns.eq(index).addClass('active');
 			//将inde赋给this.now
 			this.now = index;
+		},
+		getIndex(index){
+			if(index < 0) return this.itemNum -1;
+			if(index >= this.itemNum) return 0;
+			return index;
+		},
+		autoplay:function(){
+			this.timer = setInterval(function(){
+				this.$control.eq(1).trigger('click')
+			}.bind(this),this.options.interval)
+		},
+		paused:function(){
+			clearInterval(this.timer)
 		}
 
 	}
 
 	Carousel.DEFAULTS = {
 		slide:false,
-		showIndex:0
+		showIndex:0,
+		interval:1000,
+		js:true,
+		mode:'fade'
 	}
 
 
