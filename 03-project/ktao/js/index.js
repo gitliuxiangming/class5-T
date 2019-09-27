@@ -2,12 +2,10 @@
 
 	function handleDropDown(){
 		var $dropdown = $('.nav-side .dropdown');
-		$dropdown.dropdown({delay:200}); 
+		
 		$dropdown.on('dropdown-show',function(ev){
-			// console.log(this)
 			var $elem = $(this);
 			var dataUrl = $elem .data('url');
-			// console.log(dataUrl)
 			if(!dataUrl) return;
 			if($elem.data('isLoaded')) return;
 			$.getJSON(dataUrl,function(data){
@@ -16,17 +14,14 @@
 				for(var i=0;i<data.length;i++){
 					html += '<li class="menu-item"><a href="'+data[i].url+'">'+data[i].name+'</a></li>'
 				}
-
 				//.模仿数据加载
 				setTimeout(function(){
 					$dropdown.find('.dropdown-layer').html(html);
-				},1000)
+				}.bind(this),1000)
 				
 			})
-
-			
-			
 		})
+		$dropdown.dropdown({delay:200}); 
 		/*
 		$('.nav-side button').on('click',function(ev){
 			// ev.stopPropagation();
@@ -68,5 +63,33 @@
 	}
 	handleSearch();
 
-
+	function handleCategory(){
+		var $dropdown = $('.category .dropdown');
+		
+		$dropdown.on('dropdown-show',function(ev){
+			var $elem = $(this);
+			var dataUrl = $elem .data('url');
+			if(!dataUrl) return;
+			if($elem.data('isLoaded')) return;
+			$.getJSON(dataUrl,function(data){
+				$elem.data('isLoaded',true);
+				var html = '';
+				console.log(data)
+				for(var i=0;i<data.length;i++){
+					html += '<dl class="category-details"><dt class="category-details-title fl"><a href="#" class="category-details-title-link">'+data[i].title+'</a></dt><dd class="category-details-item fl">'
+					for(var j=0;j<data[i].items.length;j++){
+						html += '<a href="#" class="link">'+data[i].items[j]+'</a>'
+					}
+					html += '</dd></dl>'
+				}
+				//.模仿数据加载
+				setTimeout(function(){
+					$dropdown.find('.dropdown-layer').html(html);
+				},1000)
+				
+			})
+		})
+		$dropdown.dropdown({delay:200,js:true,mode:"fade"});
+	}
+	handleCategory();
 })(jQuery);
