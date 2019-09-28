@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>012-移动-水平和垂直方法独立.html</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		button{
+			width: 60px;
+			height: 30px;
+		}
+		.box{
+			position: absolute;
+			left: 0px;
+			top: 100px;
+			width: 200px;
+			height: 200px;
+			background-color: red;
+		}
+		.transition{
+			transition: all 0.5s;
+		}
+	</style>
+</head>
+<body>
+	<button>复位</button>
+	<button>移动</button>
+	<div id="box1" class="transition box"></div>
+</body>
+<script src="js/jquery-1.12.4.js"></script>
+<script>
+	
+	function Slient($elem){
+		this.$elem = $elem
+		this.$elem.removeClass('transition');
+		this.currentX = parseFloat(this.$elem.css('left'));
+		this.currentY = parseFloat(this.$elem.css('top'));
+	}
+	Slient.prototype = {
+		constructor:Slient,
+		to:function(x,y){
+			// console.log(this.currentX)
+			// console.log(this.currentY)
+			x = (typeof x == 'number') ? x : this.currentX;
+			y = (typeof y == 'number') ? y : this.currentY;
+			if(this.currentX == x && this.currentY == y) return;
+			// console.log('aaa')
+			this.$elem.trigger('move');
+			this.$elem.css({
+				left:x,
+				top:y
+			})
+			this.$elem.trigger('moved');
+			this.currentX = x;
+			this.currentY = y;
+
+		},
+		x:function(x){
+			this.to(x);
+		},
+		y:function(y){
+			this.to(null,y);
+		}
+	}
+
+	var $elem = $('.box');
+	$elem.on('move moved',function(ev){
+		console.log(ev.type)
+	})
+	//初始化插件
+	var move = new Slient($elem);
+	
+	$('button').eq(0).on('click',function(){
+		// move.to(0,100)
+		// move.x(0)
+		move.y(100)
+	})
+	$('button').eq(1).on('click',function(){
+		// move.to(200,200)
+		// move.x(200)
+		move.y(200)
+	})
+
+
+	
+	 
+</script>
+</html>
