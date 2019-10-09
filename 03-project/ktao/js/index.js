@@ -163,7 +163,7 @@
 	handleCategory();
 
 	function handleCarousel(){
-		var $carousel = $('.carousel-wrap');
+		var $carousel = $('.focus .carousel-wrap');
 		var item = {};//0:loaded,1:loaded
 		var loadItemNum =  $carousel.find('.carousel-item').length;
 		var loadedItemNum = 0;//表示已经加载过几张图片
@@ -204,4 +204,10 @@
 		$carousel.carousel({});
 	}
 	handleCarousel();
+	function handleTodays(){
+		var $carousel = $('.todays .carousel-wrap');
+
+		$carousel.carousel({});
+	}
+	handleTodays();
 })(jQuery);
