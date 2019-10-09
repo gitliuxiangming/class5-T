@@ -39,6 +39,49 @@
 		},500)
 		
 	}
+	//轮播图图片懒加载共通
+	function carouselLazyLoad($elem){
+		$elem.item = {};//0:loaded,1:loaded
+		$elem.loadItemNum =  $elem.find('.carousel-item').length;
+		$elem.loadedItemNum = 0;//表示已经加载过几张图片
+		$elem.fnload = null;
+		
+		//开始加载
+		$elem.on('carousel-show',$elem.fnload = function(ev,index,elem){
+			console.log('carousel-show')
+			$elem.trigger('carousel-load',[index,elem])
+		})
+		//执行加载
+		$elem.on('carousel-load',function(ev,index,elem){
+			if($elem.item[index] != 'loaded'){
+				console.log('load',index)
+				//找到图片标签
+				var $imgs = $(elem).find('.carousel-img');
+				$imgs.each(function(){
+					var $img = $(this);
+					//拿到真正的图片地址
+				
+					var imgUrl = $img.data('src');
+					//获取图片
+					loadImage(imgUrl,function(){
+						$img.attr('src',imgUrl)
+					},function(){
+						$img.attr('src',"images/focus-carousel/placeholder.png")
+					});
+				})
+				$elem.item[index] = 'loaded';
+				$elem.loadedItemNum++;
+				if($elem.loadedItemNum == $elem.loadItemNum){
+					$elem.trigger('carousel-loaded');
+				}
+				
+			}
+		})
+		//加载结束
+		$elem.on('carousel-loaded',function(){
+			$elem.off('carousel-show',$elem.fnload);
+		})
+	}
 
 
 	function handleDropDown(){
@@ -164,6 +207,7 @@
 
 	function handleCarousel(){
 		var $carousel = $('.focus .carousel-wrap');
+		/*
 		var item = {};//0:loaded,1:loaded
 		var loadItemNum =  $carousel.find('.carousel-item').length;
 		var loadedItemNum = 0;//表示已经加载过几张图片
@@ -171,13 +215,13 @@
 		
 		//开始加载
 		$carousel.on('carousel-show',fnload = function(ev,index,elem){
-			console.log('carousel-show')
+			// console.log('carousel-show')
 			$carousel.trigger('carousel-load',[index,elem])
 		})
 		//执行加载
 		$carousel.on('carousel-load',function(ev,index,elem){
 			if(item[index] != 'loaded'){
-				console.log('load',index)
+				// console.log('load',index)
 				//找到图片标签
 				var $img = $(elem).find('.carousel-img');
 				//拿到真正的图片地址
@@ -199,14 +243,59 @@
 		$carousel.on('carousel-loaded',function(){
 			$carousel.off('carousel-show',fnload);
 		})
-		
+		*/
+		carouselLazyLoad($carousel);
 
 		$carousel.carousel({});
 	}
 	handleCarousel();
 	function handleTodays(){
 		var $carousel = $('.todays .carousel-wrap');
-
+		/*
+		var item = {};//0:loaded,1:loaded
+		var loadItemNum =  $carousel.find('.carousel-item').length;
+		var loadedItemNum = 0;//表示已经加载过几张图片
+		var fnload = null;
+		
+		//开始加载
+		$carousel.on('carousel-show',fnload = function(ev,index,elem){
+			console.log('carousel-show')
+			$carousel.trigger('carousel-load',[index,elem])
+		})
+		//执行加载
+		$carousel.on('carousel-load',function(ev,index,elem){
+			if(item[index] != 'loaded'){
+				console.log('load',index)
+				//找到图片标签
+				var $imgs = $(elem).find('.carousel-img');
+				$imgs.each(function(){
+					var $img = $(this);
+					//拿到真正的图片地址
+				
+					var imgUrl = $img.data('src');
+					//获取图片
+					loadImage(imgUrl,function(){
+						$img.attr('src',imgUrl)
+					},function(){
+						$img.attr('src',"images/focus-carousel/placeholder.png")
+					});
+					
+					
+				})
+				item[index] = 'loaded';
+				loadedItemNum++;
+				if(loadedItemNum == loadItemNum){
+					$carousel.trigger('carousel-loaded');
+				}
+				
+			}
+		})
+		//加载结束
+		$carousel.on('carousel-loaded',function(){
+			$carousel.off('carousel-show',fnload);
+		})
+		*/
+		carouselLazyLoad($carousel);
 		$carousel.carousel({});
 	}
 	handleTodays();
