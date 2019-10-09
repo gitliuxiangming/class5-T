@@ -24,7 +24,21 @@
 			
 		})
 	}
-
+	//封装加载图片的函数
+	function loadImage(imgUrl,success,error){
+		var image = new Image();//得到一个实力
+		image.onload = function(){//成功时的回调
+			typeof success == 'function' &&	success();
+		}
+		image.onerror = function(){//失败的回调
+			typeof error == 'function' &&	error();
+		}
+		//模仿网络延迟
+		setTimeout(function(){
+			image.src = imgUrl;//表明去哪个地址请求图片
+		},500)
+		
+	}
 
 
 	function handleDropDown(){
@@ -150,8 +164,52 @@
 
 	function handleCarousel(){
 		var $carousel = $('.carousel-wrap');
-		$carousel.on('carousel-show',function(ev,index,elem){
-			console.log(ev.type,index,elem)
+		var item = {};//0:loaded,1:loaded
+		var loadItemNum =  $carousel.find('.carousel-item').length;
+		var loadedItemNum = 0;//表示已经加载过几张图片
+		var fnload = null;
+		$carousel.on('carousel-show',fnload = function(ev,index,elem){
+			console.log('carousel-show')
+			if(item[index] != 'loaded'){
+				console.log('load',index)
+				//加载图片
+
+				
+				//找到图片标签
+				var $img = $(elem).find('.carousel-img');
+				//拿到真正的图片地址
+				var imgUrl = $img.data('src');
+				/*
+				//获取图片
+				$img.attr('src',imgUrl)
+				*/
+				//1.如果网络卡顿的话，影响图片加载
+				//2.如果失败的话，不容易处理
+
+				/*
+				var image = new Image();//得到一个实例
+				image.onload = function(){//成功时的回调
+					$img.attr('src',imgUrl)
+				}
+				image.onerror = function(){//失败的回调
+					$img.attr('src',"images/focus-carousel/placeholder.png")
+				}
+				image.src = imgUrl;//表明去哪个地址请求图片
+				*/
+				loadImage(imgUrl,function(){
+					$img.attr('src',imgUrl)
+				},function(){
+					$img.attr('src',"images/focus-carousel/placeholder.png")
+				});
+
+
+				item[index] = 'loaded';
+				loadedItemNum++;
+				if(loadedItemNum == loadItemNum){
+					$carousel.off('carousel-show',fnload);
+				}
+			}
+			
 		})
 
 		$carousel.carousel({});

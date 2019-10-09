@@ -15,6 +15,9 @@
 	Carousel.prototype = {
 		constructor:Carousel,
 		init:function(){
+			var _this = this;
+			//默认显示的图片要先加载
+			_this.$elem.trigger('carousel-show',[_this.now,this.$carouselItem.eq(_this.now)])
 			if(this.options.slide){//划入划出
 				//将所有图片隐藏
 				this.$elem.addClass('slide');
@@ -73,7 +76,7 @@
 				this.$elem.hover($.proxy(this.paused,this),$.proxy(this.autoplay,this))
 			}
 			//处理底部按钮的点击事件
-			var _this = this;
+			
 			this.$btns.on('click',function(){
 				//获取对应的下标
 				_this.tab(_this.$btns.index($(this)))
