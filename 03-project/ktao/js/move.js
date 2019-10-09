@@ -9,8 +9,8 @@
 		x = (typeof x == 'number') ? x : this.currentX;
 		y = (typeof y == 'number') ? y : this.currentY;
 		if(this.currentX == x && this.currentY == y) return;
-		this.$elem.trigger('move');
 		typeof cb == 'function' && cb();
+		this.$elem.trigger('move');
 		this.currentX = x;
 		this.currentY = y;
 	}
@@ -21,7 +21,7 @@
 	Slient.prototype = {
 		constructor:Slient,
 		to:function(x,y){
-			to(x,y,function(){
+			to.call(this,x,y,function(){
 				this.$elem.css({
 					left:x,
 					top:y
@@ -43,7 +43,7 @@
 	Js.prototype = {
 		constructor:Js,
 		to:function(x,y){
-			to(x,y,function(){
+			to.call(this,x,y,function(){
 				this.$elem
 				.stop()
 				.animate({
