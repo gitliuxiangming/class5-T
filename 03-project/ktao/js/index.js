@@ -150,6 +150,10 @@
 
 	function handleCarousel(){
 		var $carousel = $('.carousel-wrap');
+		$carousel.on('carousel-show',function(ev,index,elem){
+			console.log(ev.type,index,elem)
+		})
+
 		$carousel.carousel({});
 	}
 	handleCarousel();

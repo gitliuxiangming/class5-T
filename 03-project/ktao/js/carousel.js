@@ -22,6 +22,16 @@
 				this.$carouselItem.eq(this.now).css({left:0})
 				this.itemWidth = this.$carouselItem.eq(this.now).width();
 				//将移动插件初始化
+				this.$carouselItem.on('move',function(ev){
+					/*
+					console.log(_this.now)
+					console.log(ev.type,_this.$carouselItem.index(this))
+					*/
+					var index = _this.$carouselItem.index(this);
+					if(_this.now != index){
+						_this.$elem.trigger('carousel-show',[index,this])
+					}
+				})
 				this.$carouselItem.move(this.options);
 				//将左右按钮显示出来(监听事件)
 				this.tab = this._slide;
@@ -30,7 +40,16 @@
 				this.$elem.addClass('fade');
 				//默认显示
 				this.$carouselItem.eq(this.now).show();
-				//将显示隐藏插件初始化
+				//将显示隐藏插件初始化3
+				/*
+				this.$carouselItem.on('show shown hide hidden',function(ev){
+					console.log(ev.type,_this.$carouselItem.index(this))
+				})
+				*/
+				this.$carouselItem.on('show',function(ev){
+					// console.log(ev.type,_this.$carouselItem.index(this))
+					_this.$elem.trigger('carousel-show',[_this.$carouselItem.index(this),this])
+				})
 				this.$carouselItem.showHide(this.options)
 				//将左右按钮显示出来(监听事件)
 				this.tab = this._fade;
@@ -112,7 +131,7 @@
 	Carousel.DEFAULTS = {
 		slide:true,
 		showIndex:0,
-		interval:1000,
+		interval:5000,
 		js:true,
 		mode:'fade'
 	}
