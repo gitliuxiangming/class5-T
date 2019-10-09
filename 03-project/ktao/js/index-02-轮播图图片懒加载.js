@@ -168,38 +168,49 @@
 		var loadItemNum =  $carousel.find('.carousel-item').length;
 		var loadedItemNum = 0;//表示已经加载过几张图片
 		var fnload = null;
-		
-		//开始加载
 		$carousel.on('carousel-show',fnload = function(ev,index,elem){
 			console.log('carousel-show')
-			$carousel.trigger('carousel-load',[index,elem])
-		})
-		//执行加载
-		$carousel.on('carousel-load',function(ev,index,elem){
 			if(item[index] != 'loaded'){
 				console.log('load',index)
+				//加载图片
+
+				
 				//找到图片标签
 				var $img = $(elem).find('.carousel-img');
 				//拿到真正的图片地址
 				var imgUrl = $img.data('src');
+				/*
 				//获取图片
+				$img.attr('src',imgUrl)
+				*/
+				//1.如果网络卡顿的话，影响图片加载
+				//2.如果失败的话，不容易处理
+
+				/*
+				var image = new Image();//得到一个实例
+				image.onload = function(){//成功时的回调
+					$img.attr('src',imgUrl)
+				}
+				image.onerror = function(){//失败的回调
+					$img.attr('src',"images/focus-carousel/placeholder.png")
+				}
+				image.src = imgUrl;//表明去哪个地址请求图片
+				*/
 				loadImage(imgUrl,function(){
 					$img.attr('src',imgUrl)
 				},function(){
 					$img.attr('src',"images/focus-carousel/placeholder.png")
 				});
+
+
 				item[index] = 'loaded';
 				loadedItemNum++;
 				if(loadedItemNum == loadItemNum){
-					$carousel.trigger('carousel-loaded');
+					$carousel.off('carousel-show',fnload);
 				}
 			}
+			
 		})
-		//加载结束
-		$carousel.on('carousel-loaded',function(){
-			$carousel.off('carousel-show',fnload);
-		})
-		
 
 		$carousel.carousel({});
 	}
