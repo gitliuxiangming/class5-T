@@ -266,44 +266,19 @@
 		var $floor = $('.floor');
 		var $win = $(window);
 		var $doc = $(document);
-		//轮楼层图片懒加载共通
-		function floorHtmllLazyLoad($elem){
-			$elem.item = {};//0:loaded,1:loaded
-			$elem.loadItemNum =  $elem.find('.tab-item').length;
-			$elem.loadedItemNum = 0;//表示已经加载过几张图片
-			$elem.fnload = null;
+		/*
+		$floor.on('floor-show',function(ev,index,item){
+			console.log(index,item)
+		})
+		*/
+		/*
+		$floor.each(function(){
+			floorImglLazyLoad($(this));
+		})
+		*/
+		$doc.on('floor-show',function(ev,index,elem){
 			
-			//开始加载
-			$elem.on('floor-show',$elem.fnload = function(ev,index,elem){
-				// console.log('floor-show')
-				$elem.trigger('floor-load',[index,elem])
-			})
-			//执行加载
-			$elem.on('floor-load',function(ev,index,elem){
-				if($elem.item[index] != 'loaded'){
-					// console.log('load',index)
-					//加载html
-					//获取数据，关于html
-					//生成html代码
-					//将html代码插入到页面
-					//实现图片的懒加载
-					//激活选项卡功能
-
-
-					$elem.item[index] = 'loaded';
-					$elem.loadedItemNum++;
-					if($elem.loadedItemNum == $elem.loadItemNum){
-						$elem.trigger('floor-loaded');
-					}
-					
-				}
-			})
-			//加载结束
-			$elem.on('floor-loaded',function(){
-				$elem.off('floor-show',$elem.fnload);
-			})
-		}
-		
+		})
 		function timeToShow(){
 			$floor.each(function(index,elem){
 				if(isVisible($(this))){

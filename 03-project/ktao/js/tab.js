@@ -15,10 +15,16 @@
 		constructor:Tab,
 		init:function(){
 			var _this = this;
+			//默认加载
+			_this.$elem.trigger('floor-show',[this.now,this.tabPanel[this.now]])
 			//默认显示的
 			this.tabPanel.eq(this.now).show();
 			this.tabItem.eq(this.now).addClass('tab-item-active')
 			//初始化显示隐藏插件
+			this.tabPanel.on('show',function(){
+				// console.log(_this.tabPanel.index(this))
+				_this.$elem.trigger('floor-show',[_this.tabPanel.index(this),this])
+			})
 			this.tabPanel.showHide(this.options);
 			//监听事件
 			var eventName = this.options.eventName == 'click' ? 'click' : 'mouseenter'
@@ -35,7 +41,6 @@
 		_toggle:function(index){
 			//如果当前值和即将显示的值相等的话，不执行
 			if(this.now == index) return;
-			console.log('adfasf')
 			//把之前的隐藏
 			this.tabPanel.eq(this.now).showHide('hide');
 			this.tabItem.eq(this.now).removeClass('tab-item-active')
@@ -48,7 +53,6 @@
 			
 		},
 		getIndex(index){
-			console.log(this.itemNum)
 			if(index < 0) return this.itemNum -1;
 			if(index >= this.itemNum) return 0;
 
@@ -70,7 +74,7 @@
 		interval:0,
 		js:false,
 		mode:'fade',
-		eventName:'click'
+		eventName:''
 	}
 
 

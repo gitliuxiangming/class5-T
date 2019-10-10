@@ -67,7 +67,8 @@
 			.on('click','.control-left',function(){
 				this.tab(this.getIndex(this.now - 1),-1)
 			}.bind(this))
-			.on('click','.control-right',function(){
+			.on('click','.control-right',function(ev){
+				ev.stopPropagation();
 				this.tab(this.getIndex(this.now + 1),1)
 			}.bind(this))
 			//处理自动轮播

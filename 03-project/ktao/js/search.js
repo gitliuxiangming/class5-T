@@ -64,7 +64,10 @@
 				}
 			}.bind(this))
 			//3.当点击页面其他地方时，让下拉层消失
-			$(document).on('click',$.proxy(this.hideLayer,this))
+			// $(document).on('click',$.proxy(this.hideLayer,this))
+			$(document).on('click',function(){
+				this.hideLayer()
+			}.bind(this))
 			//4.当输入框再次获取焦点时，让下拉层再次显示出来
 			this.$searchInput.on('focus',$.proxy(this.showLayer,this))
 			//5.阻止输入框点击时的冒泡事件
@@ -92,7 +95,7 @@
 				//如果输入框内容为空，则下拉层不显示
 				this.addHtml('');
 				this.hideLayer();
-				 return;
+				return;
 			}
 			if(this.jqXHR){
 				this.jqXHR.abort();
