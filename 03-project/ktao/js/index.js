@@ -36,7 +36,43 @@
 			cb(data);
 		}
 	}
-
+	/*
+		{
+			$elem:$elem,
+			loadItemNum:$elem.find('.carousel-item').length,
+			eventName:'carousel-show',
+			eventPrefix:'carousel'
+		}
+	
+	*/
+	//抽取所有懒加载共通函数
+	function lazyLoad(options){
+		var $elem = options.$elem;
+		var eventName = options.eventName;
+		var eventPrefix = options.eventPrefix;
+		$elem.item = {};//0:loaded,1:loaded
+		$elem.loadItemNum = options.loadItemNum;
+		$elem.loadedItemNum = 0;//表示已经加载过几张图片
+		$elem.fnload = null;
+		console.log(eventName)
+		//开始加载
+		$elem.on(eventName,$elem.fnload = function(ev,index,elem){
+				console.log(eventPrefix)
+				$elem.trigger(eventPrefix+'-load',[index,elem,function(){
+				$elem.item[index] = 'loaded';
+				$elem.loadedItemNum++;
+				if($elem.loadedItemNum == $elem.loadItemNum){
+					$elem.trigger(eventPrefix+'-loaded');
+				}
+			}])
+		})
+		//执行加载
+		
+		//加载结束
+		$elem.on(eventPrefix+'-loaded',function(){
+			$elem.off(eventName,$elem.fnload);
+		})
+	}
 
 	//封装加载图片的函数
 	function loadImage(imgUrl,success,error){
@@ -52,7 +88,9 @@
 			image.src = imgUrl;//表明去哪个地址请求图片
 		},500)
 		
-	}
+	}	
+	/*
+	已经被lazyLoad代替
 	//轮播图图片懒加载共通
 	function carouselLazyLoad($elem){
 		$elem.item = {};//0:loaded,1:loaded
@@ -96,7 +134,8 @@
 			$elem.off('carousel-show',$elem.fnload);
 		})
 	}
-
+	*/
+	/*
 	//轮楼层图片懒加载共通
 	function floorImglLazyLoad($elem){
 		$elem.item = {};//0:loaded,1:loaded
@@ -140,7 +179,7 @@
 			$elem.off('floor-show',$elem.fnload);
 		})
 	}
-
+	*/
 	function handleDropDown(){
 		var $dropdown = $('.nav-side .dropdown');
 		
@@ -265,17 +304,70 @@
 	function handleCarousel(){
 		var $carousel = $('.focus .carousel-wrap');
 		
-		carouselLazyLoad($carousel);
+		// carouselLazyLoad($carousel);
+		lazyLoad({
+			$elem:$carousel,
+			loadItemNum:$carousel.find('.carousel-item').length,
+			eventName:'carousel-show',
+			eventPrefix:'carousel'
+		})
+		$carousel.on('carousel-load',function(ev,index,elem,cb){
+			if($carousel.item[index] != 'loaded'){
+				// console.log('load',index)
+				//找到图片标签
+				var $imgs = $(elem).find('.carousel-img');
+				$imgs.each(function(){
+					var $img = $(this);
+					//拿到真正的图片地址
+				
+					var imgUrl = $img.data('src');
+					//获取图片
+					loadImage(imgUrl,function(){
+						$img.attr('src',imgUrl)
+					},function(){
+						$img.attr('src',"images/focus-carousel/placeholder.png")
+					});
+				})
+				cb()				
+			}
+		})
 
 		$carousel.carousel({});
 	}
 	handleCarousel();
 	function handleTodays(){
 		var $carousel = $('.todays .carousel-wrap');
-		carouselLazyLoad($carousel);
+		// carouselLazyLoad($carousel);
+		lazyLoad({
+			$elem:$carousel,
+			loadItemNum:$carousel.find('.carousel-item').length,
+			eventName:'carousel-show',
+			eventPrefix:'carousel'
+		})
+		$carousel.on('carousel-load',function(ev,index,elem,cb){
+			if($carousel.item[index] != 'loaded'){
+				// console.log('load',index)
+				//找到图片标签
+				var $imgs = $(elem).find('.carousel-img');
+				$imgs.each(function(){
+					var $img = $(this);
+					//拿到真正的图片地址
+				
+					var imgUrl = $img.data('src');
+					//获取图片
+					loadImage(imgUrl,function(){
+						$img.attr('src',imgUrl)
+					},function(){
+						$img.attr('src',"images/focus-carousel/placeholder.png")
+					});
+				})
+				cb()				
+			}
+		})
 		$carousel.carousel({});
 	}
 	handleTodays();
+	
 	function handleTab(){
 		var $floor = $('.floor');
 		var $win = $(window);
@@ -345,11 +437,11 @@
 			
 			//开始加载
 			$elem.on('floor-show',$elem.fnload = function(ev,index,elem){
-				console.log('floor-show',index,elem)
 				$elem.trigger('floor-load',[index,elem])
 			})
 			//执行加载
-			$elem.on('floor-load',function(ev,index,elem){
+			$elem.on('floor-load',function(ev,index,item){
+				var $item = $(item)
 				if($elem.item[index] != 'loaded'){
 					// console.log('load',index,elem)
 					//加载html
@@ -360,11 +452,39 @@
 						var html = buildFloorHtml(data[index]);
 
 						//将html代码插入到页面
-						$(elem).html(html);
+						$item.html(html);
 						//实现图片的懒加载
-						floorImglLazyLoad($(elem))
+						// floorImglLazyLoad($(elem))
+						lazyLoad({
+							$elem:$item,
+							loadItemNum:$item.find('.tab-item').length,
+							eventName:'floor-show',
+							eventPrefix:'floor'
+						})
+						$item.on('floor-load',function(ev,index,elem,cb){
+							console.log('aaa')
+							if($item.item[index] != 'loaded'){
+
+								// console.log('load',index)
+								//找到图片标签
+								var $imgs = $(elem).find('.floor-img');
+								$imgs.each(function(){
+									var $img = $(this);
+									//拿到真正的图片地址
+								
+									var imgUrl = $img.data('src');
+									//获取图片
+									loadImage(imgUrl,function(){
+										$img.attr('src',imgUrl)
+									},function(){
+										$img.attr('src',"images/floor/placeholder.png")
+									});
+								})
+								cb()				
+							}
+						})
 						//激活选项卡功能
-						$(elem).tab({})
+						$item.tab({})
 					});
 					
 
@@ -383,6 +503,8 @@
 			})
 		}
 		floorHtmllLazyLoad($doc);
+
+
 		function timeToShow(){
 			$floor.each(function(index,elem){
 				if(isVisible($(this))){
