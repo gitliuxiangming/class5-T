@@ -369,8 +369,8 @@
 	.floor{
 		height: 538px;
 		margin-bottom: 10px;
-		background-color: yellow;
-		font-size: 60px;
+		/*background-color: yellow;*/
+		/*font-size: 60px;*/
 	}
 	.floor .floor-hd{
 		width: 100%;

@@ -24,6 +24,20 @@
 			
 		})
 	}
+	function getDataOnce($elem,url,cb){
+		var data = $elem.data(url);
+		if(!data){
+			$.getJSON(url,function(resData){
+				// console.log(resData)
+				$elem.data(url,resData);
+				cb(resData);
+			})
+		}else{
+			cb(data);
+		}
+	}
+
+
 	//封装加载图片的函数
 	function loadImage(imgUrl,success,error){
 		var image = new Image();//得到一个实力
@@ -266,28 +280,93 @@
 		var $floor = $('.floor');
 		var $win = $(window);
 		var $doc = $(document);
+
+		function buildFloorHtml(oneFloorData){
+			var html = '';
+			html += '<div class="container">'
+			html += buildFloorHeadHtml(oneFloorData);
+			html += buildFloorBodyHtml(oneFloorData);
+			html += '</div>'
+			return html;
+		}
+		function buildFloorHeadHtml(oneFloorData){
+			var html = '';
+			html += '<div class="floor-hd">';
+			html += '	<h2 class="floor-title fl">';
+			html += '		<span class="floor-title-num">'+oneFloorData.num+'F</span>';
+			html += '		<span class="floor-title-text">'+oneFloorData.text+'</span>';
+			html += '	</h2>';
+			html += '	<ul class="tab-item-wrap fr">';
+			for(var i=0;i<oneFloorData.tabs.length;i++){
+				html += '		<li class="fl">';
+				html += '			<a class="tab-item " href="javascript:;">'+oneFloorData.tabs[i]+'</a>';
+				html += '		</li>';
+				if(i != oneFloorData.tabs.length-1){
+					html += '		<li class="fl tab-divider"></li>';
+				}
+			}
+			html += '	</ul>';
+			html += '</div>';
+			return html;
+		}
+		function buildFloorBodyHtml(oneFloorData){
+			var html = '';
+			html += '<div class="floor-bd">';
+			for(var i=0;i<oneFloorData.items.length;i++){
+				html += '	<ul class="tab-panel clearfix">';
+				for(var j=0;j<oneFloorData.items[i].length;j++){
+					html += '		<li class="floor-item fl">';
+					html += '			<p class="floor-item-pic">';
+					html += '				<a href="#">';
+				
+					html += '					<img class="floor-img" src="images/floor/loading.gif" data-src="images/floor/'+oneFloorData.num+'/'+(i+1)+'/'+(j+1)+'.png" alt="">';
+					html += '				</a>';
+					html += '			</p>';
+					html += '			<p class="floor-item-name">';
+					html += '				<a class="link" href="#">'+oneFloorData.items[i][j].name+'</a>';
+					html += '			</p>';
+					html += '			<p class="floor-item-price">'+oneFloorData.items[i][j].price+' </p>';
+					html += '		</li>';
+				}
+				html += '	</ul>';
+			}
+			html += '</div>';
+
+			return html;
+		}
+
+
 		//轮楼层图片懒加载共通
 		function floorHtmllLazyLoad($elem){
 			$elem.item = {};//0:loaded,1:loaded
-			$elem.loadItemNum =  $elem.find('.tab-item').length;
+			$elem.loadItemNum =  $elem.find('.floor').length;
 			$elem.loadedItemNum = 0;//表示已经加载过几张图片
 			$elem.fnload = null;
 			
 			//开始加载
 			$elem.on('floor-show',$elem.fnload = function(ev,index,elem){
-				// console.log('floor-show')
+				console.log('floor-show',index,elem)
 				$elem.trigger('floor-load',[index,elem])
 			})
 			//执行加载
 			$elem.on('floor-load',function(ev,index,elem){
 				if($elem.item[index] != 'loaded'){
-					// console.log('load',index)
+					// console.log('load',index,elem)
 					//加载html
 					//获取数据，关于html
-					//生成html代码
-					//将html代码插入到页面
-					//实现图片的懒加载
-					//激活选项卡功能
+					getDataOnce($elem,'data/floor/floorData.json',function(data){
+						// console.log(data);
+						//生成html代码
+						var html = buildFloorHtml(data[index]);
+
+						//将html代码插入到页面
+						$(elem).html(html);
+						//实现图片的懒加载
+						floorImglLazyLoad($(elem))
+						//激活选项卡功能
+						$(elem).tab({})
+					});
+					
 
 
 					$elem.item[index] = 'loaded';
@@ -303,25 +382,25 @@
 				$elem.off('floor-show',$elem.fnload);
 			})
 		}
-		
+		floorHtmllLazyLoad($doc);
 		function timeToShow(){
 			$floor.each(function(index,elem){
 				if(isVisible($(this))){
 					//只有存在于可视区的楼层，才需要加载html代码
 					clearTimeout(elem.showTimer)
 					elem.showTimer = setTimeout(function(){
-						$doc.trigger('floor-a',[index,elem])
+						$doc.trigger('floor-show',[index,elem])
 					},200)
 					
 				}
 			})
 		}
-		$win.on('scroll load resize',timeToShow);
+		$win.on('scroll resize load',timeToShow);
 
 		function isVisible($elem){
 			return $win.height() + $win.scrollTop() > $elem.offset().top && $elem.offset().top + $elem.height() > $win.scrollTop();
 		}
-		$floor.tab({});
+		// $floor.tab({});
 	}
 	handleTab();
 
